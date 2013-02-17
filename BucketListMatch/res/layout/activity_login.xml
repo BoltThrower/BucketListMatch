@@ -15,7 +15,8 @@
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/signin" />
+        android:text="@string/signin"
+        android:onClick= "openHome" />
 
     <EditText
         android:id="@+id/editText1"

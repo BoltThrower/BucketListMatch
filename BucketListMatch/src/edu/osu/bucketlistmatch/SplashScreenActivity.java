@@ -1,11 +1,12 @@
 package edu.osu.bucketlistmatch;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.Menu;
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
 
-public class SplashScreenActivity extends Activity {
+import android.os.Bundle;
+import android.content.Intent;
+
+public class SplashScreenActivity extends SherlockActivity {
 	
 	protected int _splashTime = 5000;
 	private Thread splashThread;
@@ -47,7 +48,7 @@ public class SplashScreenActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.splash_screen, menu);
+		getSupportMenuInflater().inflate(R.menu.splash_screen, menu);
 		return true;
 	}
 
