@@ -1,18 +1,12 @@
 package database;
 
 /**
+ * This is where all methods that fetch information from the database are handled.
  * 
  * @author Everly Okorji
  *
  */
 interface Query {
 
-	/**
-	 * 
-	 * @param username
-	 * @param password
-	 * @return
-	 */
-	boolean isValidUser(String username, String password);
-
+	// TODO Declare methods HERE
 }

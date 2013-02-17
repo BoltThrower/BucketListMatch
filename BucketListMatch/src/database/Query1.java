@@ -1,11 +1,12 @@
 package database;
 
+/**
+ * An implementation of the Query instance.
+ * @author Everly Okorji
+ *
+ */
 public class Query1 implements Query {
 
-	@Override
-	public boolean isValidUser(String username, String password) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	// TODO Implement methods HERE
 
 }
