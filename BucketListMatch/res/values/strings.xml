@@ -13,5 +13,13 @@
     <string name="forgetpassword">Forget Password?</string>
     <string name="signup">Sign Up</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string-array name="action_list">
+        <item>HOME</item>
+        <item>DISCOVER</item>
+        <item>BUCKET LIST</item>
+        <item>SCRAPBOOKS</item>
+        <item>MATCH</item>
+        <item>PROFILE</item>
+    </string-array>
 
 </resources>
