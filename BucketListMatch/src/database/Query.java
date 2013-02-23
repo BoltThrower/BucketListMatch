@@ -18,4 +18,12 @@ interface Query {
 	 */
 	int validateUser (String username, String password);
 	
+	/**
+	 * This method checks to see if a user is valid, then fetches all user profile information
+	 * from the database.
+	 * @param username
+	 * @param password
+	 * @return An array containing all user information.
+	 */
+	String[] fetchUserDetails (String username, String password);
 }

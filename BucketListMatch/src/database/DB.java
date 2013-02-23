@@ -27,12 +27,6 @@ public class DB {
 		update = new Update1();
 	}
 
-	/**
-	 * Calls the validateUser function in the Query class and returns the result.
-	 * @param username
-	 * @param password
-	 * @return int 0 for valid login, 1 for invalid password, 2 for invalid username
-	 */
 	public int validateUser(String username, String password) {
 		return query.validateUser(username, password);
 	}
@@ -44,6 +38,15 @@ public class DB {
 		return true;
 		
 	}
+	
+	public String[] fetchProfileDetails(String username, String password) {
+		if (validateUser(username, password) == 0) {
+			return query.fetchUserDetails(username, password);
+		}
+		return null;
+	}
+	
+	
 	// TODO Define new procedures and functions here
 	
 	/**
