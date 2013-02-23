@@ -45,17 +45,23 @@ public class HomeActivity extends SherlockFragmentActivity {
 
 			@Override
 			public boolean onNavigationItemSelected(int position, long itemId) {
-				// Some how create the appropriate fragment to replace with.
-				// Create new fragment from our own Fragment class
-				HomeFragment frag = new HomeFragment();
-
-				// Replace whatever is in the fragment container with this
-				// fragment
-				// and give the fragment a tag name equal to the string at the
-				// position selected
-				getSupportFragmentManager().beginTransaction()
-						.replace(R.id.fragment_container, frag,
-								strings[position]).commit();
+				// Create the appropriate fragment to replace the container with.
+				switch (position) {
+				case 1:
+					HomeFragment frag = new HomeFragment();
+					getSupportFragmentManager().beginTransaction()
+							.replace(R.id.fragment_container, frag).commit();
+					break;
+				case 2:
+					
+					break;
+				case 3:
+					
+					break;
+				default:
+					
+					break;
+				}
 				return true;
 			}
 		};

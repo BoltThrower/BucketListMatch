@@ -21,7 +21,7 @@ public class HomeFragment extends SherlockFragment{
 	        Bundle savedInstanceState) {
 		
 		
-		return inflater.inflate(R.layout.activity_splash_screen, container, false);
+		return inflater.inflate(R.layout.home_view, container, false);
 	}
 	
 	@Override
