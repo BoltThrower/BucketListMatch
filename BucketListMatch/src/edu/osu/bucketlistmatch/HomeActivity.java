@@ -2,6 +2,7 @@ package edu.osu.bucketlistmatch;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
+import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 
@@ -45,18 +46,38 @@ public class HomeActivity extends SherlockFragmentActivity {
 
 			@Override
 			public boolean onNavigationItemSelected(int position, long itemId) {
-				// Create the appropriate fragment to replace the container with.
+				SherlockFragment frag;
+				// Create the appropriate fragment to replace the current fragment with.
 				switch (position) {
+				case 0:
+					frag = new HomeFragment();
+					getSupportFragmentManager().beginTransaction()
+							.replace(R.id.fragment_container, frag).commit();
+					break;
 				case 1:
-					HomeFragment frag = new HomeFragment();
+					frag = new DiscoverFragment();
 					getSupportFragmentManager().beginTransaction()
 							.replace(R.id.fragment_container, frag).commit();
 					break;
 				case 2:
-					
+					frag = new BucketlistFragment();
+					getSupportFragmentManager().beginTransaction()
+							.replace(R.id.fragment_container, frag).commit();
 					break;
 				case 3:
-					
+					frag = new ScrapbookFragment();
+					getSupportFragmentManager().beginTransaction()
+							.replace(R.id.fragment_container, frag).commit();
+					break;
+				case 4:
+					frag = new MatchFragment();
+					getSupportFragmentManager().beginTransaction()
+							.replace(R.id.fragment_container, frag).commit();
+					break;
+				case 5:
+					frag = new ProfileFragment();
+					getSupportFragmentManager().beginTransaction()
+							.replace(R.id.fragment_container, frag).commit();
 					break;
 				default:
 					
