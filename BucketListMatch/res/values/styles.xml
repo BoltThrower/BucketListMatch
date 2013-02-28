@@ -4,6 +4,19 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
+    
+    <style name="Theme.BucketList" parent="Theme.Sherlock.Light">
+        <item name="actionBarStyle">@style/Theme.BucketList.ActionBar</item>  
+    </style>
+    
+    <style name="Theme.BucketList.NoActionBar" parent="Theme.Sherlock.Light.NoActionBar">
+        
+    </style>
+
+    <style name="Theme.BucketList.ActionBar" parent="Widget.Sherlock.ActionBar">
+        <item name="displayOptions">showHome|useLogo</item>
+    </style>
+    
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in

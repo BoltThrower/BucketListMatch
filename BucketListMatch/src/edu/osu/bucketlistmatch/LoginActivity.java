@@ -36,7 +36,7 @@ public class LoginActivity extends SherlockActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getSupportMenuInflater().inflate(R.menu.login, menu);
+		//getSupportMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}
 	
