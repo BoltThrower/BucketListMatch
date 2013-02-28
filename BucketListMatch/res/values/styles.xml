@@ -13,8 +13,10 @@
         
     </style>
 
+    <!-- Style for the action bar -->
     <style name="Theme.BucketList.ActionBar" parent="Widget.Sherlock.ActionBar">
         <item name="displayOptions">showHome|useLogo</item>
+        
     </style>
     
     <style name="AppBaseTheme" parent="android:Theme.Light">

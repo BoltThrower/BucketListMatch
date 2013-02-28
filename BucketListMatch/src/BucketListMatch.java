@@ -2,7 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import database.DB;
+import edu.osu.database.DB;
 
 public class BucketListMatch {
 

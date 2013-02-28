@@ -3,7 +3,7 @@ package edu.osu.bucketlistmatch;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 
-import database.DB;
+import edu.osu.database.DB;
 
 import android.R.string;
 import android.os.Bundle;

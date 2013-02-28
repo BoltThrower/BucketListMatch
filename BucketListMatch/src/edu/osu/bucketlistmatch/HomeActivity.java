@@ -35,7 +35,7 @@ public class HomeActivity extends SherlockFragmentActivity {
 				R.array.action_list,
 				android.R.layout.simple_dropdown_item_1line);
 		
-		// Allows drop-down menu in actionbar.
+		// Allows drop-down menu in action bar.
 		getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
 		// Navigation listener.
@@ -87,7 +87,7 @@ public class HomeActivity extends SherlockFragmentActivity {
 			}
 		};
 
-		// Set items and navigation listener to the actionbar.
+		// Set items and navigation listener to the action bar.
 		getSupportActionBar().setListNavigationCallbacks(spinnerAdapter, navLis);
 	}
 

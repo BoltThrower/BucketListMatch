@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 
-import database.DB;
+import edu.osu.database.DB;
 
 import android.os.Bundle;
 import android.content.Intent;
@@ -28,6 +28,7 @@ public class MainActivity extends SherlockActivity {
 		
 		// Start splash screen activity
 		Intent intent = new Intent(this, SplashScreenActivity.class);
+		//Intent intent = new Intent(this, HomeActivity.class);
 		startActivity(intent);
 	}
 
