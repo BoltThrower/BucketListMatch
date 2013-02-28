@@ -9,17 +9,17 @@
     tools:context=".LoginActivity" >
 
     <Button
-        android:id="@+id/Button1"
+        android:id="@+id/signInButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/signin"
-        android:onClick= "openHome" />
+        android:onClick= "authenticateLogin"/>
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -29,11 +29,11 @@
         android:text="@string/username" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
+        android:layout_alignLeft="@+id/username"
+        android:layout_below="@+id/username"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPassword" >
@@ -42,19 +42,19 @@
     </EditText>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/signUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/forgetPasswordButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:text="@string/signup" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/forgetPasswordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Button1"
+        android:layout_below="@+id/signInButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
         android:text="@string/forgetpassword" />
