@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -17,16 +16,14 @@ class Update implements IUpdate {
 
 	String query;
 	PreparedStatement pstmt;
-	ResultSet rs;
 	
 	Update() {
 		query = null;
 		pstmt = null;
-		rs = null;
 	}
 
 	@Override
-	public boolean addUser(String[] user) {
+	public int addUser(String[] user) {
 		
 		try {
 
@@ -51,14 +48,12 @@ class Update implements IUpdate {
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			return 1;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return 2;
 		}
 		
-		return true;		// TODO
+		return 0;
 	}
 	
 }

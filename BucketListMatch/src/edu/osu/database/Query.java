@@ -32,6 +32,7 @@ class Query implements IQuery {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
+				rs.close();
 				return 0;
 			} else {
 				query = ("SELECT FirstName FROM CUSTOMER WHERE Username = ?;");
@@ -40,19 +41,20 @@ class Query implements IQuery {
 				rs = pstmt.executeQuery();
 				
 				if (rs.next()) {
+					rs.close();
 					return 1;
 				} else {
+					rs.close();
 					return 2;
 				}
 			}
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			DB.err = e.getMessage();
+			return 3;
 		}
 
-		return -1;
 	}
 
 	// TODO TEST
@@ -65,14 +67,16 @@ class Query implements IQuery {
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
+			rs.next();
 			
 			for (int i = 0; i < DB.USER_ATTRIBUTE_LENGTH; i++) {
 				user[i] = rs.getString(i+1);
 			}
 			
+			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			DB.err = e.getMessage();
+			return null;
 		}
 		
 		return user;

@@ -12,7 +12,7 @@ import java.sql.SQLException;
  */
 public class DB {
 
-	protected static Connection con;
+	static Connection con;
 	private static IQuery query;
 	private static IUpdate update;
 	public static String err;
@@ -30,18 +30,19 @@ public class DB {
 	}
 
 	public static int validateUser(String username, String password) {
+		if (con == null) return -1;
 		return query.validateUser(username, password);
 	}
 	
-	public boolean addUser(String user[]) {
-		
-		if (user.length != USER_ATTRIBUTE_LENGTH) return false;
-		update.addUser(user);
-		return true;
+	public static int addUser(String user[]) {
+		if (con == null) return -1;
+		if (user.length != USER_ATTRIBUTE_LENGTH) return 3;
+		return update.addUser(user);
 		
 	}
 	
-	public String[] fetchProfileDetails(String username, String password) {
+	public static String[] fetchProfileDetails(String username, String password) {
+		if (con == null) return null;
 		if (validateUser(username, password) == 0) {
 			return query.fetchUserDetails(username, password);
 		}
@@ -79,13 +80,12 @@ public class DB {
 		} catch (ClassNotFoundException e) {
 			// TODO Handle exception
 			err = e.getMessage() + "\n" + e.getCause();
+			return null;
 		} catch (SQLException e) {
 			// TODO Handle exception
 			err = e.getMessage() + "\n" + e.getCause();
+			return null;
 		}
-		return null; // TODO If code gets to this point (i.e. database is not
-						// connected),
-						// show error message?
 
 	}
 	

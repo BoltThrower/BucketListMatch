@@ -15,7 +15,7 @@ interface IQuery {
 	 * @param username
 	 * @param password
 	 * @return 0 if the username and password combination exists, 1 if password does not match,
-	 * 2 if username does not exist. If an error occurs, this method returns a negative number.
+	 * 2 if username does not exist, 3 for SQL Exception
 	 */
 	int validateUser (String username, String password);
 	
@@ -24,7 +24,7 @@ interface IQuery {
 	 * from the database.
 	 * @param username
 	 * @param password
-	 * @return An array containing all user information.
+	 * @return An array containing all user information, or null if an error occurs
 	 */
 	String[] fetchUserDetails (String username, String password);
 }
