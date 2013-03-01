@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- * This is an implementation of the Update instance
+ * This is an implementation of the IUpdate instance
  * @author Everly Okorji
  *
  */
@@ -22,7 +22,6 @@ class Update implements IUpdate {
 		pstmt = null;
 	}
 
-	@Override
 	public int addUser(String[] user) {
 		
 		try {
@@ -54,6 +53,28 @@ class Update implements IUpdate {
 		}
 		
 		return 0;
+	}
+
+	public void changeUserProfilePhoto(String username, String binary) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateUserLocation(String username, String city, String state,
+			String country) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateUserDescription(String username, String description) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addBucketListBook(String username, String[] textInfo,
+			int[] numInfo, boolean privacy) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

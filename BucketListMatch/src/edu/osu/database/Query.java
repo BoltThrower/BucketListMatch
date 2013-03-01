@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * An implementation of the Query instance.
+ * An implementation of the IQuery instance.
  * @author Everly Okorji
  *
  */
@@ -57,7 +57,6 @@ class Query implements IQuery {
 
 	}
 
-	// TODO TEST
 	public String[] fetchUserDetails(String username, String password) {
 		
 		String[] user = new String [DB.USER_ATTRIBUTE_LENGTH];
@@ -82,6 +81,5 @@ class Query implements IQuery {
 		return user;
 	}
 
-	// TODO Implement methods HERE
 
 }
