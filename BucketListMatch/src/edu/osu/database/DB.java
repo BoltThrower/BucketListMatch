@@ -1,6 +1,7 @@
 package edu.osu.database;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
@@ -12,8 +13,9 @@ import java.sql.SQLException;
 public class DB {
 
 	protected static Connection con;
-	private Query query;
-	private Update update;
+	private static IQuery query;
+	private static IUpdate update;
+	public static String err;
 	
 	public final static int USER_ATTRIBUTE_LENGTH = 13;
 	
@@ -21,13 +23,13 @@ public class DB {
 	 * This is the constructor for the DB class.
 	 * @param connection
 	 */
-	public DB (Connection connection) {
-		con = connection;
-		query = new Query1();
-		update = new Update1();
+	public DB () {
+		con = DatabaseSetup();
+		query = new Query();
+		update = new Update();
 	}
 
-	public int validateUser(String username, String password) {
+	public static int validateUser(String username, String password) {
 		return query.validateUser(username, password);
 	}
 	
@@ -59,6 +61,32 @@ public class DB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	static Connection DatabaseSetup() {
+		try {
+
+			// Fetch the class to be used in the connection
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+			// Define the Java DB connectivity URL
+			String connectionUrl = "jdbc:sqlserver://server14.ies.cse.ohio-state.edu:1433;"
+					+ "databaseName={BLM_Database};userName=ApplAccount;password=@pplBLM!cc0uNt59i1;";
+
+			// Set up a connection using Java's driver manager
+			return DriverManager.getConnection(connectionUrl);
+
+		} catch (ClassNotFoundException e) {
+			// TODO Handle exception
+			err = e.getMessage() + "\n" + e.getCause();
+		} catch (SQLException e) {
+			// TODO Handle exception
+			err = e.getMessage() + "\n" + e.getCause();
+		}
+		return null; // TODO If code gets to this point (i.e. database is not
+						// connected),
+						// show error message?
+
 	}
 	
 }
