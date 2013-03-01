@@ -20,9 +20,10 @@ public interface IUpdate {
 	/**
 	 * This method replaces the existing user profile photo with the specified new one.
 	 * @param username
-	 * @param binary A string that represents the stream for the image info.
+	 * @param location The complete path of the photo on the device.
+	 * @return 0 if successful, 1 for SQL error, 2 if file not found
 	 */
-	void changeUserProfilePhoto (String username, String binary);
+	int changeUserProfilePhoto (String username, String location);
 
 	/**
 	 * This method updates the user's location information with the new information.

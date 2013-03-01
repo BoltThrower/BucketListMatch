@@ -20,8 +20,8 @@ public class DB {
 	public final static int USER_ATTRIBUTE_LENGTH = 13;
 	
 	/**
-	 * This is the constructor for the DB class.
-	 * @param connection
+	 * Constructor. This method sets up the connection to database, and prepares other resources
+	 * for querying and updating the database.
 	 */
 	public DB () {
 		con = DatabaseSetup();
@@ -33,11 +33,28 @@ public class DB {
 	
 	// QUERY METHODS
 
+	/**
+	 * This method checks to see if a user exists in the database and returns an integer value
+	 * depending on the resulting status.
+	 * @param username
+	 * @param password
+	 * @return 0 if the username and password combination exists, 1 if password does not match,
+	 * 2 if username does not exist, 3 for SQL Exception, -1 if the connection to database does
+	 * not exist.
+	 */
 	public static int validateUser(String username, String password) {
 		if (con == null) return -1;
 		return query.validateUser(username, password);
 	}
 	
+	/**
+	 * This method checks to see if a user is valid, then fetches all user profile information
+	 * from the database.
+	 * @param username
+	 * @param password
+	 * @return An array containing all user information, or null if either an error occurs or 
+	 * connection to database does not exist.
+	 */
 	public static String[] fetchProfileDetails(String username, String password) {
 		if (con == null) return null;
 		if (validateUser(username, password) == 0) {
@@ -45,7 +62,6 @@ public class DB {
 		}
 		return null;
 	}
-	
 	
 	
 	
@@ -70,9 +86,9 @@ public class DB {
 	 * @param username
 	 * @param binary A string that represents the stream for the image info.
 	 */
-	static void changeUserProfilePhoto (String username, String binary) {
+	static void changeUserProfilePhoto (String username, String location) {
 		// TODO Validate user?
-		update.changeUserProfilePhoto (username, binary);
+		update.changeUserProfilePhoto (username, location);
 	}
 	
 	/**
@@ -133,6 +149,10 @@ public class DB {
 		
 	}
 	
+	/**
+	 * This function sets up a connection to the database and returns this connection
+	 * @return Connection
+	 */
 	static Connection DatabaseSetup() {
 		try {
 

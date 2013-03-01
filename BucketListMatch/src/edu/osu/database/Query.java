@@ -12,12 +12,12 @@ import java.sql.SQLException;
  */
 class Query implements IQuery {
 
-	String query;
+	String sqlstmt;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
 	Query() {
-		query = null;
+		sqlstmt = null;
 		pstmt = null;
 		rs = null;
 	}
@@ -25,8 +25,8 @@ class Query implements IQuery {
 	public int validateUser(String username, String password) {
 		
         try {
-        	query = ("SELECT FirstName FROM CUSTOMER WHERE Username = ? AND Password = ?;");
-            pstmt = DB.con.prepareStatement(query);
+        	sqlstmt = ("SELECT FirstName FROM CUSTOMER WHERE Username = ? AND Password = ?;");
+            pstmt = DB.con.prepareStatement(sqlstmt);
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
@@ -35,8 +35,8 @@ class Query implements IQuery {
 				rs.close();
 				return 0;
 			} else {
-				query = ("SELECT FirstName FROM CUSTOMER WHERE Username = ?;");
-	            pstmt = DB.con.prepareStatement(query);
+				sqlstmt = ("SELECT FirstName FROM CUSTOMER WHERE Username = ?;");
+	            pstmt = DB.con.prepareStatement(sqlstmt);
 				pstmt.setString(1, username);
 				rs = pstmt.executeQuery();
 				
@@ -61,8 +61,8 @@ class Query implements IQuery {
 		
 		String[] user = new String [DB.USER_ATTRIBUTE_LENGTH];
 		try {
-			query = ("SELECT * FROM CUSTOMER WHERE Username = ? AND Password = ?;");
-            pstmt = DB.con.prepareStatement(query);
+			sqlstmt = ("SELECT * FROM CUSTOMER WHERE Username = ? AND Password = ?;");
+            pstmt = DB.con.prepareStatement(sqlstmt);
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();

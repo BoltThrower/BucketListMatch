@@ -14,11 +14,11 @@ import java.sql.SQLException;
  */
 class Update implements IUpdate {
 
-	String query;
+	String sqlstmt;
 	PreparedStatement pstmt;
 	
 	Update() {
-		query = null;
+		sqlstmt = null;
 		pstmt = null;
 	}
 
@@ -26,8 +26,9 @@ class Update implements IUpdate {
 		
 		try {
 
-			query = "INSERT INTO CUSTOMER VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-			pstmt = DB.con.prepareStatement(query);
+			sqlstmt = "INSERT INTO CUSTOMER VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			pstmt = DB.con.prepareStatement(sqlstmt);
+			sqlstmt = null;
 
 			for (int i = 0; i < DB.USER_ATTRIBUTE_LENGTH; i++) {
 				if (i == 2) {
@@ -45,19 +46,38 @@ class Update implements IUpdate {
 			}
 			
 			pstmt.executeUpdate();
-			
+			return 0;
 		} catch (SQLException e1) {
 			return 1;
 		} catch (FileNotFoundException e) {
 			return 2;
 		}
-		
-		return 0;
+	
 	}
 
-	public void changeUserProfilePhoto(String username, String binary) {
-		// TODO Auto-generated method stub
+	// TODO Test
+	public int changeUserProfilePhoto(String username, String location) {
 		
+		try {
+			
+			sqlstmt = "update CUSTOMER set ProfilePicture = ? where Username = ?";
+			pstmt = DB.con.prepareStatement(sqlstmt);
+			sqlstmt = null;
+			
+			File file = new File(location);
+            FileInputStream fis = new FileInputStream(file);
+            int len = (int)file.length();
+            
+            pstmt.setBinaryStream(1, fis, len);
+			pstmt.setString(2, username);
+			pstmt.executeUpdate();
+			
+			return 0;
+		} catch (SQLException e) {
+			return 1;
+		} catch (FileNotFoundException e) {
+			return 2;
+		}
 	}
 
 	public void updateUserLocation(String username, String city, String state,
@@ -75,6 +95,27 @@ class Update implements IUpdate {
 			int[] numInfo, boolean privacy) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	// TODO Necessary?
+	int update(String sqlstmt, int vars, String[] values) {
+		
+		try {
+			
+			pstmt = DB.con.prepareStatement(sqlstmt);
+			for (int i = 1; i <= vars; i++) {
+				pstmt.setString(i, values[i-1]);
+			}
+			pstmt.executeUpdate();
+			return 0;
+		} catch (SQLException e) {
+			DB.err = e.getMessage();
+			return 1;
+		}
+		
+	}
+	void clearStmt(String s) {
+		s = null;
 	}
 	
 }
