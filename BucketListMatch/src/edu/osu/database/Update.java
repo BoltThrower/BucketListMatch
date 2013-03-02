@@ -13,66 +13,114 @@ import java.sql.SQLException;
  *
  */
 class Update implements IUpdate {
-
-	String sqlstmt;
-	PreparedStatement pstmt;
 	
 	Update() {
-		sqlstmt = null;
-		pstmt = null;
+		
 	}
 
 	public int addUser(String[] user) {
+	
+		String sqlstmt = "insert into CUSTOMER (Username, Password, FirstName, " +
+				"LastName, DateOfBirth, State, Country, Email) values (?, ?, ?, ?, ?, ?, ?, ?);";
 		
+		String[] values = {user[Enum.C_USERNAME-1], user[Enum.C_PASS-1], user[Enum.C_FIRST-1], user[Enum.C_LAST-1],
+				user[Enum.C_DOB-1], user[Enum.C_STATE-1], user[Enum.C_COUNTRY-1], user[Enum.C_EMAIL-1]};
+		
+		int temp_result = update (sqlstmt, values, false, -1);
+		
+		if (temp_result != 0) return temp_result;
+		
+		if (user[Enum.C_PROFILE_PIC-1] != null)
+			temp_result = changeUserProfilePhoto (user[Enum.C_USERNAME-1], user[Enum.C_PROFILE_PIC-1]);
+		
+		if (temp_result != 0) return temp_result;
+		
+		if (user[Enum.C_DESCR-1] != null)
+			temp_result = updateUserDescription(user[Enum.C_USERNAME-1], user[Enum.C_DESCR-1]);
+		
+		if (temp_result != 0) return temp_result;
+		
+		if (user[Enum.C_CITY-1] != null)
+			temp_result = updateUserLocation (user[Enum.C_USERNAME-1], user[Enum.C_CITY-1],
+					user[Enum.C_STATE-1], user[Enum.C_COUNTRY-1]);
+		
+		if (temp_result != 0) return temp_result;
+		
+		if (user[Enum.C_ZIP-1] != null)
+			temp_result = updateUserZipCode(user[Enum.C_USERNAME-1], user[Enum.C_ZIP-1]);
+		
+		if (temp_result != 0) return temp_result;
+		
+		if (user[Enum.C_PHONE-1] != null)
+			temp_result = updateUserPhone(user[Enum.C_USERNAME-1], user[Enum.C_PHONE-1]);
+		
+		return temp_result;
+	}
+
+	public int changeUserProfilePhoto(String username, String location) {
+
+		String sql = "update CUSTOMER set ProfilePicture = ? where Username = ?;";
+		String[]  values = {location, username};
+		return update(sql, values, true, 1);
+	}
+
+	public int updateUserLocation(String username, String city, String state,
+			String country) {
+		String sql = "update CUSTOMER set City = ?, State = ?, Country = ? where Username = ?;";
+		String[] values = {city, state, country, username};
+		return update (sql, values, false, -1);
+	}
+
+	public int updateUserDescription(String username, String description) {
+		String sql = "update CUSTOMER set Description = ? where Username = ?;";
+		String[] values = {description, username};
+		return update (sql, values, false, -1);
+	}
+	
+	public int updateUserZipCode(String username, String zip) {
+		String sql = "update CUSTOMER set ZipCode = ? where Username = ?;";
+		String[] values = {zip, username};
+		return update (sql, values, false, -1);
+	}
+
+	public int updateUserPhone(String username, String phone) {
+		String sql = "update CUSTOMER set Phone = ? where Username = ?;";
+		String[] values = {phone, username};
+		return update (sql, values, false, -1);
+	}
+	
+	// TODO Implement
+	public int addBucketListBook(String username, String[] info, boolean privacy) {
+		return -1;
+	}
+	
+	
+	
+	// HELPER METHODS
+	
+	private int update (String sqlstmt, String[] vars, boolean hasFile, int fileIndex) {
+		
+		PreparedStatement pstmt;
 		try {
-
-			sqlstmt = "INSERT INTO CUSTOMER VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			
 			pstmt = DB.con.prepareStatement(sqlstmt);
-			sqlstmt = null;
-
-			for (int i = 0; i < DB.USER_ATTRIBUTE_LENGTH; i++) {
-				if (i == 2) {
-					
-					File file = new File(user[i]);
+			
+			for (int i = 1; i <= vars.length; i++) {
+				
+				if (hasFile && i == fileIndex) {
+					File file = new File(vars[i-1]);
 		            FileInputStream fis = new FileInputStream(file);
 		            int len = (int)file.length();
-		            
-		            // Method used to insert a stream of bytes
-		            pstmt.setBinaryStream(i+1, fis, len); 
+		            pstmt.setBinaryStream(fileIndex, fis, len);
 		            
 				} else {
-					pstmt.setString(i+1, user[i]);
+					pstmt.setString(i,  vars[i-1]);
 				}
 			}
 			
 			pstmt.executeUpdate();
 			return 0;
-		} catch (SQLException e1) {
-			return 1;
-		} catch (FileNotFoundException e) {
-			return 2;
-		}
-	
-	}
-
-	// TODO Test
-	public int changeUserProfilePhoto(String username, String location) {
-		
-		try {
 			
-			sqlstmt = "update CUSTOMER set ProfilePicture = ? where Username = ?";
-			pstmt = DB.con.prepareStatement(sqlstmt);
-			sqlstmt = null;
-			
-			File file = new File(location);
-            FileInputStream fis = new FileInputStream(file);
-            int len = (int)file.length();
-            
-            pstmt.setBinaryStream(1, fis, len);
-			pstmt.setString(2, username);
-			pstmt.executeUpdate();
-			
-			return 0;
 		} catch (SQLException e) {
 			return 1;
 		} catch (FileNotFoundException e) {
@@ -80,42 +128,5 @@ class Update implements IUpdate {
 		}
 	}
 
-	public void updateUserLocation(String username, String city, String state,
-			String country) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void updateUserDescription(String username, String description) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void addBucketListBook(String username, String[] textInfo,
-			int[] numInfo, boolean privacy) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	// TODO Necessary?
-	int update(String sqlstmt, int vars, String[] values) {
-		
-		try {
-			
-			pstmt = DB.con.prepareStatement(sqlstmt);
-			for (int i = 1; i <= vars; i++) {
-				pstmt.setString(i, values[i-1]);
-			}
-			pstmt.executeUpdate();
-			return 0;
-		} catch (SQLException e) {
-			DB.err = e.getMessage();
-			return 1;
-		}
-		
-	}
-	void clearStmt(String s) {
-		s = null;
-	}
 	
 }

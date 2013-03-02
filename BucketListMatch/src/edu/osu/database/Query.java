@@ -11,20 +11,19 @@ import java.sql.SQLException;
  *
  */
 class Query implements IQuery {
-
-	String sqlstmt;
-	PreparedStatement pstmt;
-	ResultSet rs;
 	
 	Query() {
-		sqlstmt = null;
-		pstmt = null;
-		rs = null;
+		
 	}
 	
 	public int validateUser(String username, String password) {
 		
+		String sqlstmt;
+		PreparedStatement pstmt;
+		ResultSet rs;
+		
         try {
+        	
         	sqlstmt = ("SELECT FirstName FROM CUSTOMER WHERE Username = ? AND Password = ?;");
             pstmt = DB.con.prepareStatement(sqlstmt);
 			pstmt.setString(1, username);
@@ -58,8 +57,12 @@ class Query implements IQuery {
 	}
 
 	public String[] fetchUserDetails(String username, String password) {
+
+		String sqlstmt;
+		PreparedStatement pstmt;
+		ResultSet rs;
+		String[] user = new String [Enum.CUSTOMER_LENGTH];
 		
-		String[] user = new String [DB.USER_ATTRIBUTE_LENGTH];
 		try {
 			sqlstmt = ("SELECT * FROM CUSTOMER WHERE Username = ? AND Password = ?;");
             pstmt = DB.con.prepareStatement(sqlstmt);
@@ -68,7 +71,7 @@ class Query implements IQuery {
 			rs = pstmt.executeQuery();
 			rs.next();
 			
-			for (int i = 0; i < DB.USER_ATTRIBUTE_LENGTH; i++) {
+			for (int i = 0; i <Enum.CUSTOMER_LENGTH; i++) {
 				user[i] = rs.getString(i+1);
 			}
 			

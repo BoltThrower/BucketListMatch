@@ -13,7 +13,7 @@ public interface IUpdate {
 	/**
 	 * This method creates a new user, given the profile information.
 	 * @param user An array of length 13, containing string values for the new user's info
-	 * @return 0 if add was successful, 1 for SQL Exception, 2 for FileNotFound Exception
+	 * @return int 0 if add was successful, 1 for SQL Exception, 2 for FileNotFound Exception
 	 */
 	int addUser(String[] user);
 	
@@ -21,7 +21,7 @@ public interface IUpdate {
 	 * This method replaces the existing user profile photo with the specified new one.
 	 * @param username
 	 * @param location The complete path of the photo on the device.
-	 * @return 0 if successful, 1 for SQL error, 2 if file not found
+	 * @return int 0 if successful, 1 for SQL error, 2 if file not found
 	 */
 	int changeUserProfilePhoto (String username, String location);
 
@@ -31,26 +31,42 @@ public interface IUpdate {
 	 * @param city
 	 * @param state
 	 * @param country
+	 * @return int 0 if update was successful, 1 for SQL error
 	 */
-	void updateUserLocation (String username, String city, String state, String country);
+	int updateUserLocation (String username, String city, String state, String country);
 	
 	/**
 	 * This method updates the description of a user
 	 * @param username
 	 * @param description
+	 * @return int 0 if update was successful, 1 for SQL error
 	 */
-	void updateUserDescription (String username, String description);
+	int updateUserDescription (String username, String description);
+	
+	/**
+	 * This method updates the user's zip code
+	 * @param username
+	 * @param zip
+	 * @return int 0 if update was successful, 1 for SQL error
+	 */
+	int updateUserZipCode(String username, String zip);
+
+	/**
+	 * This function replaces the previous phone number registered to a user with the specified
+	 * number.
+	 * @param username
+	 * @param phone
+	 * @return int 0 if update was successful, 1 for SQL error
+	 */
+	int updateUserPhone(String username, String phone);
 	
 	/**
 	 * This method adds a new Bucket List Book to a user's account.
 	 * @param username
-	 * @param textInfo A string array of length 6, holding information about title, cover image,
-	 * state, country, start date and cost.
-	 * @param numInfo An integer array of length 3, holding information about the duration (days),
-	 * users completed and users not completed.
-	 * @param boolInfo True if privacy settings are activated, false otherwise.
+	 * @param textInfo A string array holding all bucket list book items to be added
+	 * @return int status
 	 */
-	void addBucketListBook (String username, String[] textInfo, int[] numInfo, boolean privacy);
+	int addBucketListBook (String username, String[] info, boolean privacy);
 	
 	// TODO Declare methods here
 }

@@ -16,9 +16,7 @@ public class DB {
 	private static IQuery query;
 	private static IUpdate update;
 	public static String err;
-	
-	public final static int USER_ATTRIBUTE_LENGTH = 13;
-	
+
 	/**
 	 * Constructor. This method sets up the connection to database, and prepares other resources
 	 * for querying and updating the database.
@@ -77,7 +75,7 @@ public class DB {
 	 */
 	public static int addUser(String user[]) {
 		if (con == null) return -1;
-		if (user.length != USER_ATTRIBUTE_LENGTH) return 3;
+		if (user.length != Enum.CUSTOMER_LENGTH) return 3;
 		return update.addUser(user);
 	}
 	
@@ -86,9 +84,9 @@ public class DB {
 	 * @param username
 	 * @param binary A string that represents the stream for the image info.
 	 */
-	static void changeUserProfilePhoto (String username, String location) {
+	static int changeUserProfilePhoto (String username, String location) {
 		// TODO Validate user?
-		update.changeUserProfilePhoto (username, location);
+		return update.changeUserProfilePhoto (username, location);
 	}
 	
 	/**
@@ -116,15 +114,11 @@ public class DB {
 	/**
 	 * This method adds a new Bucket List Book to a user's account.
 	 * @param username
-	 * @param textInfo A string array of length 6, holding information about title, cover image,
-	 * state, country, start date and cost.
-	 * @param numInfo An integer array of length 3, holding information about the duration (days),
-	 * users completed and users not completed.
-	 * @param boolInfo True if privacy settings are activated, false otherwise.
+	 * @param info An array that holds all bucket list book information to be added
 	 */
-	static void addBucketListBook (String username, String[] textInfo, int[] numInfo, boolean privacy) {
+	static void addBucketListBook (String username, String[] info, boolean privacy) {
 		// ValidateUser?
-		update.addBucketListBook(username, textInfo, numInfo, privacy);
+		update.addBucketListBook(username, info, privacy);
 	}
 	
 	
