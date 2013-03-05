@@ -45,6 +45,14 @@ public class LoginActivity extends SherlockActivity {
 		startActivity(i);
 	}
 	
+	/**
+	 * Opens the sign up page.
+	 * @param v
+	 */
+	public void openSignUp(View v) {
+		Intent i = new Intent(this, SignUpActivity.class);
+		startActivity(i);
+	}
 	
 	private OnClickListener signinListener = new OnClickListener(){
 		

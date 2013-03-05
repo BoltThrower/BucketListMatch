@@ -8,7 +8,7 @@
     <!-- Custom theme for Bucket List Match -->
     <style name="Theme.BucketList" parent="Theme.Sherlock.Light">
         <item name="actionBarStyle">@style/Theme.BucketList.ActionBar</item>
-        
+        <item name="actionDropDownStyle">@style/Theme.BucketList.Spinner.DropDown.ActionBar</item>
     </style>
     
     <!-- Custom theme for Bucket List Match without action bar -->
@@ -20,6 +20,12 @@
     <style name="Theme.BucketList.ActionBar" parent="Widget.Sherlock.ActionBar">
         <item name="displayOptions">showHome|useLogo</item>
         <item name="background">#0080ff</item>
+        
+    </style>
+    
+    <!-- Style for the dropdown menu -->
+    <style name="Theme.BucketList.Spinner.DropDown.ActionBar" parent="Widget.Sherlock.Light.Spinner.DropDown.ActionBar">
+        <item name="android:popupBackground">#000000</item>
     </style>
     
 </resources>

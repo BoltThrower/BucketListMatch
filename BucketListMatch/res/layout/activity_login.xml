@@ -13,18 +13,20 @@
         android:id="@+id/signInButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignRight="@+id/password"
         android:layout_below="@+id/password"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/signin"
-        android:onClick= "authenticateLogin"/>
+        android:onClick="authenticateLogin"
+        android:text="@string/signin" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="91dp"
         android:ems="10"
         android:text="@string/username" />
@@ -34,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/username"
+        android:layout_alignRight="@+id/username"
         android:layout_below="@+id/username"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -43,21 +46,26 @@
     </EditText>
 
     <Button
-        android:id="@+id/signUpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/forgetPasswordButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="@string/signup" />
-
-    <Button
         android:id="@+id/forgetPasswordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signInButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
-        android:text="@string/forgetpassword" />
+        android:text="@string/forgetpassword"
+        android:textColor="#443790"
+        android:background="#00ffffff" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgetPasswordButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="#00ffffff"
+        android:onClick="openSignUp"
+        android:text="@string/signup"
+        android:textColor="#443790" />
 
 </RelativeLayout>

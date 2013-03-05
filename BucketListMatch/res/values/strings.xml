@@ -13,6 +13,7 @@
     <string name="forgetpassword">Forget Password?</string>
     <string name="signup">Sign Up</string>
     <string name="title_activity_home">HomeActivity</string>
+
     <string-array name="action_list">
         <item>HOME</item>
         <item>DISCOVER</item>
@@ -21,5 +22,13 @@
         <item>MATCH</item>
         <item>PROFILE</item>
     </string-array>
+
+    <string name="title_activity_sign_up">SignUpActivity</string>
+
+    <string name="usernameProfile">Username:</string>
+
+    <string name="emailProfile">Email:</string>
+
+    <string name="realNameProfile">Real Name:</string>
 
 </resources>
