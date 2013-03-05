@@ -65,8 +65,16 @@ public class LoginActivity extends SherlockActivity {
 			user = username.getText().toString(); 
 			pass = password.getText().toString();
 			
+			String result;
+			int x = DB.validateUser(user,  pass);
+			if (x < 0) {
+				result = DB.err;
+			} else {
+				result = "" + x;
+			}
+			
 			// Notification for a bad username or password
-			//Toast.makeText(getApplicationContext(), user, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
 		}
 	};
 	
