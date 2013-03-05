@@ -9,4 +9,6 @@ public class Enum {
 	public static final int C_DESCR = 6, C_DOB = 7, C_CITY = 8, C_STATE = 9, C_COUNTRY = 10;
 	public static final int C_ZIP = 11, C_EMAIL = 12, C_PHONE = 13;
 	
+	public static final int UPDATE_PHOTO = 0, UPDATE_LOCATION = 1, UPDATE_DESCRIPTION = 2,
+			UPDATE_ZIPCODE = 3, UPDATE_PHONE = 4;
 }

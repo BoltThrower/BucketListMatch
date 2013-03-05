@@ -86,7 +86,7 @@ public class DB {
 	 */
 	static int changeUserProfilePhoto (String username, String location) {
 		// TODO Validate user?
-		return update.changeUserProfilePhoto (username, location);
+		return update.updateUserItem (Enum.UPDATE_PHOTO, username, location, null, null);
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public class DB {
 	 */
 	static void updateUserLocation (String username, String city, String state, String country) {
 		// TODO validate user?
-		update.updateUserLocation(username, city, state, country);
+		update.updateUserItem (Enum.UPDATE_LOCATION, username, city, state, country);
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public class DB {
 	 */
 	static void updateUserDescription (String username, String description) {
 		// TODO Validate user?
-		update.updateUserDescription(username, description);
+		update.updateUserItem (Enum.UPDATE_DESCRIPTION, username, description, null, null);
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public class DB {
 	 */
 	static void addBucketListBook (String username, String[] info, boolean privacy) {
 		// ValidateUser?
-		update.addBucketListBook(username, info, privacy);
+		update.addDreamBook(username, info, privacy);
 	}
 	
 	
@@ -162,11 +162,11 @@ public class DB {
 
 		} catch (ClassNotFoundException e) {
 			// TODO Handle exception
-			err = e.getMessage() + "\n" + e.getCause();
+			err = e.getMessage() + "\n\n" + e.getCause();
 			return null;
 		} catch (SQLException e) {
 			// TODO Handle exception
-			err = e.getMessage() + "\n" + e.getCause();
+			err = e.getMessage() + "\n\n" + e.getCause();
 			return null;
 		}
 
