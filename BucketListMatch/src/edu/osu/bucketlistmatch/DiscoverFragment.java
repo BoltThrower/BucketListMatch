@@ -19,8 +19,10 @@ public class DiscoverFragment extends SherlockFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, 
 	        Bundle savedInstanceState) {
 		
+		View view = inflater.inflate(R.layout.discover_view, container, false);
 		
-		return inflater.inflate(R.layout.discover_view, container, false);
+		
+		return view;
 	}
 	
 	@Override
