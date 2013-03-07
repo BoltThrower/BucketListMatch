@@ -24,13 +24,14 @@
     </string-array>
 
     <string name="title_activity_sign_up">SignUpActivity</string>
-
     <string name="usernameProfile">Username:</string>
-
     <string name="emailProfile">Email:</string>
-
     <string name="realNameProfile">Real Name:</string>
-
     <string name="share">Share</string>
+    <string name="title_activity_forget_password">Forget_password</string>
+    <string name="enterEmail">Enter your e-mail below:</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="reenterPassword">Re-enter password</string>
 
 </resources>

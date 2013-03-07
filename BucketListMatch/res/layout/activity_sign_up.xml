@@ -9,14 +9,86 @@
     android:background="#0080ff"
     tools:context=".SignUpActivity" >
 
-    <EditText
-        android:id="@+id/editText1"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="110dp"
+        android:layout_alignBottom="@+id/usernameRegisterTextField"
+        android:layout_alignLeft="@+id/usernameRegisterTextField"
+        android:layout_marginBottom="46dp"
+        android:text="@string/username"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/password2TextField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password1TextField"
+        android:layout_below="@+id/password1TextField"
+        android:layout_marginTop="46dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/password1TextField"
+        android:layout_alignLeft="@+id/password1TextField"
+        android:text="@string/password"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password2TextField"
+        android:layout_below="@+id/password1TextField"
+        android:layout_marginTop="16dp"
+        android:text="@string/reenterPassword"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/signupButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password2TextField"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/password2TextField"
+        android:layout_marginTop="42dp"
+        android:onClick="validateSignUp"
+        android:text="@string/signup" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/signupButton"
+        android:layout_alignBottom="@+id/signupButton"
+        android:layout_toRightOf="@+id/textView3"
+        android:onClick="openLoginActivity"
+        android:text="@string/cancel" />
+
+    <EditText
+        android:id="@+id/password1TextField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/usernameRegisterTextField"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/usernameRegisterTextField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:ems="10"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

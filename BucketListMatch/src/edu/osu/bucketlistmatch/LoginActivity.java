@@ -16,6 +16,12 @@ import android.content.Context;
 import android.content.Intent;
 
 public class LoginActivity extends SherlockActivity {
+/**
+ * This activity allows the user to request for an e-mail for a temporary password to log back in.
+ * 
+ * @author Chris Hartman
+ *
+ */
 	
 	EditText username, password;
 	Button signin;
@@ -54,6 +60,11 @@ public class LoginActivity extends SherlockActivity {
 		startActivity(i);
 	}
 	
+	public void forgetPassword(View v){
+		Intent i = new Intent(this, ForgetPasswordActivity.class);
+		startActivity(i);
+	}
+	
 	private OnClickListener signinListener = new OnClickListener(){
 		
 		public void onClick (View v)
@@ -75,6 +86,7 @@ public class LoginActivity extends SherlockActivity {
 			
 			// Notification for a bad username or password
 			Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+			openHome(v);
 		}
 	};
 	
@@ -91,7 +103,4 @@ public class LoginActivity extends SherlockActivity {
 		
 		
 	}
-	
-
-
 }

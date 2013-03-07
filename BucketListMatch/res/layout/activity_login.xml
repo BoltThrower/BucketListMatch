@@ -25,7 +25,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:text="@string/username" />
+        android:singleLine="true"
+        android:text="@string/username" >
+
+        <requestFocus />
+
+        <requestFocus />
+
+    </EditText>
 
     <EditText
         android:id="@+id/password"
@@ -34,8 +41,6 @@
         android:layout_gravity="center_horizontal"
         android:ems="10"
         android:inputType="textPassword" >
-
-        <requestFocus />
     </EditText>
 
     <Button
@@ -53,6 +58,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="54dp"
         android:background="#00ffffff"
+        android:onClick="forgetPassword"
         android:text="@string/forgetpassword"
         android:textColor="#443790" />
 

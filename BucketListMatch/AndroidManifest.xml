@@ -40,6 +40,14 @@
             android:name="edu.osu.bucketlistmatch.SignUpActivity"
             android:label="@string/title_activity_sign_up" >
         </activity>
+        <activity
+            android:name="edu.osu.bucketlistmatch.Forget_password"
+            android:label="@string/title_activity_forget_password" >
+        </activity>
+        <activity
+            android:name="edu.osu.bucketlistmatch.ForgetPasswordActivity"
+            android:label="@string/title_activity_forget_password" >
+        </activity>
     </application>
 
 </manifest>
