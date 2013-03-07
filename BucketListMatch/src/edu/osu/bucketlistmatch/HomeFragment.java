@@ -7,6 +7,12 @@ import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
+/**
+ * This fragment handles the displaying the Home view.
+ * 
+ * @author Shi Ho Wang
+ *
+ */
 public class HomeFragment extends SherlockFragment{
 
 	@Override
@@ -21,7 +27,7 @@ public class HomeFragment extends SherlockFragment{
 	        Bundle savedInstanceState) {
 		
 		
-		return inflater.inflate(R.layout.home_view, container, false);
+		return inflater.inflate(R.layout.home_layout, container, false);
 	}
 	
 	@Override

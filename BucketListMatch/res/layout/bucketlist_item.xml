@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rowItem"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/coverImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/coverImage"
+        android:text="Location"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/creater"
+        android:text=">"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/creater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location"
+        android:layout_toRightOf="@+id/coverImage"
+        android:text="Creater" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/creater"
+        android:layout_toRightOf="@+id/coverImage"
+        android:text="Duration" />
+
+    <ImageView
+        android:id="@+id/totemIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/coverImage"
+        android:layout_alignLeft="@+id/duration"
+        android:src="@drawable/ic_launcher" />
+    
+    <ImageView
+        android:id="@+id/dealIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/coverImage"
+        android:layout_toRightOf="@+id/totemIcon"
+        android:src="@drawable/ic_launcher" />
+    
+    <ImageView
+        android:id="@+id/challengeIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/coverImage"
+        android:layout_toRightOf="@+id/dealIcon"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/arrow"
+        android:layout_alignBottom="@+id/arrow"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@+id/arrow"
+        android:text="Cost" />
+
+</RelativeLayout>

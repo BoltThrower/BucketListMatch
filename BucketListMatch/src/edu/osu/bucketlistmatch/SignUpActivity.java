@@ -4,6 +4,12 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
+/**
+ * This activity handles new user account creation.
+ * 
+ * @author Shi Ho Wang
+ *
+ */
 public class SignUpActivity extends Activity {
 
 	@Override

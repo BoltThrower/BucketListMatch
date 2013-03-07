@@ -4,19 +4,31 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.widget.ShareActionProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 
+/**
+ * This activity provides navigation between views Home, Discover, Bucket List,
+ * Scrapbook, Match, and Profile.
+ * 
+ * @author Shi Ho Wang
+ * 
+ */
 public class HomeActivity extends SherlockFragmentActivity {
+	
+	private ShareActionProvider shareActionProvider;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		
 		
 		// Create an instance of HomeFragment
         HomeFragment homeFrag = new HomeFragment();
@@ -25,7 +37,7 @@ public class HomeActivity extends SherlockFragmentActivity {
         // pass the Intent's extras to the fragment as arguments
         homeFrag.setArguments(getIntent().getExtras());
 
-        // Add the fragment to the 'fragment_container' FrameLayout
+        // Add the fragment to the FrameLayout which is used as the fragment container.
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, homeFrag).commit();
 		
@@ -47,6 +59,7 @@ public class HomeActivity extends SherlockFragmentActivity {
 			@Override
 			public boolean onNavigationItemSelected(int position, long itemId) {
 				SherlockFragment frag;
+				SherlockListFragment listFrag;
 				// Create the appropriate fragment to replace the current fragment with.
 				switch (position) {
 				case 0:
@@ -55,19 +68,20 @@ public class HomeActivity extends SherlockFragmentActivity {
 							.replace(R.id.fragment_container, frag).commit();
 					break;
 				case 1:
-					frag = new DiscoverFragment();
+					
+					listFrag = new DiscoverFragment();
 					getSupportFragmentManager().beginTransaction()
-							.replace(R.id.fragment_container, frag).commit();
+							.replace(R.id.fragment_container, listFrag).commit();
 					break;
 				case 2:
-					frag = new BucketlistFragment();
+					listFrag = new BucketListFragment();
 					getSupportFragmentManager().beginTransaction()
-							.replace(R.id.fragment_container, frag).commit();
+							.replace(R.id.fragment_container, listFrag).commit();
 					break;
 				case 3:
-					frag = new ScrapbookFragment();
+					listFrag = new ScrapbookFragment();
 					getSupportFragmentManager().beginTransaction()
-							.replace(R.id.fragment_container, frag).commit();
+							.replace(R.id.fragment_container, listFrag).commit();
 					break;
 				case 4:
 					frag = new MatchFragment();
@@ -95,6 +109,20 @@ public class HomeActivity extends SherlockFragmentActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getSupportMenuInflater().inflate(R.menu.home, menu);
+
+		// Locate share item
+		MenuItem item = menu.findItem(R.id.action_share);
+
+		// Fetch and store ShareActionProvider
+		shareActionProvider = (ShareActionProvider) item.getActionProvider();
+	    
 		return true;
+	}
+	
+	// Call to update the share intent used if UI changes causes changes to intent
+	private void setShareIntent(Intent shareIntent) {
+	    if (shareActionProvider != null) {
+	        shareActionProvider.setShareIntent(shareIntent);
+	    }
 	}
 }

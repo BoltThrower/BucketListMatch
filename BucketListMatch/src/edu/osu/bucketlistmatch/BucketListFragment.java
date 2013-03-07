@@ -8,15 +8,16 @@ import android.view.ViewGroup;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 /**
- * This fragment handles the displaying the Scrapbook view.
+ * This fragment handles the displaying the Bucket List view.
  * 
  * @author Shi Ho Wang
  *
  */
-public class ScrapbookFragment extends SherlockListFragment{
+public class BucketListFragment extends SherlockListFragment{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		
 	}
 
@@ -35,13 +36,12 @@ public class ScrapbookFragment extends SherlockListFragment{
 		super.onStart();
 		
 	}
-	
+
 	private void populateListItems() {
-		String[] values = new String[] { "China", "France", "Italy",
-		        "Canada", "Japan", "France", "Tokyo",
-		        "Paris", "Korea" };
-		    BucketListAdapter adapter = new BucketListAdapter(getActivity(),
-		        R.layout.bucketlist_item, values);
+		String[] values = new String[] { "Japan", "France", "Tokyo", "Paris",
+				"Korea" };
+		BucketListAdapter adapter = new BucketListAdapter(getActivity(),
+				R.layout.bucketlist_item, values);
 		    setListAdapter(adapter);
 	}
 }

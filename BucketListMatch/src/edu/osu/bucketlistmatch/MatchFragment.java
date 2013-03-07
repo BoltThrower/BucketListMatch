@@ -7,6 +7,12 @@ import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
+/**
+ * This fragment handles the displaying the Match view.
+ * 
+ * @author Shi Ho Wang
+ *
+ */
 public class MatchFragment extends SherlockFragment{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -20,7 +26,7 @@ public class MatchFragment extends SherlockFragment{
 	        Bundle savedInstanceState) {
 		
 		
-		return inflater.inflate(R.layout.match_view, container, false);
+		return inflater.inflate(R.layout.match_layout, container, false);
 	}
 	
 	@Override

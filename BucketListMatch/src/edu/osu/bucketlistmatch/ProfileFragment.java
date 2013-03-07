@@ -1,5 +1,6 @@
 package edu.osu.bucketlistmatch;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,21 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
+/**
+ * This fragment handles the displaying the Profile view.
+ * 
+ * @author Shi Ho Wang
+ *
+ */
 public class ProfileFragment extends SherlockFragment{
 	
+	
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,7 +36,7 @@ public class ProfileFragment extends SherlockFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, 
 	        Bundle savedInstanceState) {
 		
-		View view = inflater.inflate(R.layout.profile_view, container, false);
+		View view = inflater.inflate(R.layout.profile_layout, container, false);
 		
 		// Set user's profile information
 		setProfilePic(view);
