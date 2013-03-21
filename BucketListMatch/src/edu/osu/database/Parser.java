@@ -9,21 +9,22 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import android.os.Build;
+
 public class Parser {
 
-	static InputStream is;
-	static String result;
-	static  URL url;
+	private InputStream is;
+	public String result;
+	URL url;
 
 	// constructor
 	public Parser() {
 		is = null;
-		result = "";
+		result = "No content.";
 		try {
-			url = new URL ("http://server14.ies.cse.ohio-state.edu");
+			url = new URL ("http://server14.ies.cse.ohio-state.edu/info.php");
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			result = "1: " + e.getMessage();
 		}
 	}
 
@@ -38,6 +39,7 @@ public class Parser {
 			 is = new BufferedInputStream(urlConnection.getInputStream());
 			//readStream(is);
 			 
+			 result = "Made it";
 			 BufferedReader reader = new BufferedReader(new InputStreamReader(
 						is, "iso-8859-1"), 8);
 				StringBuilder sb = new StringBuilder();
@@ -49,8 +51,7 @@ public class Parser {
 				reader.close();
 				result = sb.toString();
 		 } catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			result = "2: " + e.getMessage() + "\n\n" + e.getLocalizedMessage();
 		} finally {     
 			urlConnection.disconnect();
 		 }

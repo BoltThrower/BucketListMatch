@@ -4,6 +4,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 
 import edu.osu.database.DB;
+import edu.osu.database.Parser;
 
 import android.R.string;
 import android.os.Bundle;
@@ -91,9 +92,11 @@ public class LoginActivity extends SherlockActivity {
 //				// TODO Auto-generated catch block
 //				e.printStackTrace();
 //			}
+			Parser p = new Parser();
+			p.makeRequest();
 			
 			// Notification for a bad username or password
-			//Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), p.result, Toast.LENGTH_SHORT).show();
 			openHome(v);
 		}
 	};
