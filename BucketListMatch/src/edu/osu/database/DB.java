@@ -27,8 +27,6 @@ public class DB {
 		update = new Update();
 	}
 	
-	
-	
 	// QUERY METHODS
 
 	/**

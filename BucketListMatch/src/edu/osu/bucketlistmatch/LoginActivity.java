@@ -61,8 +61,8 @@ public class LoginActivity extends SherlockActivity {
 	}
 	
 	public void forgetPassword(View v){
-		Intent i = new Intent(this, ForgetPasswordActivity.class);
-		startActivity(i);
+//		Intent i = new Intent(this, ForgetPasswordActivity.class);
+//		startActivity(i);
 	}
 	
 	private OnClickListener signinListener = new OnClickListener(){
@@ -76,16 +76,24 @@ public class LoginActivity extends SherlockActivity {
 			user = username.getText().toString(); 
 			pass = password.getText().toString();
 			
-			String result;
-			int x = DB.validateUser(user,  pass);
-			if (x < 0) {
-				result = DB.err;
-			} else {
-				result = "" + x;
-			}
+//			String result;
+//			int x = DB.validateUser(user,  pass);
+//			if (x < 0) {
+//				result = DB.err;
+//			} else {
+//				result = "" + x;
+//			}
+//			
+//			String result= "not entered!" ;
+//			try {
+//				result = "" + DB.add();
+//			} catch (RemoteException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			
 			// Notification for a bad username or password
-			Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
 			openHome(v);
 		}
 	};
