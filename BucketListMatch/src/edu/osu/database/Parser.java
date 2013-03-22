@@ -5,11 +5,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
+import android.widget.ImageView;
 
 public class Parser {
 
@@ -22,7 +30,7 @@ public class Parser {
 		is = null;
 		result = "No content.";
 		try {
-			url = new URL ("http://server14.ies.cse.ohio-state.edu/info.php");
+			url = new URL ("http://server14.ies.cse.ohio-state.edu/blm.php");
 		} catch (MalformedURLException e) {
 			result = "1: " + e.getMessage();
 		}
@@ -30,7 +38,7 @@ public class Parser {
 
 	// Source: http://www.androidhive.info/2012/01/android-json-parsing-tutorial/
 	public void makeRequest() {
-
+		
 		HttpURLConnection urlConnection = null;
 		
 		// Making HTTP request
@@ -56,6 +64,32 @@ public class Parser {
 			urlConnection.disconnect();
 		 }
 
+	}
+	
+	private ImageView parseImage() {
+		Bitmap bitmap = BitmapFactory.decodeStream(is);
+		ImageView imageView = null;
+		//imageView = (ImageView) findViewById(R.id.image_view);
+		imageView.setImageBitmap(bitmap);
+		return imageView;
+	}
+	
+	private String parseText(int len) {
+		Reader reader = null;   
+		try {
+			reader = new InputStreamReader(is, "UTF-8");
+			char[] buffer = new char[len];   
+			reader.read(buffer);    
+			return new String(buffer);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}          
+		return null;
+		
 	}
 	
 }

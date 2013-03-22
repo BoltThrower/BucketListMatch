@@ -76,7 +76,6 @@ public class JSONParser {
 
 	}
 
-	/*
 	// First, convert input response object to a string. Then, parse.
 
 	public static JSONArray parse(String json_string) {
@@ -92,5 +91,4 @@ public class JSONParser {
 		return result;
 	}
 	
-	*/
 }
