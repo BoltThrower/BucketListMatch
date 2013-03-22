@@ -61,8 +61,8 @@ public class LoginActivity extends SherlockActivity {
 	}
 	
 	public void forgetPassword(View v){
-		Intent i = new Intent(this, ForgetPasswordActivity.class);
-		startActivity(i);
+		//Intent i = new Intent(this, ForgetPasswordActivity.class);
+		//startActivity(i);
 	}
 	
 	private OnClickListener signinListener = new OnClickListener(){
