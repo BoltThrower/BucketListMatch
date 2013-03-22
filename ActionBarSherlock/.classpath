@@ -13,5 +13,11 @@
 			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
 		</accessrules>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/axis.jar"/>
+	<classpathentry kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/commons-discovery-0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/javax.wsdl_1.6.2.v201012040545.jar"/>
+	<classpathentry kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/jaxrpc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/org.apache.commons.logging_1.0.4.v201101211617.jar"/>
+	<classpathentry kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/saaj.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
