@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry exported="true" kind="lib" path="libs/ksoap2-android-assembly-2.5.2-jar-with-dependencies.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files (x86)/sdk/platforms/android-17/android.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/Program Files (x86)/sdk/docs/reference"/>
+		</attributes>
+		<accessrules>
+			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/axis.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/commons-discovery-0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/javax.wsdl_1.6.2.v201012040545.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/jaxrpc.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/org.apache.commons.logging_1.0.4.v201101211617.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/okorji.2/Documents/GitHub/blm/ActionBarSherlock/libs/saaj.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

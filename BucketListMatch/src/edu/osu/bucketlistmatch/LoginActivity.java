@@ -4,6 +4,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 
 import edu.osu.database.DB;
+import edu.osu.database.Parser;
 
 import android.R.string;
 import android.os.Bundle;
@@ -76,16 +77,26 @@ public class LoginActivity extends SherlockActivity {
 			user = username.getText().toString(); 
 			pass = password.getText().toString();
 			
-			String result;
-			int x = DB.validateUser(user,  pass);
-			if (x < 0) {
-				result = DB.err;
-			} else {
-				result = "" + x;
-			}
+//			String result;
+//			int x = DB.validateUser(user,  pass);
+//			if (x < 0) {
+//				result = DB.err;
+//			} else {
+//				result = "" + x;
+//			}
+//			
+//			String result= "not entered!" ;
+//			try {
+//				result = "" + DB.add();
+//			} catch (RemoteException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			Parser p = new Parser();
+			p.makeRequest();
 			
 			// Notification for a bad username or password
-			Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), p.result, Toast.LENGTH_SHORT).show();
 			openHome(v);
 		}
 	};
