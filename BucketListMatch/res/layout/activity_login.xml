@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="54dp"
-        android:background="#00ffffff"
+        android:background="@null"
         android:onClick="forgetPassword"
         android:text="@string/forgetpassword"
         android:textColor="#443790" />
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:background="#00ffffff"
+        android:background="@null"
         android:onClick="openSignUp"
         android:text="@string/signup"
         android:textColor="#443790" />

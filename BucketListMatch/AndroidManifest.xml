@@ -48,6 +48,9 @@
             android:name="edu.osu.bucketlistmatch.ForgetPasswordActivity"
             android:label="@string/title_activity_forget_password" >
         </activity>
+        <activity
+            android:name="edu.osu.bucketlistmatch.SettingsActivity" >
+        </activity>
     </application>
 
 </manifest>

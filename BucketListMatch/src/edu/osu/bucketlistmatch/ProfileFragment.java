@@ -1,6 +1,7 @@
 package edu.osu.bucketlistmatch;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +60,15 @@ public class ProfileFragment extends SherlockFragment{
 	public void onStart() {
 		super.onStart();
 		
+	}
+	
+	/**
+	 * Open settings activity.
+	 * @param view
+	 */
+	public void openSettings(View view) {
+		Intent i = new Intent(getActivity(), SettingsActivity.class);
+		startActivity(i);
 	}
 	
 	private void setProfilePic(View view) {

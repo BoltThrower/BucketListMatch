@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
 import com.actionbarsherlock.app.SherlockListFragment;
 
 /**
@@ -45,4 +47,13 @@ public class DiscoverFragment extends SherlockListFragment {
 		        R.layout.bucketlist_item, values);
 		    setListAdapter(adapter);
 	}
+	
+	/**
+	 * Open item's details page.
+	 */
+	@Override 
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        // Open details fragment
+		
+    }
 }
