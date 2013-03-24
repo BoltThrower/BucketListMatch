@@ -4,7 +4,6 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 
 import edu.osu.database.DB;
-import edu.osu.database.Parser;
 
 import android.R.string;
 import android.os.Bundle;
@@ -70,34 +69,14 @@ public class LoginActivity extends SherlockActivity {
 		
 		public void onClick (View v)
 		{
-			// Authenticate the login information.
-			//System.out.println(DB.validateUser(user, pass));
-			//int result = query.validateUser(user, pass);
-			//System.out.println(result);
 			user = username.getText().toString(); 
 			pass = password.getText().toString();
+
+			// Authenticate the login information.
+			int status = DB.validateUser(user, pass);
 			
-//			String result;
-//			int x = DB.validateUser(user,  pass);
-//			if (x < 0) {
-//				result = DB.err;
-//			} else {
-//				result = "" + x;
-//			}
-//			
-//			String result= "not entered!" ;
-//			try {
-//				result = "" + DB.add();
-//			} catch (RemoteException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			Parser p = new Parser();
-			p.makeRequest();
-			
-			// Notification for a bad username or password
-			Toast.makeText(getApplicationContext(), p.result, Toast.LENGTH_SHORT).show();
-			openHome(v);
+			if (status == 0) openHome(v);
+			else Toast.makeText(getApplicationContext(), "Authentication Failed. Try again.", Toast.LENGTH_SHORT).show();
 		}
 	};
 	

@@ -1,8 +1,10 @@
 package edu.osu.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.graphics.Bitmap;
 
 /**
  * This class is the handler for database communications to the application.
@@ -11,163 +13,83 @@ import java.sql.SQLException;
  *
  */
 public class DB {
-
-	static Connection con;
-	private static IQuery query;
-	private static IUpdate update;
-	public static String err;
-
-	/**
-	 * Constructor. This method sets up the connection to database, and prepares other resources
-	 * for querying and updating the database.
-	 */
-	public DB () {
-		con = DatabaseSetup();
-		query = new Query();
-		update = new Update();
-	}
 	
+	private static JSONParser parser;
+	private final static String URL_main = "http://server14.ies.cse.ohio-state.edu/BLM/";
 	// QUERY METHODS
 
-	/**
-	 * This method checks to see if a user exists in the database and returns an integer value
-	 * depending on the resulting status.
-	 * @param username
-	 * @param password
-	 * @return 0 if the username and password combination exists, 1 if password does not match,
-	 * 2 if username does not exist, 3 for SQL Exception, -1 if the connection to database does
-	 * not exist.
-	 */
 	public static int validateUser(String username, String password) {
-		if (con == null) return -1;
-		return query.validateUser(username, password);
+		parser = new JSONParser(URL_main + "validateUser.php?user=" + username + "&pass=" + password);
+		JSONArray array = parser.getJSONArray();
+		
+		if (array == null) return -1;
+		
+		if (array.length() == 0) return 1;
+		else if (array.length() > 1) return 2;
+		else return 0;
 	}
 	
-	/**
-	 * This method checks to see if a user is valid, then fetches all user profile information
-	 * from the database.
-	 * @param username
-	 * @param password
-	 * @return An array containing all user information, or null if either an error occurs or 
-	 * connection to database does not exist.
-	 */
-	public static String[] fetchProfileDetails(String username, String password) {
-		if (con == null) return null;
-		if (validateUser(username, password) == 0) {
-			return query.fetchUserDetails(username, password);
+	public static JSONObject fetchProfileDetails(String username, String password) {
+		if (validateUser (username, password) == 0) {
+			parser = new JSONParser(URL_main + "fetchProfileDetails.php");
+			JSONArray tmp = parser.getJSONArray();
+			try {
+				return tmp.getJSONObject(0);
+			} catch (JSONException e) {
+				return null;
+			}
+		} else {
+			// TODO User details not valid. Pass on this information somehow.
+			return null;
 		}
-		return null;
 	}
-	
 	
 	
 	
 	
 	// UPDATE METHODS
-	
-	/**
-	 * This method creates a new user, given the profile information.
-	 * @param user An array of length 13, containing string values for the new user's info
-	 * @return 0 if add was successful, 1 for SQL Exception, 2 for FileNotFound Exception,
-	 * -1 if a connection to database does not exist.
-	 */
+
+	// TODO Implement
 	public static int addUser(String user[]) {
-		if (con == null) return -1;
-		if (user.length != Enum.CUSTOMER_LENGTH) return 3;
-		return update.addUser(user);
+		return -1;
+		
+	}
+
+	// TODO Implement
+	static int changeUserProfilePhoto (String username, String password, String location) {
+		return -1;
+		
 	}
 	
-	/**
-	 * This method replaces the existing user profile photo with the specified new one.
-	 * @param username
-	 * @param binary A string that represents the stream for the image info.
-	 */
-	static int changeUserProfilePhoto (String username, String location) {
-		// TODO Validate user?
-		return update.updateUserItem (Enum.UPDATE_PHOTO, username, location, null, null);
+	// TODO Implement
+	static int updateUserLocation (String username, String password, String city, String state, String country) {
+		return -1;
+		
 	}
 	
-	/**
-	 * This method updates the user's location information with the new information.
-	 * @param username
-	 * @param city
-	 * @param state
-	 * @param country
-	 */
-	static void updateUserLocation (String username, String city, String state, String country) {
-		// TODO validate user?
-		update.updateUserItem (Enum.UPDATE_LOCATION, username, city, state, country);
+	// TODO Implement
+	static int updateUserDescription (String username, String password, String description) {
+		return -1;
+		
 	}
 	
-	/**
-	 * This method updates the description of a user
-	 * @param username
-	 * @param description
-	 */
-	static void updateUserDescription (String username, String description) {
-		// TODO Validate user?
-		update.updateUserItem (Enum.UPDATE_DESCRIPTION, username, description, null, null);
+	// TODO Implement
+	static int addBucketListBook (String username, String password, String[] info, boolean privacy) {
+		return -1;
+		
 	}
-	
-	/**
-	 * This method adds a new Bucket List Book to a user's account.
-	 * @param username
-	 * @param info An array that holds all bucket list book information to be added
-	 */
-	static void addBucketListBook (String username, String[] info, boolean privacy) {
-		// ValidateUser?
-		update.addDreamBook(username, info, privacy);
-	}
-	
-	
 	
 	
 	// HELPER METHODS
 	
-	/**
-	 * Closes the connection to the database, if there exists one.
-	 */
-	public void close() {
-		try {
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	// TODO
+	static Bitmap convertToImage(String binary) {
+		return null;
 	}
 	
-	// TODO Implement, RETURN VARIABLE!
-	static void convertToImage(String binary) {
-		
-	}
-	
-	/**
-	 * This function sets up a connection to the database and returns this connection
-	 * @return Connection
-	 */
-	static Connection DatabaseSetup() {
-		try {
-
-			// Fetch the class to be used in the connection
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-
-			// Define the Java DB connectivity URL
-			String connectionUrl = "jdbc:sqlserver://server14.ies.cse.ohio-state.edu:1433;"
-					+ "databaseName={BLM_Database};userName=ApplAccount;password=@pplBLM!cc0uNt59i1;";
-
-			// Set up a connection using Java's driver manager
-			return DriverManager.getConnection(connectionUrl);
-
-		} catch (ClassNotFoundException e) {
-			// TODO Handle exception
-			err = e.getMessage() + "\n\n" + e.getCause();
-			return null;
-		} catch (SQLException e) {
-			// TODO Handle exception
-			err = e.getMessage() + "\n\n" + e.getCause();
-			return null;
-		}
-
+	// TODO
+	static String convertToBinary(Bitmap image) {
+		return null;
 	}
 
 	
