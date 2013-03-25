@@ -13,41 +13,56 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.util.Log;
 
 public class JSONParser {
 
-	static InputStream is = null;
-//	static JSONObject jObj = null;
-	static JSONArray jArr = null;
-	static String json_string = "";
-
+	private InputStream is;
+//	JSONObject jObj = null;
+	private JSONArray jArr;
+	private String URL;
+	private int status;
+	
 	// constructor
-	public JSONParser() {
-
+	public JSONParser(String url) {
+		is = null;
+		URL = url;
+		status = -1;
+		
+		jArr = parse(getStringFromUrl());
+		if (jArr != null) status = 0;
+	}
+	
+	public JSONArray getJSONArray() {
+		if (status == 0) return jArr;
+		else return null;
 	}
 
 	// Source: http://www.androidhive.info/2012/01/android-json-parsing-tutorial/
-	public JSONArray getJSONFromUrl(String url) {
+	private String getStringFromUrl() {
 
+		String json_string = null;
+		
 		// Making HTTP request
 		try {
 			// defaultHttpClient
 			DefaultHttpClient httpClient = new DefaultHttpClient();
-			HttpPost httpPost = new HttpPost(url);
+			HttpPost httpPost = new HttpPost(URL);
 
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			HttpEntity httpEntity = httpResponse.getEntity();
 			is = httpEntity.getContent();
 
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			Log.e("HTTP Error", "1: Unsupported Encoding. " + e.toString());
+			status = 1;
 		} catch (ClientProtocolException e) {
-			e.printStackTrace();
+			Log.e("HTTP Error", "2: Client Protocol Exception. " + e.toString());
+			status = 2;
 		} catch (IOException e) {
-			e.printStackTrace();
+			Log.e("HTTP Error", "3: Input Stream Error. " + e.toString());
+			status = 3;
 		}
 
 		try {
@@ -61,34 +76,21 @@ public class JSONParser {
 			is.close();
 			json_string = sb.toString();
 		} catch (Exception e) {
-			Log.e("Buffer Error", "Error converting result " + e.toString());
+			status = 4;
+			Log.e("Buffer Error", "4: Error converting result to string. " + e.toString());
 		}
 
-		// try parse the string to a JSON object
-		try {
-			jArr = new JSONArray(json_string);
-		} catch (JSONException e) {
-			Log.e("JSON Parser", "Error parsing data " + e.toString());
-		}
-
-		// return JSON String
-		return jArr;
+		return json_string;
 
 	}
 
-	// First, convert input response object to a string. Then, parse.
-
-	public static JSONArray parse(String json_string) {
-
-		JSONArray result = null;
+	private JSONArray parse(String str) {
 		try {
-			result = new JSONArray(json_string);
+			return new JSONArray(str);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e("JSONParser Error", "Error creating JSONArray object. " + e.toString());
+			return null;
 		}
-
-		return result;
 	}
 	
 }
