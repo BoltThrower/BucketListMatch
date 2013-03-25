@@ -26,6 +26,7 @@
     <!-- Style for the dropdown menu -->
     <style name="Theme.BucketList.Spinner.DropDown.ActionBar" parent="Widget.Sherlock.Light.Spinner.DropDown.ActionBar">
         <item name="android:popupBackground">#000000</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
     
 </resources>

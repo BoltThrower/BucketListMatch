@@ -64,6 +64,7 @@ public class ProfileFragment extends SherlockFragment{
 	
 	/**
 	 * Open settings activity.
+	 * 
 	 * @param view
 	 */
 	public void openSettings(View view) {

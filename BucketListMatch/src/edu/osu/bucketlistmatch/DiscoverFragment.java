@@ -1,6 +1,7 @@
 package edu.osu.bucketlistmatch;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ public class DiscoverFragment extends SherlockListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
 	}
 
 	@Override
@@ -49,11 +50,20 @@ public class DiscoverFragment extends SherlockListFragment {
 	}
 	
 	/**
-	 * Open item's details page.
+	 * Runs when a list item is clicked.
 	 */
 	@Override 
     public void onListItemClick(ListView l, View v, int position, long id) {
         // Open details fragment
-		
+		showDetails();
     }
+	
+	public void showDetails() {
+		SherlockListFragment frag = new DetailsFragment();
+		FragmentTransaction trans = getFragmentManager().beginTransaction();
+		
+		trans.replace(R.id.fragment_container, frag);
+		trans.addToBackStack(null);
+		trans.commit();
+	}
 }

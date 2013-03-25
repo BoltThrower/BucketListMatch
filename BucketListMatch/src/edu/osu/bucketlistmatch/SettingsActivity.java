@@ -1,7 +1,5 @@
 package edu.osu.bucketlistmatch;
 
-import android.os.Bundle;
-
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 
 /**
@@ -11,5 +9,5 @@ import com.actionbarsherlock.app.SherlockPreferenceActivity;
  *
  */
 public class SettingsActivity extends SherlockPreferenceActivity{
-
+	
 }

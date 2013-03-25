@@ -11,6 +11,7 @@ import com.actionbarsherlock.widget.ShareActionProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 
@@ -60,38 +61,39 @@ public class HomeActivity extends SherlockFragmentActivity {
 			public boolean onNavigationItemSelected(int position, long itemId) {
 				SherlockFragment frag;
 				SherlockListFragment listFrag;
+				FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
 				// Create the appropriate fragment to replace the current fragment with.
 				switch (position) {
 				case 0:
 					frag = new HomeFragment();
-					getSupportFragmentManager().beginTransaction()
-							.replace(R.id.fragment_container, frag).commit();
+					trans.replace(R.id.fragment_container, frag);
+					trans.commit();
 					break;
 				case 1:
 					
 					listFrag = new DiscoverFragment();
-					getSupportFragmentManager().beginTransaction()
-							.replace(R.id.fragment_container, listFrag).commit();
+					trans.replace(R.id.fragment_container, listFrag);
+					trans.commit();
 					break;
 				case 2:
 					listFrag = new BucketListFragment();
-					getSupportFragmentManager().beginTransaction()
-							.replace(R.id.fragment_container, listFrag).commit();
+					trans.replace(R.id.fragment_container, listFrag);
+					trans.commit();
 					break;
 				case 3:
 					listFrag = new ScrapbookFragment();
-					getSupportFragmentManager().beginTransaction()
-							.replace(R.id.fragment_container, listFrag).commit();
+					trans.replace(R.id.fragment_container, listFrag);
+					trans.commit();
 					break;
 				case 4:
 					frag = new MatchFragment();
-					getSupportFragmentManager().beginTransaction()
-							.replace(R.id.fragment_container, frag).commit();
+					trans.replace(R.id.fragment_container, frag);
+					trans.commit();
 					break;
 				case 5:
 					frag = new ProfileFragment();
-					getSupportFragmentManager().beginTransaction()
-							.replace(R.id.fragment_container, frag).commit();
+					trans.replace(R.id.fragment_container, frag);
+					trans.commit();
 					break;
 				default:
 					

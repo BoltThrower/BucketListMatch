@@ -23,8 +23,8 @@ public class MainActivity extends SherlockActivity {
 		//db.close();
 		
 		// Start splash screen activity
-		Intent intent = new Intent(this, SplashScreenActivity.class);
-		//Intent intent = new Intent(this, HomeActivity.class);
+		//Intent intent = new Intent(this, SplashScreenActivity.class);
+		Intent intent = new Intent(this, HomeActivity.class);
 		startActivity(intent);
 	}
 
