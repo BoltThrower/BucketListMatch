@@ -25,7 +25,7 @@ public class JSONParser {
 	private int status;
 	
 	// constructor
-	public JSONParser(String url) {
+	public JSONParser(String url) throws JSONException {
 		is = null;
 		URL = url;
 		status = -1;
@@ -84,13 +84,8 @@ public class JSONParser {
 
 	}
 
-	private JSONArray parse(String str) {
-		try {
-			return new JSONArray(str);
-		} catch (JSONException e) {
-			Log.e("JSONParser Error", "Error creating JSONArray object. " + e.toString());
-			return null;
-		}
+	private JSONArray parse(String str) throws JSONException {
+		return new JSONArray(str);
 	}
 	
 }
