@@ -68,7 +68,7 @@ public class ProfileFragment extends SherlockFragment{
 	 * @param view
 	 */
 	public void openSettings(View view) {
-		Intent i = new Intent(getActivity(), SettingsActivity.class);
+		Intent i = new Intent(getActivity(), HomeActivity.class);
 		startActivity(i);
 	}
 	

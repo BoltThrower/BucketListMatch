@@ -23,15 +23,6 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/creater"
-        android:text=">"
-        android:textSize="15sp" />
-
-    <TextView
         android:id="@+id/creater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,10 +66,9 @@
         android:id="@+id/cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/arrow"
-        android:layout_alignBottom="@+id/arrow"
+        android:layout_below="@+id/creater"
+        android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"
-        android:layout_toLeftOf="@+id/arrow"
         android:text="Cost" />
 
 </RelativeLayout>
