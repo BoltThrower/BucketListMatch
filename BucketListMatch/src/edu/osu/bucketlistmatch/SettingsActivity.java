@@ -2,6 +2,8 @@ package edu.osu.bucketlistmatch;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 
+import android.os.Bundle;
+
 /**
  * Allows changes to app preferences.
  * 
@@ -9,5 +11,10 @@ import com.actionbarsherlock.app.SherlockPreferenceActivity;
  *
  */
 public class SettingsActivity extends SherlockPreferenceActivity{
-	
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+     
+    }
 }

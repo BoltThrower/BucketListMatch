@@ -62,16 +62,6 @@ public class ProfileFragment extends SherlockFragment{
 		
 	}
 	
-	/**
-	 * Open settings activity.
-	 * 
-	 * @param view
-	 */
-	public void openSettings(View view) {
-		Intent i = new Intent(getActivity(), HomeActivity.class);
-		startActivity(i);
-	}
-	
 	private void setProfilePic(View view) {
 		ImageView img = (ImageView) view.findViewById(R.id.profileImage);
 		img.setImageResource(R.drawable.ic_launcher);
