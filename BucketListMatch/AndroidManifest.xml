@@ -28,11 +28,13 @@
         <activity
             android:name="edu.osu.bucketlistmatch.SplashScreenActivity"
             android:label="@string/title_activity_splash_screen"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.BucketList.NoActionBar" >
         </activity>
         <activity
             android:name="edu.osu.bucketlistmatch.LoginActivity"
             android:label="@string/title_activity_login"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.BucketList.NoActionBar" >
         </activity>
         <activity
@@ -41,6 +43,7 @@
         </activity>
         <activity
             android:name="edu.osu.bucketlistmatch.SignUpActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_sign_up" >
         </activity>
         <activity
