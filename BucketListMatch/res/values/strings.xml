@@ -286,5 +286,9 @@
     <string name="reenterPassword">Re-enter password</string>
     <string name="settings">Settings</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="account_category">Account</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="terms">Terms</string>
+    <string name="privacy">Privacy</string>
 
 </resources>

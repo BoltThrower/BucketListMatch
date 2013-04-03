@@ -10,7 +10,7 @@
     tools:context=".SignUpActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/accountCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/usernameRegisterTextField"
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/password2TextField"
-        android:layout_alignRight="@+id/textView1"
+        android:layout_alignRight="@+id/accountCat"
         android:layout_below="@+id/password2TextField"
         android:layout_marginTop="42dp"
         android:onClick="validateSignUp"

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 /**
@@ -59,10 +60,9 @@ public class DiscoverFragment extends SherlockListFragment {
     }
 	
 	public void showDetails() {
-		SherlockListFragment frag = new DetailsFragment();
 		FragmentTransaction trans = getFragmentManager().beginTransaction();
 		
-		trans.replace(R.id.fragment_container, frag);
+		trans.replace(R.id.fragment_container, new ChaptersFragment());
 		trans.addToBackStack(null);
 		trans.commit();
 	}

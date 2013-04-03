@@ -11,6 +11,7 @@ import com.actionbarsherlock.widget.ShareActionProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -34,8 +35,8 @@ public class HomeActivity extends SherlockFragmentActivity {
 
 		// Add the fragment to the FrameLayout which is used as the fragment
 		// container.
-		getSupportFragmentManager().beginTransaction()
-				.add(R.id.fragment_container, new HomeFragment()).commit();
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.add(R.id.fragment_container, new HomeFragment()).commit();
 
 		// Provides data for the spinner widget.
 		SpinnerAdapter spinnerAdapter = ArrayAdapter.createFromResource(this,
@@ -86,9 +87,6 @@ public class HomeActivity extends SherlockFragmentActivity {
 							new ProfileFragment());
 					trans.commit();
 					break;
-				default:
-
-					break;
 				}
 				return true;
 			}
@@ -97,6 +95,9 @@ public class HomeActivity extends SherlockFragmentActivity {
 		// Set items and navigation listener to the action bar.
 		getSupportActionBar()
 				.setListNavigationCallbacks(spinnerAdapter, navLis);
+
+		// Disable home button.
+		getSupportActionBar().setHomeButtonEnabled(false);
 	}
 
 	@Override
@@ -113,6 +114,7 @@ public class HomeActivity extends SherlockFragmentActivity {
 		return true;
 	}
 
+
 	// Call to update the share intent used if UI changes causes changes to
 	// intent
 	private void setShareIntent(Intent shareIntent) {
@@ -120,14 +122,29 @@ public class HomeActivity extends SherlockFragmentActivity {
 			shareActionProvider.setShareIntent(shareIntent);
 		}
 	}
-	
+
 	/**
-	 * Open settings activity button in the profile fragment.
+	 * Performs appropriate action depending on id of button clicked. These
+	 * buttons are in Profile.
 	 * 
 	 * @param view
 	 */
-	public void openSettings(View view) {
-		Intent i = new Intent(this, SettingsActivity.class);
-		startActivity(i);
+	public void onClick(View view) {
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		switch (view.getId()) {
+		case R.id.privacy:
+			ft.replace(R.id.fragment_container, new PrivacyFragment());
+			ft.addToBackStack(null);
+			ft.commit();
+			break;
+		case R.id.terms:
+			ft.replace(R.id.fragment_container, new TermsFragment());
+			ft.addToBackStack(null);
+			ft.commit();
+			break;
+		case R.id.signout:
+
+			break;
+		}
 	}
 }
