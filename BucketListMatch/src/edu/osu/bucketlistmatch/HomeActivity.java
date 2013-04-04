@@ -10,12 +10,14 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.ShareActionProvider;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 /**
  * This activity provides navigation between views Home, Discover, Bucket List,
@@ -145,6 +147,20 @@ public class HomeActivity extends SherlockFragmentActivity {
 		case R.id.signout:
 
 			break;
+		}
+	}
+	
+	public void shareEmail(View view) {
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		emailIntent.setType("message/rfc822");
+		emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{""}); // Blank default email address to send to.
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "An Invitation to Bucket List Match!");
+		emailIntent.putExtra(Intent.EXTRA_TEXT   , "A friend of yours sent this e-mail to invite you to join the mobile application, Bucket List Match.\n\nYou may register here: http://www.blm.com/register\n\nThanks.");
+		
+		try {
+		    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+		} catch (android.content.ActivityNotFoundException ex) {
+		    Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
 		}
 	}
 }
