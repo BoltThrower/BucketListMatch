@@ -7,6 +7,12 @@ import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
+/**
+ * This fragment contains privacy information.
+ * 
+ * @author Shi Ho Wang
+ *
+ */
 public class PrivacyFragment extends SherlockFragment{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

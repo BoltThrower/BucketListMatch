@@ -1,11 +1,9 @@
 package edu.osu.bucketlistmatch;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,6 +69,14 @@ public class ProfileFragment extends SherlockFragment {
 
 	}
 
+	/**
+	 * Sets the profile picture in the profile view.
+	 * 
+	 * @param view
+	 *            Profile view where the profile picture is set.
+	 * @param profileJSON
+	 *            JSON object that contains the profile picture.
+	 */
 	private void setProfilePic(View view, JSONObject profileJSON) {
 		ImageView img = (ImageView) view.findViewById(R.id.profileImage);
 
@@ -78,6 +84,14 @@ public class ProfileFragment extends SherlockFragment {
 		img.setContentDescription("User profile picture");
 	}
 
+	/**
+	 * Sets the username in the profile view.
+	 * 
+	 * @param view
+	 *            Profile view where the description is set.
+	 * @param profileJSON
+	 *            JSON object that contains the username.
+	 */
 	private void setUsername(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.username);
 		try {
@@ -89,6 +103,14 @@ public class ProfileFragment extends SherlockFragment {
 		}
 	}
 
+	/**
+	 * Sets the description in the profile view.
+	 * 
+	 * @param view
+	 *            Profile view where the description is set.
+	 * @param profileJSON
+	 *            JSON object that contains the description.
+	 */
 	private void setDescription(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.descriptionText);
 		try {
@@ -100,6 +122,14 @@ public class ProfileFragment extends SherlockFragment {
 		}
 	}
 
+	/**
+	 * Sets the email in the profile view.
+	 * 
+	 * @param view
+	 *            Profile view where the email is set to.
+	 * @param profileJSON
+	 *            JSON object that contains the email.
+	 */
 	private void setEmail(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.emailText);
 		try {
@@ -143,7 +173,8 @@ public class ProfileFragment extends SherlockFragment {
 	private void setDateOfBirth(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.dateOfBirthText);
 		try {
-			String dob = profileJSON.getString("DateOfBirth");
+			String dob = profileJSON.getJSONObject("DateOfBirth")
+					.getString("date").substring(0, 10);
 			text.setText(dob);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -151,6 +182,14 @@ public class ProfileFragment extends SherlockFragment {
 		}
 	}
 
+	/**
+	 * Sets the phone number in the profile view.
+	 * 
+	 * @param view
+	 *            Profile view where the phone number is set to.
+	 * @param profileJSON
+	 *            JSON object that contains the phone number.
+	 */
 	private void setPhone(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.phoneText);
 		try {
@@ -162,6 +201,14 @@ public class ProfileFragment extends SherlockFragment {
 		}
 	}
 
+	/**
+	 * Sets the city in the profile view.
+	 * 
+	 * @param view
+	 *            Profile view where the city is set to.
+	 * @param profileJSON
+	 *            JSON objects that contains the city.
+	 */
 	private void setCity(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.cityText);
 		try {
@@ -173,6 +220,14 @@ public class ProfileFragment extends SherlockFragment {
 		}
 	}
 
+	/**
+	 * Sets the state in the profile view.
+	 * 
+	 * @param view
+	 *            Profile view where the state is set to.
+	 * @param profileJSON
+	 *            JSON object that contains the state.
+	 */
 	private void setState(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.stateText);
 		try {
@@ -184,6 +239,14 @@ public class ProfileFragment extends SherlockFragment {
 		}
 	}
 
+	/**
+	 * Sets the country in the profile view.
+	 * 
+	 * @param view
+	 *            Profile view where the country is set to.
+	 * @param profileJSON
+	 *            JSON object that contains the country.
+	 */
 	private void setCountry(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.countryText);
 		try {
@@ -195,6 +258,14 @@ public class ProfileFragment extends SherlockFragment {
 		}
 	}
 
+	/**
+	 * Sets the zip code in the profile view.
+	 * 
+	 * @param view
+	 *            Profile view where the zip code is set to.
+	 * @param profileJSON
+	 *            JSON object that contains the zip code.
+	 */
 	private void setZip(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.zipText);
 		try {

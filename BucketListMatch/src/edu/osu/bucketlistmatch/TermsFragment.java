@@ -7,6 +7,12 @@ import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
+/**
+ * This fragment contains the terms of service information.
+ * 
+ * @author Shi Ho Wang
+ *
+ */
 public class TermsFragment extends SherlockFragment{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
