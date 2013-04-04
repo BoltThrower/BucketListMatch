@@ -23,8 +23,8 @@ import edu.osu.database.DB;
  */
 public class ProfileFragment extends SherlockFragment {
 
-	private String username = "Adhesiveeye";
-	private String password = "sticky";
+	private String username = LoginActivity.user;
+	private String password = LoginActivity.pass;
 
 	@Override
 	public void onAttach(Activity activity) {

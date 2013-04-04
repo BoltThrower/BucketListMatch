@@ -25,7 +25,7 @@ public class LoginActivity extends SherlockActivity {
 	
 	EditText username, password;
 	Button signin;
-	String user, pass;
+	static String user, pass;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,5 +92,13 @@ public class LoginActivity extends SherlockActivity {
 		//startActivity(i);
 		
 		
+	}
+	
+	public String getUser() {
+		return user;
+	}
+	
+	public String getPass() {
+		return pass;
 	}
 }
