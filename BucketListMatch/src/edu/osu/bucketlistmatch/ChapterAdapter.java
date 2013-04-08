@@ -13,22 +13,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * This adapter helps map bucket list items to a list.
- * 
- * @author Shi Ho Wang
- * 
- */
-public class BucketListAdapter extends BaseAdapter {
+public class ChapterAdapter extends BaseAdapter{
 	private Context context;
 	private JSONArray values;
-
-	public BucketListAdapter(Context context, JSONArray bucketListItems) {
+	
+	public ChapterAdapter(Context context, JSONArray chapterItems) {
 		super();
 		this.context = context;
-		this.values = bucketListItems;
+		this.values = chapterItems;
 	}
-
+	
 	@Override
 	public int getCount() {
 		return this.values.length();
@@ -63,7 +57,7 @@ public class BucketListAdapter extends BaseAdapter {
 				.findViewById(R.id.coverImage);
 
 		TextView task = (TextView) rowView.findViewById(R.id.task);
-		TextView location = (TextView) rowView.findViewById(R.id.location);
+		TextView description = (TextView) rowView.findViewById(R.id.description);
 		TextView duration = (TextView) rowView.findViewById(R.id.duration);
 		TextView creater = (TextView) rowView.findViewById(R.id.creater);
 		TextView cost = (TextView) rowView.findViewById(R.id.cost);
@@ -72,7 +66,7 @@ public class BucketListAdapter extends BaseAdapter {
 		try {
 			jsonObject = this.values.getJSONObject(position);
 			task.setText(jsonObject.getString("Name"));
-			location.setText(jsonObject.getString("Country") + " - " + jsonObject.getString("State"));
+			description.setText(jsonObject.getString("Description"));
 			duration.setText(jsonObject.getString("Duration"));
 			creater.setText(jsonObject.getString("CreatedBy"));
 			cost.setText(jsonObject.getString("Cost"));
@@ -82,15 +76,8 @@ public class BucketListAdapter extends BaseAdapter {
 					"Failed to retrieve json object from bucket list json array.");
 		}
 
-		// Flag icons.
-		ImageView totemIcon = (ImageView) rowView.findViewById(R.id.totemIcon);
-
-		ImageView dealIcon = (ImageView) rowView.findViewById(R.id.dealIcon);
-
-		ImageView challengeIcon = (ImageView) rowView
-				.findViewById(R.id.challengeIcon);
-
 		return rowView;
 	}
-
+	
+	
 }

@@ -19,7 +19,7 @@ public class ChaptersFragment extends SherlockListFragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.item_list_layout, container, false);
+		View view = inflater.inflate(R.layout.list_layout, container, false);
 		
 		populateListItems();
 		
@@ -33,9 +33,6 @@ public class ChaptersFragment extends SherlockListFragment{
 	}
 
 	private void populateListItems() {
-		String[] values = new String[] { "Ate Cheeseburger", "Visited Statue", "Hotel Room"};
-		    BucketListAdapter adapter = new BucketListAdapter(getSherlockActivity(),
-		        R.layout.bucketlist_item, values);
-		    setListAdapter(adapter);
+		
 	}
 }

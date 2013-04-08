@@ -2,6 +2,59 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
+
+    <ImageView
+        android:id="@+id/coverImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/coverImage"
+        android:text="Task"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/duration"
+        android:layout_alignBottom="@+id/duration"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="Cost" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/coverImage"
+        android:layout_toRightOf="@+id/coverImage"
+        android:text="Duration" />
+
+    <TextView
+        android:id="@+id/creater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/duration"
+        android:layout_toRightOf="@+id/coverImage"
+        android:text="Creater" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/creater"
+        android:layout_alignRight="@+id/cost"
+        android:layout_below="@+id/task"
+        android:layout_toRightOf="@+id/coverImage"
+        android:text="Description" />
 
 </RelativeLayout>

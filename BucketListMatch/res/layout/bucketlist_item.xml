@@ -1,42 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rowItem"
+    android:id="@+id/bucketListRowItem"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
     <ImageView
         android:id="@+id/coverImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_launcher" />
-
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/coverImage"
-        android:text="Location"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/creater"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/location"
-        android:layout_toRightOf="@+id/coverImage"
-        android:text="Creater" />
-
-    <TextView
-        android:id="@+id/duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/creater"
-        android:layout_toRightOf="@+id/coverImage"
-        android:text="Duration" />
 
     <ImageView
         android:id="@+id/totemIcon"
@@ -45,7 +20,7 @@
         android:layout_alignBottom="@+id/coverImage"
         android:layout_alignLeft="@+id/duration"
         android:src="@drawable/ic_launcher" />
-    
+
     <ImageView
         android:id="@+id/dealIcon"
         android:layout_width="20dp"
@@ -53,7 +28,7 @@
         android:layout_alignBottom="@+id/coverImage"
         android:layout_toRightOf="@+id/totemIcon"
         android:src="@drawable/ic_launcher" />
-    
+
     <ImageView
         android:id="@+id/challengeIcon"
         android:layout_width="20dp"
@@ -63,12 +38,45 @@
         android:src="@drawable/ic_launcher" />
 
     <TextView
+        android:id="@+id/task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/coverImage"
+        android:text="Task"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/totemIcon"
+        android:layout_toRightOf="@+id/coverImage"
+        android:text="Duration" />
+
+    <TextView
+        android:id="@+id/creater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/duration"
+        android:layout_alignLeft="@+id/duration"
+        android:text="Creater" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/creater"
+        android:layout_alignLeft="@+id/creater"
+        android:text="Location" />
+
+    <TextView
         android:id="@+id/cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/creater"
+        android:layout_above="@+id/challengeIcon"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="20dp"
         android:text="Cost" />
 
 </RelativeLayout>
