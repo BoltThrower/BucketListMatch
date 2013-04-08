@@ -80,20 +80,6 @@ public class LoginActivity extends SherlockActivity {
 		}
 	};
 	
-	private void authenticateLogin(View view) {
-		
-		//int result = query.validateUser(user, pass);
-		//System.out.println(result);
-		//System.out.println(user);
-		//System.out.println(pass);
-		//Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-		
-		//Intent i = new Intent(this, HomeActivity.class);
-		//startActivity(i);
-		
-		
-	}
-	
 	public String getUser() {
 		return user;
 	}

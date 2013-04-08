@@ -5,7 +5,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
@@ -20,6 +22,15 @@ public class SignUpActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
+		
+		Spinner spinner = (Spinner) findViewById(R.id.countrySignUp);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+		        R.array.country_list, android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(adapter);
 	}
 
 	@Override
@@ -33,21 +44,32 @@ public class SignUpActivity extends Activity {
 		// Enter code to make sure that the username is valid, does not already exist, etc.
 		
 		// Code that makes sure that both of the passwords entered is correct.
-		EditText username, password1, password2;
-		String user, pass1, pass2;
+		EditText username, password1, password2, firstName, lastName, dobText;
+		String user, pass1, pass2, first, last, dob;
 		
 		username = (EditText)findViewById(R.id.usernameRegisterTextField); 
 		password1 = (EditText)findViewById(R.id.password1TextField);
 		password2 = (EditText)findViewById(R.id.password2TextField);
+		firstName = (EditText)findViewById(R.id.firstNameText);
+		lastName = (EditText)findViewById(R.id.lastNameText);
+		dobText = (EditText)findViewById(R.id.dobSignUp);
 		
-		user = username.getText().toString(); 
-		pass1 = password1.getText().toString();
-		pass2 = password2.getText().toString();
+		
+		user = username.getText().toString().trim(); 
+		pass1 = password1.getText().toString().trim(); 
+		pass2 = password2.getText().toString().trim(); 
+		first = firstName.getText().toString().trim(); 
+		last = lastName.getText().toString().trim(); 
+		dob = dobText.getText().toString().trim();
 		
 		if(!pass1.equals(pass2))
 		{
-			String badPasswords = "The passwords that were entered do not match.  Please try again.";
-			Toast.makeText(getApplicationContext(), badPasswords, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "The passwords that were entered do not match.  Please try again.", Toast.LENGTH_SHORT).show();
+		}
+		
+		else if(user.equals("") || pass1.equals("") || pass2.equals("") || first.equals("") || last.equals("") || dob.equals(""))
+		{
+			Toast.makeText(getApplicationContext(), "Please enter all of the appropriate information.", Toast.LENGTH_SHORT).show();
 		}
 		
 		else
