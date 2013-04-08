@@ -52,7 +52,7 @@ public class SignUpActivity extends Activity {
 		password2 = (EditText)findViewById(R.id.password2TextField);
 		firstName = (EditText)findViewById(R.id.firstNameText);
 		lastName = (EditText)findViewById(R.id.lastNameText);
-		dobText = (EditText)findViewById(R.id.dobSignUp);
+		//dobText = (EditText)findViewById(R.id.dobSignUp);
 		
 		
 		user = username.getText().toString().trim(); 
@@ -60,14 +60,14 @@ public class SignUpActivity extends Activity {
 		pass2 = password2.getText().toString().trim(); 
 		first = firstName.getText().toString().trim(); 
 		last = lastName.getText().toString().trim(); 
-		dob = dobText.getText().toString().trim();
+		//dob = dobText.getText().toString().trim();
 		
 		if(!pass1.equals(pass2))
 		{
 			Toast.makeText(getApplicationContext(), "The passwords that were entered do not match.  Please try again.", Toast.LENGTH_SHORT).show();
 		}
 		
-		else if(user.equals("") || pass1.equals("") || pass2.equals("") || first.equals("") || last.equals("") || dob.equals(""))
+		else if(user.equals("") || pass1.equals("") || pass2.equals("") || first.equals("") || last.equals(""))
 		{
 			Toast.makeText(getApplicationContext(), "Please enter all of the appropriate information.", Toast.LENGTH_SHORT).show();
 		}

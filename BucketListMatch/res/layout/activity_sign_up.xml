@@ -134,14 +134,14 @@
         android:layout_alignRight="@+id/firstNameText"
         android:layout_below="@+id/dobLabel"
         android:ems="10"
-        android:inputType="date|datetime" />
+        android:inputType="date" />
 
     <Spinner
         android:id="@+id/countrySignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/dobSignUp"
-        android:layout_toRightOf="@+id/accountCat" />
+        android:layout_toRightOf="@+id/signupButton" />
 
     <TextView
         android:id="@+id/countryLabel"
