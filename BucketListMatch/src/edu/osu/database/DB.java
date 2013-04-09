@@ -166,7 +166,7 @@ public class DB {
 
 		try {
 			parser = new JSONParser(URL_main
-					+ "dreambook/fetchBucketListBooks.php");
+					+ "dreambook/fetchAllBucketListBooks.php");
 			result = parser.getJSONArray();
 		} catch (JSONException e) {
 			Log.e("JSONParser Error.",
