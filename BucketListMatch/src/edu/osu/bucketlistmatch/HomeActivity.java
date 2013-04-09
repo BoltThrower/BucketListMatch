@@ -108,14 +108,31 @@ public class HomeActivity extends SherlockFragmentActivity {
 		getSupportMenuInflater().inflate(R.menu.home, menu);
 
 		// Locate share item
+		// May not need this
 		MenuItem item = menu.findItem(R.id.action_share);
 
 		// Fetch and store ShareActionProvider
+		// May not need this
 		shareActionProvider = (ShareActionProvider) item.getActionProvider();
 
 		return true;
 	}
 
+	/**
+	 * Called when a menu item is selected.
+	 * 
+	 * @param item
+	 * @return
+	 */
+	public boolean onOptionsMenuSelected(MenuItem item) {
+		// Handle cases depending on the menu item's id.
+		switch (item.getItemId()) {
+		
+		
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 
 	// Call to update the share intent used if UI changes causes changes to
 	// intent
@@ -149,18 +166,29 @@ public class HomeActivity extends SherlockFragmentActivity {
 			break;
 		}
 	}
-	
+
 	public void shareEmail(View view) {
 		Intent emailIntent = new Intent(Intent.ACTION_SEND);
 		emailIntent.setType("message/rfc822");
-		emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{""}); // Blank default email address to send to.
-		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "An Invitation to Bucket List Match!");
-		emailIntent.putExtra(Intent.EXTRA_TEXT   , "A friend of yours sent this e-mail to invite you to join the mobile application, Bucket List Match.\n\nYou may register here: http://www.blm.com/register\n\nThanks.");
-		
+		emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "" }); // Blank
+																		// default
+																		// email
+																		// address
+																		// to
+																		// send
+																		// to.
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT,
+				"An Invitation to Bucket List Match!");
+		emailIntent
+				.putExtra(
+						Intent.EXTRA_TEXT,
+						"A friend of yours sent this e-mail to invite you to join the mobile application, Bucket List Match.\n\nYou may register here: http://www.blm.com/register\n\nThanks.");
+
 		try {
-		    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+			startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 		} catch (android.content.ActivityNotFoundException ex) {
-		    Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "There are no email clients installed.",
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 }
