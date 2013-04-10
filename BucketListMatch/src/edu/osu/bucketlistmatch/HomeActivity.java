@@ -9,6 +9,8 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.ShareActionProvider;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
@@ -175,6 +178,34 @@ public class HomeActivity extends SherlockFragmentActivity {
 			startActivity(intent);
 			break;
 		}
+	}
+	
+	public void search(){
+		/*
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+		alert.setTitle("Title");
+		alert.setMessage("Message");
+		
+		// Set an EditText view to get user input 
+		final EditText input = new EditText(this);
+		alert.setView(input);
+		
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+		  String value = input.getText();
+		  // Submit the search term to the database.
+		  }
+		});
+		
+		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int whichButton) {
+		    // Canceled.
+		  }
+		});
+		
+		alert.show();
+		 */
 	}
 
 	public void shareEmail() {
