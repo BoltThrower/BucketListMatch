@@ -127,8 +127,7 @@ public class HomeActivity extends SherlockFragmentActivity {
 	public boolean onOptionsMenuSelected(MenuItem item) {
 		// Handle cases depending on the menu item's id.
 		switch (item.getItemId()) {
-		
-		
+
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -162,7 +161,9 @@ public class HomeActivity extends SherlockFragmentActivity {
 			ft.commit();
 			break;
 		case R.id.signout:
-
+			Intent intent = new Intent(this, LoginActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
 			break;
 		}
 	}
