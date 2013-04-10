@@ -114,6 +114,7 @@ public class HomeActivity extends SherlockFragmentActivity {
 		// Fetch and store ShareActionProvider
 		// May not need this
 		shareActionProvider = (ShareActionProvider) item.getActionProvider();
+		
 
 		return true;
 	}
@@ -127,10 +128,18 @@ public class HomeActivity extends SherlockFragmentActivity {
 	public boolean onOptionsMenuSelected(MenuItem item) {
 		// Handle cases depending on the menu item's id.
 		switch (item.getItemId()) {
-
-		default:
-			return super.onOptionsItemSelected(item);
+			case 0:
+				// Search function.
+				break;
+			case 1:
+				shareEmail();
+				break;
+			case 2:
+				// Facebook
+				break;
 		}
+		
+		return super.onOptionsItemSelected(item);
 	}
 
 	// Call to update the share intent used if UI changes causes changes to
@@ -168,7 +177,7 @@ public class HomeActivity extends SherlockFragmentActivity {
 		}
 	}
 
-	public void shareEmail(View view) {
+	public void shareEmail() {
 		Intent emailIntent = new Intent(Intent.ACTION_SEND);
 		emailIntent.setType("message/rfc822");
 		emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "" }); // Blank

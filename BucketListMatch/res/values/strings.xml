@@ -22,6 +22,11 @@
         <item>MATCH</item>
         <item>PROFILE</item>
     </string-array>
+    <string-array name="action_share">
+        <item>Search</item>
+        <item>Email</item>
+        <item>Facebook</item>
+    </string-array>
     <string-array name="country_list">
         <item> Aruba </item>
         <item> Afghanistan </item>
