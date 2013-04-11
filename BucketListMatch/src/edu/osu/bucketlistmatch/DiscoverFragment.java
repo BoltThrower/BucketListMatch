@@ -33,7 +33,7 @@ public class DiscoverFragment extends SherlockListFragment {
 			Bundle savedInstanceState) {
 		
 		// Gets all bucket lists and display.
-		JSONArray bucketListItems = DB.getAllBucketListBook();
+		JSONArray bucketListItems = DB.getPublicDreamBooks();
 
 		BucketListAdapter adapter = new BucketListAdapter(getActivity(),
 				bucketListItems);

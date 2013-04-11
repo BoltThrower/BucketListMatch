@@ -31,7 +31,7 @@ public class ScrapbookFragment extends SherlockListFragment {
 			Bundle savedInstanceState) {
 
 		// Gets all scrapbooks for the user and display.
-		JSONArray bucketListItems = DB.getAllScrapbook(LoginActivity.user, LoginActivity.pass);
+		JSONArray bucketListItems = DB.getAllScrapbooks(LoginActivity.user, LoginActivity.pass);
 
 		BucketListAdapter adapter = new BucketListAdapter(getActivity(),
 				bucketListItems);

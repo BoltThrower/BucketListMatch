@@ -197,12 +197,12 @@ public class DB {
 	 * 
 	 * @return
 	 */
-	public static JSONArray getAllBucketListBook() {
+	public static JSONArray getPublicDreamBooks() {
 		JSONArray result = null;
 
 		try {
 			parser = new JSONParser(URL_main
-					+ "dreambook/fetchAllBucketListBooks.php");
+					+ "dreambook/fetchAllDreamBooks.php");
 			result = parser.getJSONArray();
 		} catch (JSONException e) {
 			Log.e("JSONParser Error.",
@@ -222,11 +222,11 @@ public class DB {
 		return -1;
 	}
 
-	public static JSONArray getAllScrapbook(String username, String password) {
+	public static JSONArray getAllScrapbooks(String username, String password) {
 		JSONArray result = null;
 
 		try {
-			parser = new JSONParser(URL_main + "dreambook/fetchScrapbooks.php");
+			parser = new JSONParser(URL_main + "dreambook/fetchScrapbooks.php?u=" + Helper.parseForHTTP(username) + "&p=" + Helper.parseForHTTP(password));
 			result = parser.getJSONArray();
 		} catch (JSONException e) {
 			Log.e("JSONParser Error.",
@@ -236,6 +236,20 @@ public class DB {
 		return result;
 	}
 
+	public static JSONArray getAllBucketListBooks(String username, String password) {
+		JSONArray result = null;
+
+		try {
+			parser = new JSONParser(URL_main + "dreambook/fetchBucketListBooks.php?u=" + Helper.parseForHTTP(username) + "&p=" + Helper.parseForHTTP(password));
+			result = parser.getJSONArray();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchScrapbooks.");
+		}
+
+		return result;
+	}
+	
 	static int moveToScrapbook(String username, String password, String bookName) {
 		return -1;
 	}
