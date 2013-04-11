@@ -1,5 +1,6 @@
 package edu.osu.bucketlistmatch;
 
+import edu.osu.database.DB;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -60,43 +61,39 @@ public class SignUpActivity extends Activity {
 		// Enter code to make sure that the username is valid, does not already exist, etc.
 		
 		// Code that makes sure that both of the passwords entered is correct.
-		EditText username, password1, password2, firstName, lastName;
-		Spinner dobMonthsSpinner, dobDaysSpinner, dobYearsSpinner, countriesSpinner;
-		String user, pass1, pass2, first, last, dobMonth, dobDay, dobYear, dob, country;
+		EditText username, password1, password2, firstName, lastName, dobText;
+		String user, pass1, pass2, first, last, dob;
 		
 		username = (EditText)findViewById(R.id.usernameRegisterTextField); 
 		password1 = (EditText)findViewById(R.id.password1TextField);
 		password2 = (EditText)findViewById(R.id.password2TextField);
 		firstName = (EditText)findViewById(R.id.firstNameText);
 		lastName = (EditText)findViewById(R.id.lastNameText);
+		//dobText = (EditText)findViewById(R.id.dobSignUp);
 		
-		dobMonthsSpinner = (Spinner)findViewById(R.id.dobMonth);
-		dobDaysSpinner = (Spinner)findViewById(R.id.dobDay);
-		dobYearsSpinner = (Spinner)findViewById(R.id.dobYear);	
-		countriesSpinner = (Spinner)findViewById(R.id.countrySignUp);
 		
 		user = username.getText().toString().trim(); 
 		pass1 = password1.getText().toString().trim(); 
 		pass2 = password2.getText().toString().trim(); 
 		first = firstName.getText().toString().trim(); 
 		last = lastName.getText().toString().trim(); 
-
-		dobMonth = dobMonthsSpinner.getSelectedItem().toString();
-		dobDay = dobDaysSpinner.getSelectedItem().toString();
-		dobYear = dobYearsSpinner.getSelectedItem().toString();
-		dob = dobMonth + "/" + dobDay + "/" + dobYear;
-		country = countriesSpinner.getSelectedItem().toString();
+		//dob = dobText.getText().toString().trim();
+		
+//		String[] userInfo = {user, pass1, first, last, dob, country, email};
+		String[] userInfo = {user, pass1, first, last, "1/1/1990", "United States", "example@domain.com"};
 		
 		if(!pass1.equals(pass2))
 		{
 			Toast.makeText(getApplicationContext(), "The passwords that were entered do not match.  Please try again.", Toast.LENGTH_SHORT).show();
 		}
 		
-		else if(user.equals("") || pass1.equals("") || pass2.equals("") || first.equals("") || last.equals("") || dobMonth.equals("") || dobDay.equals("") || dobYear.equals("") || country.equals(""))
+		else if(user.equals("") || pass1.equals("") || pass2.equals("") || first.equals("") || last.equals(""))
 		{
 			Toast.makeText(getApplicationContext(), "Please enter all of the appropriate information.", Toast.LENGTH_SHORT).show();
 		}
-		
+		else if (DB.addUser(userInfo) != 0) {
+			Toast.makeText(getApplicationContext(), "Could not sign up. Please try again.", Toast.LENGTH_SHORT).show();
+		}
 		else
 		{
 			// Add new user to the database, log the user in, and send the user to the Home Screen Activity.

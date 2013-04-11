@@ -44,8 +44,9 @@ public class DB {
 
 		JSONArray array = null;
 		try {
-			parser = new JSONParser(URL_main + "user/validateUser.php?u=" + username
-					+ "&p=" + password);
+			parser = new JSONParser(URL_main + "user/validateUser.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password));
 			array = parser.getJSONArray();
 		} catch (JSONException e) {
 			Log.e("JSONParser Error.",
@@ -77,8 +78,10 @@ public class DB {
 		JSONObject result = null;
 		if (validateUser(username, password) == 0) {
 			try {
-				parser = new JSONParser(URL_main + "user/fetchProfileDetails.php?u="
-						+ username + "&p=" + password);
+				parser = new JSONParser(URL_main
+						+ "user/fetchProfileDetails.php?u="
+						+ Helper.parseForHTTP(username) + "&p="
+						+ Helper.parseForHTTP(password));
 				JSONArray tmp = parser.getJSONArray();
 				result = tmp.getJSONObject(0);
 			} catch (JSONException e) {
@@ -93,6 +96,22 @@ public class DB {
 
 		return result;
 
+	}
+
+	public static JSONArray match(String username, String password) {
+		JSONArray result = null;
+
+		try {
+			parser = new JSONParser(URL_main + "search_algorithms/match.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password));
+			result = parser.getJSONArray();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchBucketListBooks.");
+		}
+
+		return result;
 	}
 
 	// UPDATE METHODS
@@ -112,7 +131,24 @@ public class DB {
 	 *         depending on the resulting error.
 	 */
 	public static int addUser(String user[]) {
-		return -1;
+
+		try {
+			parser = new JSONParser(URL_main + "user/addUser.php?u="
+					+ Helper.parseForHTTP(user[0]) + "&p="
+					+ Helper.parseForHTTP(user[1]) + "&fn="
+					+ Helper.parseForHTTP(user[2]) + "&ln="
+					+ Helper.parseForHTTP(user[3]) + "&db="
+					+ Helper.parseForHTTP(user[4]) + "&co="
+					+ Helper.parseForHTTP(user[5]) + "&e="
+					+ Helper.parseForHTTP(user[6]));
+			JSONArray tmp = parser.getJSONArray();
+			if (tmp.length() != 0) return 1;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	/**
@@ -190,8 +226,7 @@ public class DB {
 		JSONArray result = null;
 
 		try {
-			parser = new JSONParser(URL_main
-					+ "dreambook/fetchScrapbooks.php");
+			parser = new JSONParser(URL_main + "dreambook/fetchScrapbooks.php");
 			result = parser.getJSONArray();
 		} catch (JSONException e) {
 			Log.e("JSONParser Error.",
@@ -200,7 +235,7 @@ public class DB {
 
 		return result;
 	}
-	
+
 	static int moveToScrapbook(String username, String password, String bookName) {
 		return -1;
 	}
@@ -214,12 +249,10 @@ public class DB {
 			String[] chapterInfo) {
 		return -1;
 	}
-	
+
 	static JSONArray getAllChapters(String bookName) {
 		JSONArray result = null;
-		
-		
-		
+
 		return result;
 	}
 

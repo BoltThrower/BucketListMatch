@@ -113,12 +113,10 @@ public class ProfileFragment extends SherlockFragment {
 	 */
 	private void setDescription(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.descriptionText);
-		try {
-			String description = profileJSON.getString("Description");
+		if (profileJSON.isNull("Description")) text.setText("");
+		else {
+			String description = profileJSON.optString("Description");
 			text.setText(description);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -192,12 +190,10 @@ public class ProfileFragment extends SherlockFragment {
 	 */
 	private void setPhone(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.phoneText);
-		try {
-			String phone = profileJSON.getString("Phone");
+		if (profileJSON.isNull("Phone")) text.setText("");
+		else {
+			String phone = profileJSON.optString("Phone");
 			text.setText(phone);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -211,12 +207,10 @@ public class ProfileFragment extends SherlockFragment {
 	 */
 	private void setCity(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.cityText);
-		try {
-			String city = profileJSON.getString("City");
+		if (profileJSON.isNull("City")) text.setText("");
+		else {
+			String city = profileJSON.optString("City");
 			text.setText(city);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -230,12 +224,10 @@ public class ProfileFragment extends SherlockFragment {
 	 */
 	private void setState(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.stateText);
-		try {
-			String state = profileJSON.getString("State");
+		if (profileJSON.isNull("State")) text.setText("");
+		else {
+			String state = profileJSON.optString("State");
 			text.setText(state);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -268,12 +260,10 @@ public class ProfileFragment extends SherlockFragment {
 	 */
 	private void setZip(View view, JSONObject profileJSON) {
 		TextView text = (TextView) view.findViewById(R.id.zipText);
-		try {
-			String zip = profileJSON.getString("ZipCode");
+		if (profileJSON.isNull("ZipCode")) text.setText("");
+		else {
+			String zip = profileJSON.optString("ZipCode");
 			text.setText(zip);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 }
