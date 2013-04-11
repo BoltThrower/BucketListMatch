@@ -99,6 +99,10 @@ public class SignUpActivity extends Activity {
 			// Add new user to the database, log the user in, and send the user to the Home Screen Activity.
 			Intent intent = new Intent(this, HomeActivity.class);
 			startActivity(intent);
+			
+			// Save username and password to loginActivity.
+			LoginActivity.user = user;
+			LoginActivity.pass = pass1;
 		}
 	}
 	
