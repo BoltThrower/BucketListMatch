@@ -113,12 +113,11 @@ public class HomeActivity extends SherlockFragmentActivity {
 		return true;
 	}
 
-	public boolean onOptionsMenuSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle cases depending on the menu item's id.
 		switch (item.getItemId()) {
 		case R.id.action_search:
-			startActivity(new Intent(this, SplashScreenActivity.class));
-			return true;
+			break;
 		case R.id.action_share:
 			shareEmail();
 			return true;
