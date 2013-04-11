@@ -31,25 +31,21 @@ public class DiscoverFragment extends SherlockListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.list_layout, container, false);
+		
+		// Gets all bucket lists and display.
+		JSONArray bucketListItems = DB.getAllBucketListBook();
 
-		populateListItems();
+		BucketListAdapter adapter = new BucketListAdapter(getActivity(),
+				bucketListItems);
+		setListAdapter(adapter);
 
-		return view;
+		return inflater.inflate(R.layout.list_layout, container, false);
 	}
 
 	@Override
 	public void onStart() {
 		super.onStart();
 
-	}
-
-	private void populateListItems() {
-		JSONArray bucketListItems = DB.getAllBucketListBook();
-		
-		BucketListAdapter adapter = new BucketListAdapter(
-				getActivity(), bucketListItems);
-		setListAdapter(adapter);
 	}
 
 	/**

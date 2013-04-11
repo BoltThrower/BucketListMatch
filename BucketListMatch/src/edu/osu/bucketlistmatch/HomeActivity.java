@@ -117,8 +117,8 @@ public class HomeActivity extends SherlockFragmentActivity {
 		// Handle cases depending on the menu item's id.
 		switch (item.getItemId()) {
 		case R.id.action_search:
-			// Search function.
-			break;
+			startActivity(new Intent(this, SplashScreenActivity.class));
+			return true;
 		case R.id.action_share:
 			shareEmail();
 			return true;

@@ -75,7 +75,7 @@ public class BucketListAdapter extends BaseAdapter {
 			location.setText(jsonObject.getString("Country") + " - " + jsonObject.getString("State"));
 			duration.setText(jsonObject.getString("Duration"));
 			creater.setText(jsonObject.getString("CreatedBy"));
-			cost.setText(jsonObject.getString("Cost"));
+			cost.setText("$" + jsonObject.getString("Cost"));
 
 		} catch (JSONException e) {
 			Log.e("JSON object error.",

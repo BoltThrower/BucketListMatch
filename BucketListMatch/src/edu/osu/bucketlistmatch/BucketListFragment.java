@@ -29,11 +29,10 @@ public class BucketListFragment extends SherlockListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.list_layout, container, false);
-
-		populateListItems();
-
-		return view;
+		
+		
+		
+		return inflater.inflate(R.layout.list_layout, container, false);
 	}
 
 	@Override
@@ -42,9 +41,6 @@ public class BucketListFragment extends SherlockListFragment {
 
 	}
 
-	private void populateListItems() {
-		
-	}
 
 	/**
 	 * Runs when a list item is clicked.

@@ -222,7 +222,7 @@ public class DB {
 		return -1;
 	}
 
-	static JSONArray getAllScrapbook(String username, String password) {
+	public static JSONArray getAllScrapbook(String username, String password) {
 		JSONArray result = null;
 
 		try {
