@@ -110,47 +110,21 @@ public class HomeActivity extends SherlockFragmentActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getSupportMenuInflater().inflate(R.menu.home, menu);
 
-		// Locate share item
-		// May not need this
-		MenuItem item = menu.findItem(R.id.action_share);
-
-		// Fetch and store ShareActionProvider
-		// May not need this
-		shareActionProvider = (ShareActionProvider) item.getActionProvider();
-		
-
 		return true;
 	}
 
-	/**
-	 * Called when a menu item is selected.
-	 * 
-	 * @param item
-	 * @return
-	 */
 	public boolean onOptionsMenuSelected(MenuItem item) {
 		// Handle cases depending on the menu item's id.
 		switch (item.getItemId()) {
-			case 0:
-				// Search function.
-				break;
-			case 1:
-				shareEmail();
-				break;
-			case 2:
-				// Facebook
-				break;
+		case R.id.action_search:
+			// Search function.
+			break;
+		case R.id.action_share:
+			shareEmail();
+			return true;
 		}
-		
-		return super.onOptionsItemSelected(item);
-	}
 
-	// Call to update the share intent used if UI changes causes changes to
-	// intent
-	private void setShareIntent(Intent shareIntent) {
-		if (shareActionProvider != null) {
-			shareActionProvider.setShareIntent(shareIntent);
-		}
+		return false;
 	}
 
 	/**
@@ -179,32 +153,26 @@ public class HomeActivity extends SherlockFragmentActivity {
 			break;
 		}
 	}
-	
-	public void search(){
-		/*
-		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-		alert.setTitle("Title");
-		alert.setMessage("Message");
-		
-		// Set an EditText view to get user input 
-		final EditText input = new EditText(this);
-		alert.setView(input);
-		
-		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-		public void onClick(DialogInterface dialog, int whichButton) {
-		  String value = input.getText();
-		  // Submit the search term to the database.
-		  }
-		});
-		
-		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-		  public void onClick(DialogInterface dialog, int whichButton) {
-		    // Canceled.
-		  }
-		});
-		
-		alert.show();
+	public void search() {
+		/*
+		 * AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		 * 
+		 * alert.setTitle("Title"); alert.setMessage("Message");
+		 * 
+		 * // Set an EditText view to get user input final EditText input = new
+		 * EditText(this); alert.setView(input);
+		 * 
+		 * alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		 * public void onClick(DialogInterface dialog, int whichButton) { String
+		 * value = input.getText(); // Submit the search term to the database. }
+		 * });
+		 * 
+		 * alert.setNegativeButton("Cancel", new
+		 * DialogInterface.OnClickListener() { public void
+		 * onClick(DialogInterface dialog, int whichButton) { // Canceled. } });
+		 * 
+		 * alert.show();
 		 */
 	}
 
