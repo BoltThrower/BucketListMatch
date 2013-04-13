@@ -147,7 +147,11 @@ public class DB {
 
 		return result;
 	}
-
+	
+	public static JSONArray getChapters(String username, String password, String dreambookName) {
+		JSONArray result = null;
+		return result;
+	}
 	public static JSONArray match(String username, String password) {
 		JSONArray result = null;
 
