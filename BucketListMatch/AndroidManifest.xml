@@ -54,6 +54,10 @@
             android:name="edu.osu.bucketlistmatch.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name="edu.osu.bucketlistmatch.SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
     </application>
 
 </manifest>

@@ -110,6 +110,7 @@ public class HomeActivity extends SherlockFragmentActivity {
 		// Handle cases depending on the menu item's id.
 		switch (item.getItemId()) {
 		case R.id.action_search:
+			startActivity(new Intent(this, SearchActivity.class));
 			break;
 		case R.id.action_share:
 			shareEmail();
