@@ -461,119 +461,649 @@ public class DB {
 	// TODO
 	public static int addChapterToBook(String username, String password,
 			String bookName, String chapterName, String chapterCreator) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "chapter/addToBook.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&n="
+					+ Helper.parseForHTTP(bookName) + "&ch="
+					+ Helper.parseForHTTP(chapterName) + "&chc="
+					+ Helper.parseForHTTP(chapterCreator));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int editChapterInfo(int type, String username,
 			String password, String chapterName, String info) {
-		return -1;
+		try {
+			username = Helper.parseForHTTP(username);
+			password = Helper.parseForHTTP(password);
+			chapterName = Helper.parseForHTTP(chapterName);
+			info = Helper.parseForHTTP(info);
+			switch(type) {
+			case Enum.A_START_DATE:
+				parser = new JSONParser(URL_main + "chapter/editStartDate.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName +
+						"&sd=" + info);
+				break;
+			case Enum.A_DURATION:
+				parser = new JSONParser(URL_main + "chapter/editDuration.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName +
+						"&cd=" + info);
+				break;
+			case Enum.A_COST:
+				parser = new JSONParser(URL_main + "chapter/editCost.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName +
+						"&m=" + info);
+				break;
+			case Enum.A_URL:
+				parser = new JSONParser(URL_main + "chapter/editURL.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName +
+						"&url=" + info);
+				break;
+			case Enum.A_ROM:
+				parser = new JSONParser(URL_main + "chapter/editROM.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName +
+						"&rom=" + info);	
+				break;
+			case Enum.A_DESCRIPTION:
+				parser = new JSONParser(URL_main + "chapter/editDescription.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName +
+						"&des=" + info);	
+				break;
+			default:
+				return 3;
+			
+			}
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int addMediaToChapter(String username, String password,
 			String bookName, String chapterName, String[] mediaInfo) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "chapter/media/.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&ch="
+					+ Helper.parseForHTTP(chapterName) + "&mn="
+					+ Helper.parseForHTTP(mediaInfo[0]) + "&mf="
+					+ Helper.parseForHTTP(mediaInfo[1]) + "&mt="
+					+ Helper.parseForHTTP(mediaInfo[2]) + "&des="
+					+ Helper.parseForHTTP(mediaInfo[3]));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int addTotemToChapter(String username, String password,
 			String bookName, String chapterName, String[] totemInfo) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "chapter/totem/addTotem.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&ch="
+					+ Helper.parseForHTTP(chapterName) + "&tn="
+					+ Helper.parseForHTTP(totemInfo[0]) + "&ti="
+					+ Helper.parseForHTTP(totemInfo[1]) + "&des="
+					+ Helper.parseForHTTP(totemInfo[2]));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int addChallengeToChapter(String username, String password,
 			String bookName, String chapterName, String[] challengeInfo) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "chapter/challenge/addChallenge.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&ch="
+					+ Helper.parseForHTTP(chapterName) + "&t="
+					+ Helper.parseForHTTP(challengeInfo[0]) + "&des="
+					+ Helper.parseForHTTP(challengeInfo[1]));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int editMediaInfo(int type, String username, String password,
-			String chapterName, String info) {
-		return -1;
+			String chapterName, String mediaName, String info) {
+		username = Helper.parseForHTTP(username);
+		password = Helper.parseForHTTP(password);
+		chapterName = Helper.parseForHTTP(chapterName);
+		mediaName = Helper.parseForHTTP(mediaName);
+		
+		try {
+			switch(type) {
+			case Enum.D_NAME:
+				parser = new JSONParser(URL_main + "chapter/media/editName.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName + "&mn=" +
+						mediaName + "&nn=" + info);
+				break;
+			case Enum.D_FILE:
+				parser = new JSONParser(URL_main + "chapter/media/editFile.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName + "&mn=" +
+						mediaName + "&mf=" + info);
+				break;
+			case Enum.D_TYPE:
+				parser = new JSONParser(URL_main + "chapter/media/editType.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName + "&mn=" +
+						mediaName + "&mt=" + info);
+				break;
+			case Enum.D_DESCRIPTION:
+				parser = new JSONParser(URL_main + "chapter/media/editDescription.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName + "&mn=" +
+						mediaName + "&des=" + info);
+				break;
+			default:
+				return 3;
+			}
+			
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int editTotemInfo(int type, String username, String password,
-			String chapterName, String info) {
-		return -1;
+			String chapterName, String totemName, String info) {
+		username = Helper.parseForHTTP(username);
+		password = Helper.parseForHTTP(password);
+		chapterName = Helper.parseForHTTP(chapterName);
+		totemName = Helper.parseForHTTP(totemName);
+		
+		try {
+			switch(type) {
+			case Enum.E_PHOTO:
+				parser = new JSONParser(URL_main + "chapter/totem/editPhoto.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName + "&tn=" +
+						totemName + "&ti=" + info);
+				break;
+			case Enum.E_DESCRIPTION:
+				parser = new JSONParser(URL_main + "chapter/media/editDescription.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName + "&tn=" +
+						totemName + "&des=" + info);
+				break;
+			default:
+				return 3;
+			}
+			
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int editChallengeInfo(int type, String username,
-			String password, String chapterName, String info) {
-		return -1;
+			String password, String chapterName, String title, String info) {
+		username = Helper.parseForHTTP(username);
+		password = Helper.parseForHTTP(password);
+		chapterName = Helper.parseForHTTP(chapterName);
+		title = Helper.parseForHTTP(title);
+		
+		try {
+			switch(type) {
+			case Enum.F_TITLE:
+				parser = new JSONParser(URL_main + "chapter/challenge/editTitle.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName + "&t=" +
+						title + "&nt=" + info);
+				break;
+			case Enum.F_DESCRIPTION:
+				parser = new JSONParser(URL_main + "chapter/challenge/editDescription.php?u=" +
+						username + "&p=" + password + "&ch=" + chapterName + "&t=" +
+						title + "&des=" + info);
+				break;
+			default:
+				return 3;
+			}
+			
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int removeMediaFromChapter(String username, String password,
 			String chapterName, String mediaName) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "chapter/media/deleteMedia.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&ch="
+					+ Helper.parseForHTTP(chapterName) + "&mn="
+					+ Helper.parseForHTTP(mediaName));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int removeTotemFromChapter(String username, String password,
-			String chapterName, String TotemName) {
-		return -1;
+			String chapterName, String totemName) {
+		try {
+			parser = new JSONParser(URL_main + "chapter/totem/deleteTotem.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&ch="
+					+ Helper.parseForHTTP(chapterName) + "&tn="
+					+ Helper.parseForHTTP(totemName));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int removeChallengeFromChapter(String username,
 			String password, String chapterName, String challengeName) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "chapter/challenge/deleteChallenge.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&ch="
+					+ Helper.parseForHTTP(chapterName) + "&t="
+					+ Helper.parseForHTTP(challengeName));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int removeChapterFromBook(String username, String password,
-			String bookName, String chapterName) {
-		return -1;
+			String bookName, String chapterName, String chapterCreator) {
+		try {
+			parser = new JSONParser(URL_main + "chapter/removeFromBook.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&n="
+					+ Helper.parseForHTTP(bookName) + "&ch="
+					+ Helper.parseForHTTP(chapterName) + "&chc="
+					+ Helper.parseForHTTP(chapterCreator));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int deleteChapter(String username, String password,
 			String chapterName) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "chapter/deleteChapter.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&ch="
+					+ Helper.parseForHTTP(chapterName));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int addDeal(String username, String password,
 			String[] dealInfo) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "deal/addDeal.php?mu="
+					+ Helper.parseForHTTP(username) + "&mp="
+					+ Helper.parseForHTTP(password) + "&n="
+					+ Helper.parseForHTTP(dealInfo[0]) + "&i="
+					+ Helper.parseForHTTP(dealInfo[1]) + "&des="
+					+ Helper.parseForHTTP(dealInfo[2]) + "&da="
+					+ Helper.parseForHTTP(dealInfo[3]) + "&fp="
+					+ Helper.parseForHTTP(dealInfo[4]) + "&ed="
+					+ Helper.parseForHTTP(dealInfo[5]) + "&max="
+					+ Helper.parseForHTTP(dealInfo[6]) + "&min="
+					+ Helper.parseForHTTP(dealInfo[7]) + "&st="
+					+ Helper.parseForHTTP(dealInfo[8] + "&c=")
+					+ Helper.parseForHTTP(dealInfo[9] + "&s=")
+					+ Helper.parseForHTTP(dealInfo[10]) + "&co=" 
+					+ Helper.parseForHTTP(dealInfo[11]) + "&z="
+					+ Helper.parseForHTTP(dealInfo[12]));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int editDealInfo(int type, String username, String password,
 			String dealName, String info) {
-		return -1;
+		username = Helper.parseForHTTP(username);
+		password = Helper.parseForHTTP(password);
+		dealName = Helper.parseForHTTP(dealName);
+		
+		try {
+			switch(type) {
+			case Enum.G_IMAGE:
+				parser = new JSONParser(URL_main + "deal/editImage.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&i=" + info);
+				break;
+			case Enum.G_DESCRIPTION:
+				parser = new JSONParser(URL_main + "deal/editDescirption.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&des=" + info);
+				break;
+			case Enum.G_DISCOUNT_AMOUNT:
+				parser = new JSONParser(URL_main + "deal/editDiscountAmount.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&da=" + info);
+				break;
+			case Enum.G_FINAL_PRICE:
+				parser = new JSONParser(URL_main + "deal/editFinalPrice.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&fp=" + info);
+				break;
+			case Enum.G_EXPIRATION_DATE:
+				parser = new JSONParser(URL_main + "deal/editExpirationDate.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&ed=" + info);
+				break;
+			case Enum.G_MAX_QUANTITY:
+				parser = new JSONParser(URL_main + "deal/editMaxQuantity.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&max=" + info);
+				break;
+			case Enum.G_MIN_QUANTITY:
+				parser = new JSONParser(URL_main + "deal/editMinQuantity.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&min=" + info);
+				break;
+			case Enum.G_STREET:
+				parser = new JSONParser(URL_main + "deal/editStreet.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&st=" + info);
+				break;
+			case Enum.G_CITY:
+				parser = new JSONParser(URL_main + "deal/editCity.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&c=" + info);
+				break;
+			case Enum.G_STATE:
+				parser = new JSONParser(URL_main + "deal/editState.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&s=" + info);
+				break;
+			case Enum.G_COUNTRY:
+				parser = new JSONParser(URL_main + "deal/editCountry.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&co=" + info);
+				break;
+			case Enum.G_ZIP_CODE:
+				parser = new JSONParser(URL_main + "deal/editZipCode.php?mu=" +
+						username + "&mp=" + password + "&n=" + dealName +
+						"&z=" + info);
+				break;
+			default:
+				return 3;
+			}
+			
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int deleteDeal(String username, String password,
 			String dealName) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "deal/deleteDeal.php?mu="
+					+ Helper.parseForHTTP(username) + "&mp="
+					+ Helper.parseForHTTP(password) + "&n="
+					+ Helper.parseForHTTP(dealName));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int addMerchant(String[] merchantInfo) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "merchant/addMerchant.php?mu="
+					+ Helper.parseForHTTP(merchantInfo[0]) + "&mp="
+					+ Helper.parseForHTTP(merchantInfo[1]) + "&n="
+					+ Helper.parseForHTTP(merchantInfo[2]) + "&i="
+					+ Helper.parseForHTTP(merchantInfo[3]) + "&des="
+					+ Helper.parseForHTTP(merchantInfo[4]) + "&st="
+					+ Helper.parseForHTTP(merchantInfo[5]) + "&c="
+					+ Helper.parseForHTTP(merchantInfo[6]) + "&s="
+					+ Helper.parseForHTTP(merchantInfo[7]) + "&co="
+					+ Helper.parseForHTTP(merchantInfo[8]) + "&z="
+					+ Helper.parseForHTTP(merchantInfo[9]) + "&e="
+					+ Helper.parseForHTTP(merchantInfo[10]) + "&ph="
+					+ Helper.parseForHTTP(merchantInfo[11]) + "&t="
+					+ Helper.parseForHTTP(merchantInfo[12]) + "&d="
+					+ Helper.parseForHTTP(merchantInfo[13]) + "&h="
+					+ Helper.parseForHTTP(merchantInfo[14]) + "&res="
+					+ Helper.parseForHTTP(merchantInfo[15]) + "&del="
+					+ Helper.parseForHTTP(merchantInfo[16]) + "&tak="
+					+ Helper.parseForHTTP(merchantInfo[17]) + "&os="
+					+ Helper.parseForHTTP(merchantInfo[18]) + "&att="
+					+ Helper.parseForHTTP(merchantInfo[19]) + "&as="
+					+ Helper.parseForHTTP(merchantInfo[20]) + "&url="
+					+ Helper.parseForHTTP(merchantInfo[21]));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int addMerchantReview(String username, String password,
 			String merchantName, String description, int rating) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "merchant/review/addReview.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&mer="
+					+ Helper.parseForHTTP(merchantName) + "&des="
+					+ Helper.parseForHTTP(description) + "&rat="
+					+ Helper.parseForHTTP(String.valueOf(rating)));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int editMerchantInfo(int type, String username,
 			String password, String info) {
-		return -1;
+		username = Helper.parseForHTTP(username);
+		password = Helper.parseForHTTP(password);
+		
+		try {
+			switch(type) {
+			case Enum.H_NAME:
+				parser = new JSONParser(URL_main + "merchant/changeName.php?mu=" +
+						username + "&mp=" + password + "&n=" + info);
+				break;
+			case Enum.H_PROFILE_PICTURE:
+				parser = new JSONParser(URL_main + "merchant/changeProfilePicture.php?mu=" +
+						username + "&mp=" + password + "&i=" + info);
+				break;
+			case Enum.H_DESCRIPTION:
+				parser = new JSONParser(URL_main + "merchant/changeDesciption.php?mu=" +
+						username + "&mp=" + password + "&des=" + info);
+				break;
+			case Enum.H_STREET:
+				parser = new JSONParser(URL_main + "merchant/changeStreet.php?mu=" +
+						username + "&mp=" + password + "&st=" + info);
+				break;
+			case Enum.H_CITY:
+				parser = new JSONParser(URL_main + "merchant/changeCity.php?mu=" +
+						username + "&mp=" + password + "&c=" + info);
+				break;
+			case Enum.H_STATE:
+				parser = new JSONParser(URL_main + "merchant/changeState.php?mu=" +
+						username + "&mp=" + password + "&s=" + info);
+				break;
+			case Enum.H_COUNTRY:
+				parser = new JSONParser(URL_main + "merchant/changeCountry.php?mu=" +
+						username + "&mp=" + password + "&co=" + info);
+				break;
+			case Enum.H_ZIP_CODE:
+				parser = new JSONParser(URL_main + "merchant/changeZipCode.php?mu=" +
+						username + "&mp=" + password + "&z=" + info);
+				break;
+			case Enum.H_EMAIL:
+				parser = new JSONParser(URL_main + "merchant/changeEmail.php?mu=" +
+						username + "&mp=" + password + "&e=" + info);
+				break;
+			case Enum.H_PHONE:
+				parser = new JSONParser(URL_main + "merchant/changePhone.php?mu=" +
+						username + "&mp=" + password + "&ph=" + info);
+				break;
+			case Enum.H_MERCHANT_TYPE:
+				parser = new JSONParser(URL_main + "merchant/changeMerchantType.php?mu=" +
+						username + "&mp=" + password + "&t=" + info);
+				break;
+			case Enum.H_LONGER_DESCRIPTION:
+				parser = new JSONParser(URL_main + "merchant/changeLongerDescription.php?mu=" +
+						username + "&mp=" + password + "&ld=" + info);
+				break;
+			case Enum.H_HOURS:
+				parser = new JSONParser(URL_main + "merchant/changeHours.php?mu=" +
+						username + "&mp=" + password + "&h=" + info);
+				break;
+			case Enum.H_RESERVATIONS:
+				parser = new JSONParser(URL_main + "merchant/changeReservations.php?mu=" +
+						username + "&mp=" + password + "&res=" + info);
+				break;
+			case Enum.H_DELIVERY:
+				parser = new JSONParser(URL_main + "merchant/changeDelivery.php?mu=" +
+						username + "&mp=" + password + "&del=" + info);
+				break;
+			case Enum.H_TAKEOUT:
+				parser = new JSONParser(URL_main + "merchant/changeTakeout.php?mu=" +
+						username + "&mp=" + password + "&tak=" + info);
+				break;
+			case Enum.H_OUTDOOR_SEATING:
+				parser = new JSONParser(URL_main + "merchant/changeOutdoorSeating.php?mu=" +
+						username + "&mp=" + password + "&os=" + info);
+				break;
+			case Enum.H_ATTIRE:
+				parser = new JSONParser(URL_main + "merchant/changeAttire.php?mu=" +
+						username + "&mp=" + password + "&att=" + info);
+				break;
+			case Enum.H_ALCOHOL_SERVED:
+				parser = new JSONParser(URL_main + "merchant/changeAlcoholServed.php?mu=" +
+						username + "&mp=" + password + "&as=" + info);
+				break;
+			case Enum.H_URL:
+				parser = new JSONParser(URL_main + "merchant/changeURL.php?mu=" +
+						username + "&mp=" + password + "&url=" + info);
+				break;
+			default:
+				return 3;
+			}
+			
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// TODO
 	public static int deleteMerchant(String username, String password) {
-		return -1;
+		try {
+			parser = new JSONParser(URL_main + "merchant/deleteMerchant.php?mu="
+					+ Helper.parseForHTTP(username) + "&mp="
+					+ Helper.parseForHTTP(password));
+			if (parser.getJSONArray() == null)
+				return 2;
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in addUser.");
+			return 1;
+		}
+		return 0;
 	}
 
 	// HELPER METHODS
