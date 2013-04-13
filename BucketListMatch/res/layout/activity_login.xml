@@ -59,7 +59,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="54dp"
         android:background="@null"
-        android:onClick="forgetPassword"
+        android:onClick="onClick"
         android:text="@string/forgetpassword"
         android:textColor="#443790" />
 
@@ -70,7 +70,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:background="@null"
-        android:onClick="openSignUp"
+        android:onClick="onClick"
         android:text="@string/signup"
         android:textColor="#443790" />
 
