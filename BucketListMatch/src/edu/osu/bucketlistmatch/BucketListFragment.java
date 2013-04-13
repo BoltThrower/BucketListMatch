@@ -4,6 +4,7 @@ import org.json.JSONArray;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,23 @@ public class BucketListFragment extends SherlockListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
-		
-		
+
+		// Gets all scrapbooks for the user and display.
+		JSONArray bucketListItems = DB.getAllBucketListBooks(
+				LoginActivity.user, LoginActivity.pass);
+
+		if (bucketListItems != null) {
+			if (bucketListItems.length() > 0) {
+				BucketListAdapter adapter = new BucketListAdapter(
+						getActivity(), bucketListItems);
+				setListAdapter(adapter);
+			} else {
+				Log.e("JSONArray", "JSONArray is empty.");
+			}
+		} else {
+			Log.e("JSONArray", "JSONArray is null.");
+		}
+
 		return inflater.inflate(R.layout.list_layout, container, false);
 	}
 
@@ -40,7 +55,6 @@ public class BucketListFragment extends SherlockListFragment {
 		super.onStart();
 
 	}
-
 
 	/**
 	 * Runs when a list item is clicked.
