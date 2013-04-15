@@ -26,7 +26,7 @@ public class LoginActivity extends SherlockActivity {
 
 	EditText username, password;
 	Button signin;
-	static String user, pass;
+	static String user, pass, selectedItem;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,4 +86,8 @@ public class LoginActivity extends SherlockActivity {
 						.show();
 		}
 	};
+	
+	static void setSelectedItem(String item) {
+		selectedItem = item;
+	}
 }

@@ -61,11 +61,11 @@ public class ScrapbookFragment extends SherlockListFragment {
 	 */
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		// Open details fragment
-		showDetails();
-	}
+		// Save selected item name.
+		LoginActivity
+				.setSelectedItem((String) l.getAdapter().getItem(position));
 
-	public void showDetails() {
+		// Open chapter fragment for the selected bucket list item.
 		FragmentTransaction trans = getFragmentManager().beginTransaction();
 
 		trans.replace(R.id.fragment_container, new ChaptersFragment());

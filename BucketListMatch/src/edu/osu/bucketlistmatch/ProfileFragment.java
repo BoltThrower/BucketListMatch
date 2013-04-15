@@ -23,8 +23,8 @@ import edu.osu.database.DB;
  */
 public class ProfileFragment extends SherlockFragment {
 
-	private String username = LoginActivity.user;
-	private String password = LoginActivity.pass;
+	private String user = LoginActivity.user;
+	private String pass = LoginActivity.pass;
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -45,7 +45,7 @@ public class ProfileFragment extends SherlockFragment {
 		View view = inflater.inflate(R.layout.profile_layout, container, false);
 
 		// Fetch user's profile
-		JSONObject profileJSON = DB.fetchProfileDetails(username, password);
+		JSONObject profileJSON = DB.fetchProfileDetails(this.user, this.pass);
 
 		// Set user's profile
 		setProfilePic(view, profileJSON);

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 /**
  * This activity provides navigation between views Home, Discover, Bucket List,
@@ -23,8 +24,6 @@ import android.widget.Toast;
  * 
  */
 public class HomeActivity extends SherlockFragmentActivity {
-
-	private ShareActionProvider shareActionProvider;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +128,12 @@ public class HomeActivity extends SherlockFragmentActivity {
 	public void onClick(View view) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		switch (view.getId()) {
+		case R.id.editProfile:
+			ViewSwitcher switcher = (ViewSwitcher) findViewById(R.id.emailViewSwitcher);
+			switcher.showNext();
+			
+			
+			break;
 		case R.id.privacy:
 			ft.replace(R.id.fragment_container, new PrivacyFragment());
 			ft.addToBackStack(null);

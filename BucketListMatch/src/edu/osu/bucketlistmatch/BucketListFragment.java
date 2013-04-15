@@ -31,7 +31,7 @@ public class BucketListFragment extends SherlockListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// Gets all scrapbooks for the user and display.
+		// Gets all bucket lists for the user and display.
 		JSONArray bucketListItems = DB.getAllBucketListBooks(
 				LoginActivity.user, LoginActivity.pass);
 
@@ -61,11 +61,11 @@ public class BucketListFragment extends SherlockListFragment {
 	 */
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		// Open details fragment
-		showDetails();
-	}
+		// Save selected item name.
+		LoginActivity
+				.setSelectedItem((String) l.getAdapter().getItem(position));
 
-	public void showDetails() {
+		// Open chapter fragment for the selected bucket list item.
 		FragmentTransaction trans = getFragmentManager().beginTransaction();
 
 		trans.replace(R.id.fragment_container, new ChaptersFragment());

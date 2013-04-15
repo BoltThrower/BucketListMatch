@@ -18,7 +18,6 @@
         android:theme="@style/Theme.BucketList" >
         <activity
             android:name="edu.osu.bucketlistmatch.SplashScreenActivity"
-            android:label="@string/title_activity_splash_screen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.BucketList.NoActionBar" >
             <intent-filter>
@@ -40,23 +39,18 @@
         <activity
             android:name="edu.osu.bucketlistmatch.SignUpActivity"
             android:label="@string/title_activity_sign_up"
+            android:theme="@style/Theme.BucketList.NoActionBar"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="edu.osu.bucketlistmatch.Forget_password"
-            android:label="@string/title_activity_forget_password" >
-        </activity>
-        <activity
             android:name="edu.osu.bucketlistmatch.ForgetPasswordActivity"
-            android:label="@string/title_activity_forget_password" >
-        </activity>
-        <activity
-            android:name="edu.osu.bucketlistmatch.SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:label="@string/title_activity_forget_password"
+            android:theme="@style/Theme.BucketList.NoActionBar" >
         </activity>
         <activity
             android:name="edu.osu.bucketlistmatch.SearchActivity"
-            android:label="@string/title_activity_search" >
+            android:label="@string/title_activity_search"
+            android:theme="@style/Theme.BucketList.NoActionBar" >
         </activity>
     </application>
 

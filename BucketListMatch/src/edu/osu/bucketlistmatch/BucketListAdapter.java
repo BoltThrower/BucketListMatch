@@ -36,13 +36,20 @@ public class BucketListAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		return position;
+		String result = "";
+		try {
+			result = this.values.getJSONObject(position).getString("Name");
+		} catch (JSONException e) {
+			Log.e("JSONException", "Could not retrieve JSONObject from JSONArray.");
+		}
+		return result;
 	}
 
 	@Override
 	public long getItemId(int position) {
 		return position;
 	}
+	
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
