@@ -195,7 +195,10 @@ public class DB {
 	 *         depending on the resulting error.
 	 */
 	public static int addUser(String user[]) {
-
+		
+		if(!Helper.isValidUsername(user[0])) {
+			return 3;
+		}
 		try {
 			parser = new JSONParser(URL_main + "user/addUser.php?u="
 					+ Helper.parseForHTTP(user[0]) + "&p="
@@ -328,6 +331,9 @@ public class DB {
 	 */
 	public static int addBucketListBook(String username, String password,
 			String[] book, boolean privacy) {
+		if(!Helper.isValidUsername(username)) {
+			return 3;
+		}
 		String privacy_char;
 		if (privacy)
 			privacy_char = "Y";
@@ -452,6 +458,9 @@ public class DB {
 
 	public static int addChapter(String username, String password,
 			String bookName, String[] chapterInfo) {
+		if(!Helper.isValidUsername(username)) {
+			return 3;
+		}
 		try {
 			parser = new JSONParser(URL_main + "chapter/addChapter.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
@@ -476,6 +485,9 @@ public class DB {
 	// TODO
 	public static int addChapterToBook(String username, String password,
 			String bookName, String chapterName, String chapterCreator) {
+		if(!Helper.isValidUsername(username)) {
+			return 3;
+		}
 		try {
 			parser = new JSONParser(URL_main + "chapter/addToBook.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
@@ -549,6 +561,9 @@ public class DB {
 	// TODO
 	public static int addMediaToChapter(String username, String password,
 			String bookName, String chapterName, String[] mediaInfo) {
+		if(!Helper.isValidUsername(username)) {
+			return 3;
+		}
 		try {
 			parser = new JSONParser(URL_main + "chapter/media/.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
@@ -571,6 +586,9 @@ public class DB {
 	// TODO
 	public static int addTotemToChapter(String username, String password,
 			String bookName, String chapterName, String[] totemInfo) {
+		if(!Helper.isValidUsername(username)) {
+			return 3;
+		}
 		try {
 			parser = new JSONParser(URL_main + "chapter/totem/addTotem.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
@@ -592,7 +610,9 @@ public class DB {
 	// TODO
 	public static int addChallengeToChapter(String username, String password,
 			String bookName, String chapterName, String[] challengeInfo) {
-		
+		if(!Helper.isValidUsername(username)) {
+			return 3;
+		}
 		try {
 			parser = new JSONParser(URL_main + "chapter/challenge/addChallenge.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
@@ -820,6 +840,9 @@ public class DB {
 	// TODO
 	public static int addDeal(String username, String password,
 			String[] dealInfo) {
+		if(!Helper.isValidUsername(username)) {
+			return 3;
+		}
 		try {
 			parser = new JSONParser(URL_main + "deal/addDeal.php?mu="
 					+ Helper.parseForHTTP(username) + "&mp="
@@ -951,6 +974,9 @@ public class DB {
 	// TODO
 	public static int addMerchant(String[] merchantInfo) {
 		try {
+			if(!Helper.isValidUsername(merchantInfo[0])) {
+				return 3;
+			}
 			parser = new JSONParser(URL_main + "merchant/addMerchant.php?mu="
 					+ Helper.parseForHTTP(merchantInfo[0]) + "&mp="
 					+ Helper.parseForHTTP(merchantInfo[1]) + "&n="
@@ -987,6 +1013,9 @@ public class DB {
 	// TODO
 	public static int addMerchantReview(String username, String password,
 			String merchantName, String description, int rating) {
+		if(!Helper.isValidUsername(username)) {
+			return 3;
+		}
 		try {
 			parser = new JSONParser(URL_main + "merchant/review/addReview.php?u="
 					+ Helper.parseForHTTP(username) + "&p="

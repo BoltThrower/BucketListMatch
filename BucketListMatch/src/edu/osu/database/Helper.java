@@ -2,7 +2,7 @@ package edu.osu.database;
 
 public class Helper {
 
-	public boolean isValidUsername(String str) {
+	public static boolean isValidUsername(String str) {
 		
 		char c;
 		
