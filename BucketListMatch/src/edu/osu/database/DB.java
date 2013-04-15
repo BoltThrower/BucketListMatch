@@ -592,6 +592,7 @@ public class DB {
 	// TODO
 	public static int addChallengeToChapter(String username, String password,
 			String bookName, String chapterName, String[] challengeInfo) {
+		
 		try {
 			parser = new JSONParser(URL_main + "chapter/challenge/addChallenge.php?u="
 					+ Helper.parseForHTTP(username) + "&p="

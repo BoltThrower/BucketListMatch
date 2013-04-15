@@ -2,6 +2,19 @@ package edu.osu.database;
 
 public class Helper {
 
+	public boolean isValidUsername(String str) {
+		
+		char c;
+		
+		for (int i = 0; i < str.length(); i++) {
+			c = str.charAt(i);
+			if (!Character.isLetterOrDigit(c)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public static String parseForHTTP(String str) {
 		String result = "";
 
