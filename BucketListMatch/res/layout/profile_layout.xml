@@ -54,21 +54,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="5dp" >
+                android:layout_alignParentRight="true" >
 
                 <TextView
                     android:id="@+id/emailText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom" />
+                    android:layout_gravity="right" />
 
                 <EditText
                     android:id="@+id/emailEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="right"
                     android:ems="8" />
             </ViewSwitcher>
 
@@ -76,9 +74,8 @@
                 android:id="@+id/emailTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
                 android:text="Email"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -93,31 +90,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="5dp" >
+                android:layout_alignParentRight="true" >
 
                 <TextView
                     android:id="@+id/nameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right" />
 
                 <EditText
                     android:id="@+id/nameEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="8"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right"
+                    android:ems="8" />
             </ViewSwitcher>
 
             <TextView
                 android:id="@+id/nameTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
                 android:text="Name"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -132,31 +126,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="5dp" >
+                android:layout_alignParentRight="true" >
 
                 <TextView
                     android:id="@+id/dateOfBirthText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right" />
 
                 <EditText
                     android:id="@+id/dateOfBirthEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="8"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right"
+                    android:ems="8" />
             </ViewSwitcher>
 
             <TextView
                 android:id="@+id/dateOfBirthTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
                 android:text="Date of Birth"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -171,31 +162,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="5dp" >
+                android:layout_alignParentRight="true" >
 
                 <TextView
                     android:id="@+id/phoneText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right" />
 
                 <EditText
                     android:id="@+id/phoneEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="8"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right"
+                    android:ems="8" />
             </ViewSwitcher>
 
             <TextView
                 android:id="@+id/phoneTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
                 android:text="Phone"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -210,31 +198,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="5dp" >
+                android:layout_alignParentRight="true" >
 
                 <TextView
                     android:id="@+id/cityText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right" />
 
                 <EditText
                     android:id="@+id/cityEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="8"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right"
+                    android:ems="8" />
             </ViewSwitcher>
 
             <TextView
                 android:id="@+id/cityTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
                 android:text="City"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -249,31 +234,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="5dp" >
+                android:layout_alignParentRight="true" >
 
                 <TextView
                     android:id="@+id/stateText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right" />
 
                 <EditText
                     android:id="@+id/stateEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="8"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right"
+                    android:ems="8" />
             </ViewSwitcher>
 
             <TextView
                 android:id="@+id/stateTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
                 android:text="State"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -288,31 +270,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="5dp" >
+                android:layout_alignParentRight="true" >
 
                 <TextView
                     android:id="@+id/countryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right" />
 
                 <EditText
                     android:id="@+id/countryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="8"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right"
+                    android:ems="8" />
             </ViewSwitcher>
 
             <TextView
                 android:id="@+id/countryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
                 android:text="Country"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -327,31 +306,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="5dp" >
+                android:layout_alignParentRight="true" >
 
                 <TextView
                     android:id="@+id/zipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right" />
 
                 <EditText
                     android:id="@+id/zipEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="8"
-                    android:gravity="right|bottom" />
+                    android:layout_gravity="right"
+                    android:ems="8" />
             </ViewSwitcher>
 
             <TextView
                 android:id="@+id/zipTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
                 android:text="Zip Code"
                 android:textStyle="bold" />
         </RelativeLayout>
