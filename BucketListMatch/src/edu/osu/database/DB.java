@@ -11,7 +11,7 @@ import android.util.Log;
  * This class is the handler for database communications to the application. All
  * queries and updates to the database are organized by this class.
  * 
- * @author Everly Okorji
+ * @author Everly Okorji, Mike Sustarsic
  * 
  */
 public class DB {
@@ -96,6 +96,7 @@ public class DB {
 
 	/**
 	 * 
+	 * 
 	 * @return
 	 */
 	public static JSONArray getPublicDreamBooks() {
@@ -176,6 +177,22 @@ public class DB {
 					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchBucketListBooks.");
 		}
 
+		return result;
+	}
+	
+	public static JSONArray forgotPassword(String username, String email) {
+		JSONArray result = null;
+		
+		try {
+			parser = new JSONParser(URL_main + "user/forgotPassword.php?u="
+					+ Helper.parseForHTTP(username) + "&e="
+					+ Helper.parseForHTTP(email));
+			result = parser.getJSONArray();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchBucketListBooks.");
+		}
+		
 		return result;
 	}
 
