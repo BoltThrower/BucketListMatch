@@ -164,6 +164,39 @@ public class DB {
 		}
 		return result;
 	}
+	
+	public static JSONArray getCost(String username, String password, String dreambookName) {
+		JSONArray result = null;
+		try {
+			parser = new JSONParser(URL_main
+					+ "dreambook/getCost.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&n="
+					+ Helper.parseForHTTP(dreambookName));
+			result = parser.getJSONArray();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchScrapbooks.");
+		}
+		return result;
+	}
+	
+	public static JSONArray getDuration(String username, String password, String dreambookName) {
+		JSONArray result = null;
+		try {
+			parser = new JSONParser(URL_main
+					+ "dreambook/getDuration.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&n="
+					+ Helper.parseForHTTP(dreambookName));
+			result = parser.getJSONArray();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchScrapbooks.");
+		}
+		return result;
+	}
+	
 	public static JSONArray match(String username, String password) {
 		JSONArray result = null;
 
