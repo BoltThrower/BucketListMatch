@@ -79,7 +79,6 @@ public class ProfileFragment extends SherlockFragment {
 	 */
 	private void setProfilePic(View view, JSONObject profileJSON) {
 		ImageView img = (ImageView) view.findViewById(R.id.profileImage);
-
 		img.setImageResource(R.drawable.ic_launcher);
 		img.setContentDescription("User profile picture");
 	}
