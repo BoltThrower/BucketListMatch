@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/blmlogo_splashscreen" />
+        android:src="@drawable/blmlogo" />
 
     <EditText
         android:id="@+id/username"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="15dp"
         android:background="@null"
         android:onClick="onClick"
         android:text="@string/forgetpassword"
@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:background="@null"
         android:onClick="onClick"
         android:text="@string/signup"
