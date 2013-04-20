@@ -79,7 +79,19 @@ public class ProfileFragment extends SherlockFragment {
 	 */
 	private void setProfilePic(View view, JSONObject profileJSON) {
 		ImageView img = (ImageView) view.findViewById(R.id.profileImage);
-		img.setImageResource(R.drawable.ic_launcher);
+		//img.setImageResource(R.drawable.ic_launcher);
+		
+		
+		try {
+			img.setImageBitmap(DB.convertToImage(profileJSON.getString("ProfilePicture")));
+		} catch (JSONException e) {
+			img.setImageResource(R.drawable.ic_launcher);
+		} catch (NullPointerException e) {
+			img.setImageResource(R.drawable.ic_launcher);
+		} catch (NumberFormatException e) {
+			img.setImageResource(R.drawable.ic_launcher);
+		}
+
 		img.setContentDescription("User profile picture");
 	}
 

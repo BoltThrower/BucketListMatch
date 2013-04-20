@@ -1,10 +1,13 @@
 package edu.osu.database;
 
+import java.math.BigInteger;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 /**
@@ -532,7 +535,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int addChapterToBook(String username, String password,
 			String bookName, String chapterName, String chapterCreator) {
 		if(!Helper.isValidUsername(username)) {
@@ -555,7 +558,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int editChapterInfo(int type, String username,
 			String password, String chapterName, String info) {
 		try {
@@ -608,7 +611,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int addMediaToChapter(String username, String password,
 			String bookName, String chapterName, String[] mediaInfo) {
 		if(!Helper.isValidUsername(username)) {
@@ -633,7 +636,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int addTotemToChapter(String username, String password,
 			String bookName, String chapterName, String[] totemInfo) {
 		if(!Helper.isValidUsername(username)) {
@@ -657,7 +660,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int addChallengeToChapter(String username, String password,
 			String bookName, String chapterName, String[] challengeInfo) {
 		if(!Helper.isValidUsername(username)) {
@@ -680,7 +683,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int editMediaInfo(int type, String username, String password,
 			String chapterName, String mediaName, String info) {
 		username = Helper.parseForHTTP(username);
@@ -724,7 +727,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int editTotemInfo(int type, String username, String password,
 			String chapterName, String totemName, String info) {
 		username = Helper.parseForHTTP(username);
@@ -758,7 +761,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int editChallengeInfo(int type, String username,
 			String password, String chapterName, String title, String info) {
 		username = Helper.parseForHTTP(username);
@@ -792,7 +795,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int removeMediaFromChapter(String username, String password,
 			String chapterName, String mediaName) {
 		try {
@@ -811,7 +814,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int removeTotemFromChapter(String username, String password,
 			String chapterName, String totemName) {
 		try {
@@ -830,7 +833,6 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
 	public static int removeChallengeFromChapter(String username,
 			String password, String chapterName, String challengeName) {
 		try {
@@ -849,7 +851,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int removeChapterFromBook(String username, String password,
 			String bookName, String chapterName, String chapterCreator) {
 		try {
@@ -869,7 +871,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int deleteChapter(String username, String password,
 			String chapterName) {
 		try {
@@ -887,7 +889,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int addDeal(String username, String password,
 			String[] dealInfo) {
 		if(!Helper.isValidUsername(username)) {
@@ -920,7 +922,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int editDealInfo(int type, String username, String password,
 			String dealName, String info) {
 		username = Helper.parseForHTTP(username);
@@ -1003,7 +1005,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int deleteDeal(String username, String password,
 			String dealName) {
 		try {
@@ -1021,7 +1023,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int addMerchant(String[] merchantInfo) {
 		try {
 			if(!Helper.isValidUsername(merchantInfo[0])) {
@@ -1060,7 +1062,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int addMerchantReview(String username, String password,
 			String merchantName, String description, int rating) {
 		if(!Helper.isValidUsername(username)) {
@@ -1083,7 +1085,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int editMerchantInfo(int type, String username,
 			String password, String info) {
 		username = Helper.parseForHTTP(username);
@@ -1185,7 +1187,7 @@ public class DB {
 		return 0;
 	}
 
-	// TODO
+	
 	public static int deleteMerchant(String username, String password) {
 		try {
 			parser = new JSONParser(URL_main + "merchant/deleteMerchant.php?mu="
@@ -1204,13 +1206,45 @@ public class DB {
 	// HELPER METHODS
 
 	// TODO
-	static Bitmap convertToImage(String binary) {
-		return null;
+	public static Bitmap convertToImage(String hex) {
+	  
+		hex = hex.trim();
+		hex = hex.replaceFirst("0x", "");
+		
+	    byte[] imageAsBytes = new BigInteger(hex, 16).toByteArray();
+		Bitmap bp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+		return bp;
 	}
 
 	// TODO
 	static String convertToBinary(Bitmap image) {
 		return null;
 	}
+	
+	static String convertHexToBinaryString(String hex){
+
+		  StringBuilder sb = new StringBuilder();
+		  String output;
+		
+		  hex = hex.trim();
+		  hex.replaceFirst("0x", "");
+
+		  for( int i=0; i<hex.length()-1; i+=2 ){
+
+		      //grab the hex in pairs
+		      output = hex.substring(i, (i + 2));
+		     
+		      //convert hex to decimal
+		      // decimal = Integer.parseInt(output, 16);
+		      
+		      String decimal = Integer.toBinaryString(Integer.parseInt(output, 16)); 
+		      
+		      //convert the decimal to character
+		      sb.append(decimal);
+		      
+		  }
+		  return sb.toString();
+		}
+
 
 }
