@@ -268,7 +268,7 @@ public class DB {
 		return result;
 	}
 	
-	public static JSONArray forgotPassword(String username, String email) {
+	public static int forgotPassword(String username, String email) {
 		JSONArray result = null;
 		
 		try {
@@ -276,12 +276,12 @@ public class DB {
 					+ Helper.parseForHTTP(username) + "&e="
 					+ Helper.parseForHTTP(email));
 			result = parser.getJSONArray();
+			return 0;
 		} catch (JSONException e) {
 			Log.e("JSONParser Error.",
 					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchBucketListBooks.");
+			return 1;
 		}
-		
-		return result;
 	}
 
 	// UPDATE METHODS
