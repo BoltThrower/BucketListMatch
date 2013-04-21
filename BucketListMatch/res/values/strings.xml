@@ -449,5 +449,7 @@
 
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="title_activity_add_bucket_list_item">AddBucketListItem</string>
+    <string name="title_activity_add_chapter">AddChapter</string>
 
 </resources>

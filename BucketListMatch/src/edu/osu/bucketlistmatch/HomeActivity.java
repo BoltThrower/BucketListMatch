@@ -7,6 +7,8 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.ShareActionProvider;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -111,6 +113,9 @@ public class HomeActivity extends SherlockFragmentActivity {
 		case R.id.action_search:
 			startActivity(new Intent(this, SearchActivity.class));
 			break;
+		case R.id.action_add_item:
+			promptItemSelection();
+			break;
 		case R.id.action_share:
 			shareEmail();
 			return true;
@@ -128,11 +133,18 @@ public class HomeActivity extends SherlockFragmentActivity {
 	public void onClick(View view) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		switch (view.getId()) {
+		case R.id.addBucketListItemDone:
+			// Create bucket list and send to database.
+			
+			break;
+		case R.id.addChapterItemDone:
+			// Create chapter and send to database.
+			
+			break;
 		case R.id.editProfile:
 			ViewSwitcher switcher = (ViewSwitcher) findViewById(R.id.emailViewSwitcher);
 			switcher.showNext();
-			
-			
+
 			break;
 		case R.id.privacy:
 			ft.replace(R.id.fragment_container, new PrivacyFragment());
@@ -197,5 +209,29 @@ public class HomeActivity extends SherlockFragmentActivity {
 			Toast.makeText(this, "There are no email clients installed.",
 					Toast.LENGTH_SHORT).show();
 		}
+	}
+
+	private void promptItemSelection() {
+		final CharSequence[] items = { "Add Bucket List Item", "Add Chapter" };
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+		// Set items and selection behavior.
+		builder.setItems(items, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int position) {
+				switch (position) {
+				case 0:
+					startActivity(new Intent(getBaseContext(), AddBucketListItem.class));
+					break;
+				case 1:
+					startActivity(new Intent(getBaseContext(), AddChapterItem.class));
+					break;
+				}
+			}
+		});
+
+		// Create and show dialog.
+		AlertDialog alert = builder.create();
+		alert.show();
 	}
 }

@@ -9,47 +9,27 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ForgetPasswordActivity" >
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:text="@string/forgetpassword" />
+    tools:context=".AddBucketListItem" >
 
     <TextView
         android:id="@+id/bucketListItemLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/username" />
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/forgetPasswordUsername"
+        android:id="@+id/bucketListItemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10" >
-
-        <requestFocus />
     </EditText>
 
-    <TextView
-        android:id="@+id/textView3"
+    <ImageButton
+        android:id="@+id/addBucketListItemDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enterEmail" />
-
-    <EditText
-        android:id="@+id/forgetPasswordEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
-
-    <Button
-        android:id="@+id/forgetPasswordSendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/send" />
+        android:onClick="onClick"
+        android:src="@drawable/ic_action_done" />
 
 </LinearLayout>

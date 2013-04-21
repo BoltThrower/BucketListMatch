@@ -39,8 +39,8 @@
         <activity
             android:name="edu.osu.bucketlistmatch.SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:theme="@style/Theme.BucketList.NoActionBar"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.BucketList.NoActionBar" >
         </activity>
         <activity
             android:name="edu.osu.bucketlistmatch.ForgetPasswordActivity"
@@ -50,6 +50,16 @@
         <activity
             android:name="edu.osu.bucketlistmatch.SearchActivity"
             android:label="@string/title_activity_search"
+            android:theme="@style/Theme.BucketList.NoActionBar" >
+        </activity>
+        <activity
+            android:name="edu.osu.bucketlistmatch.AddBucketListItem"
+            android:label="@string/title_activity_add_bucket_list_item"
+            android:theme="@style/Theme.BucketList.NoActionBar" >
+        </activity>
+        <activity
+            android:name="edu.osu.bucketlistmatch.AddChapterItem"
+            android:label="@string/title_activity_add_chapter"
             android:theme="@style/Theme.BucketList.NoActionBar" >
         </activity>
     </application>
