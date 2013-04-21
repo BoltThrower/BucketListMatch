@@ -65,7 +65,14 @@ public class ForgetPasswordActivity extends Activity {
 			}
 			if(matcher.matches()){
 				// Validate the username and email against the database.
+				// The hosting server must be configured to use SMTP services for sending email.
 				
+				if(DB.forgotPassword(user, email) != 0){
+					Toast.makeText(getApplicationContext(), "Could not send email with forgotten password.", Toast.LENGTH_SHORT).show();
+				}
+				else{
+					Toast.makeText(getApplicationContext(), "Email has been sent.", Toast.LENGTH_SHORT).show();
+				}
 			}
 			else{
 				// Invalid email address.

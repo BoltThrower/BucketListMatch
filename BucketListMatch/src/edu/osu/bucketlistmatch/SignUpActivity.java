@@ -1,5 +1,8 @@
 package edu.osu.bucketlistmatch;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import edu.osu.database.DB;
 import android.os.Bundle;
 import android.app.Activity;
@@ -20,6 +23,10 @@ import android.widget.Toast;
  *
  */
 public class SignUpActivity extends Activity {
+	
+	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	private Pattern pattern;
+	private Matcher matcher;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,28 +67,39 @@ public class SignUpActivity extends Activity {
 	public void validateSignUp(View v){
 		// Enter code to make sure that the username is valid, does not already exist, etc.
 		
-		// Code that makes sure that both of the passwords entered is correct.
-		EditText username, password1, password2, firstName, lastName, dobText;
-		String user, pass1, pass2, first, last, dob;
+		EditText username, password1, password2, firstName, lastName, emailAddress;
+		Spinner countrySpinner, dobMonth, dobDay, dobYear;
+		
+		String user, pass1, pass2, first, last, dob, country, email;
 		
 		username = (EditText)findViewById(R.id.usernameRegisterTextField); 
 		password1 = (EditText)findViewById(R.id.password1TextField);
 		password2 = (EditText)findViewById(R.id.password2TextField);
 		firstName = (EditText)findViewById(R.id.firstNameText);
 		lastName = (EditText)findViewById(R.id.lastNameText);
-		//dobText = (EditText)findViewById(R.id.dobSignUp);
+		emailAddress = (EditText)findViewById(R.id.emailTextField);
 		
+		countrySpinner = (Spinner)findViewById(R.id.countrySignUp);
+		dobMonth = (Spinner)findViewById(R.id.dobMonth);
+		dobDay = (Spinner)findViewById(R.id.dobDay);
+		dobYear = (Spinner)findViewById(R.id.dobYear);
+		
+		dob = dobMonth.getSelectedItem().toString() + "/" + dobDay.getSelectedItem().toString() + "/" + dobYear.getSelectedItem().toString();
 		
 		user = username.getText().toString().trim(); 
 		pass1 = password1.getText().toString().trim(); 
 		pass2 = password2.getText().toString().trim(); 
 		first = firstName.getText().toString().trim(); 
 		last = lastName.getText().toString().trim(); 
-		//dob = dobText.getText().toString().trim();
+		email = emailAddress.getText().toString().trim();
 		
-//		String[] userInfo = {user, pass1, first, last, dob, country, email};
-		String[] userInfo = {user, pass1, first, last, "1/1/1990", "United States", "example@domain.com"};
+		// Validate correct email format.
+		pattern = Pattern.compile(EMAIL_PATTERN);
+		matcher = pattern.matcher(email);
 		
+		String[] userInfo = {user, pass1, first, last, dob, countrySpinner.getSelectedItem().toString(), email};
+		
+		// Code that makes sure that both of the passwords entered is correct.
 		if(!pass1.equals(pass2))
 		{
 			Toast.makeText(getApplicationContext(), "The passwords that were entered do not match.  Please try again.", Toast.LENGTH_SHORT).show();
@@ -91,9 +109,18 @@ public class SignUpActivity extends Activity {
 		{
 			Toast.makeText(getApplicationContext(), "Please enter all of the appropriate information.", Toast.LENGTH_SHORT).show();
 		}
-		else if (DB.addUser(userInfo) != 0) {
+		
+		else if(!matcher.matches())
+		{
+			// Invalid email address.
+			Toast.makeText(getApplicationContext(), "Invalid email address was entered.", Toast.LENGTH_SHORT).show();
+		}
+		
+		else if (DB.addUser(userInfo) != 0) 
+		{
 			Toast.makeText(getApplicationContext(), "Could not sign up. Please try again.", Toast.LENGTH_SHORT).show();
 		}
+		
 		else
 		{
 			// Add new user to the database, log the user in, and send the user to the Home Screen Activity.
