@@ -21,7 +21,7 @@ public class JSONParser {
 	private InputStream is;
 //	JSONObject jObj = null;
 	private JSONArray jArr;
-	private String URL;
+	private String URL, str;
 	private int status;
 	
 	// constructor
@@ -29,11 +29,14 @@ public class JSONParser {
 		is = null;
 		URL = url;
 		status = -1;
-		
-		jArr = parse(getStringFromUrl());
+		str = getStringFromUrl();
+		jArr = parse(str);
 		if (jArr != null) status = 0;
 	}
 	
+	public String getString() {
+		return str;
+	}
 	public JSONArray getJSONArray() {
 		if (status == 0) return jArr;
 		else return null;

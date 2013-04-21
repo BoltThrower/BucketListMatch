@@ -83,9 +83,7 @@ public class ProfileFragment extends SherlockFragment {
 		
 		
 		try {
-			img.setImageBitmap(DB.convertToImage(profileJSON.getString("ProfilePicture")));
-		} catch (JSONException e) {
-			img.setImageResource(R.drawable.ic_launcher);
+			img.setImageBitmap(DB.convertToImage(DB.fetchImageStream(LoginActivity.user, LoginActivity.pass)));
 		} catch (NullPointerException e) {
 			img.setImageResource(R.drawable.ic_launcher);
 		} catch (NumberFormatException e) {
