@@ -156,7 +156,7 @@ public class DB {
 		JSONArray result = null;
 		try {
 			parser = new JSONParser(URL_main
-					+ "dreambook/fetchBucketLists.php?u="
+					+ "dreambook/getChapters.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
 					+ Helper.parseForHTTP(password) + "&n="
 					+ Helper.parseForHTTP(dreambookName));

@@ -13,16 +13,22 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ChapterAdapter extends BaseAdapter{
+/**
+ * This adapter helps map chapter items to a listview.
+ * 
+ * @author Shi Ho Wang
+ * 
+ */
+public class ChapterAdapter extends BaseAdapter {
 	private Context context;
 	private JSONArray values;
-	
+
 	public ChapterAdapter(Context context, JSONArray chapterItems) {
 		super();
 		this.context = context;
 		this.values = chapterItems;
 	}
-	
+
 	@Override
 	public int getCount() {
 		return this.values.length();
@@ -30,7 +36,13 @@ public class ChapterAdapter extends BaseAdapter{
 
 	@Override
 	public Object getItem(int position) {
-		return position;
+		String result = "";
+		try {
+			result = this.values.getJSONObject(position).getString("Name");
+		} catch (JSONException e) {
+			Log.e("JSONException", "Could not retrieve JSONObject from JSONArray.");
+		}
+		return result;
 	}
 
 	@Override
@@ -46,7 +58,7 @@ public class ChapterAdapter extends BaseAdapter{
 			LayoutInflater inflater = (LayoutInflater) this.context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-			rowView = inflater.inflate(R.layout.bucketlist_item, null);
+			rowView = inflater.inflate(R.layout.chapter_item, null);
 		}
 
 		// Get json object from json array at given position.
@@ -57,7 +69,8 @@ public class ChapterAdapter extends BaseAdapter{
 				.findViewById(R.id.coverImage);
 
 		TextView task = (TextView) rowView.findViewById(R.id.task);
-		TextView description = (TextView) rowView.findViewById(R.id.description);
+		TextView description = (TextView) rowView
+				.findViewById(R.id.description);
 		TextView duration = (TextView) rowView.findViewById(R.id.duration);
 		TextView creater = (TextView) rowView.findViewById(R.id.creater);
 		TextView cost = (TextView) rowView.findViewById(R.id.cost);
@@ -69,7 +82,7 @@ public class ChapterAdapter extends BaseAdapter{
 			description.setText(jsonObject.getString("Description"));
 			duration.setText(jsonObject.getString("Duration"));
 			creater.setText(jsonObject.getString("CreatedBy"));
-			cost.setText(jsonObject.getString("Cost"));
+			cost.setText("$" + jsonObject.getString("Cost"));
 
 		} catch (JSONException e) {
 			Log.e("JSON object error.",
@@ -78,6 +91,5 @@ public class ChapterAdapter extends BaseAdapter{
 
 		return rowView;
 	}
-	
-	
+
 }

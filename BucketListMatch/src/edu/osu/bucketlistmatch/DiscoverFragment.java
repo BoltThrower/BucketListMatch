@@ -63,7 +63,9 @@ public class DiscoverFragment extends SherlockListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		// Save selected item name.
-		LoginActivity.setSelectedItem((String) l.getAdapter().getItem(position));
+		String result = l.getItemAtPosition(position).toString();
+		LoginActivity.setSelectedItem(result);
+		Log.e("Position", result);
 		
 		// Open chapter fragment for the selected bucket list item.
 		FragmentTransaction trans = getFragmentManager().beginTransaction();
