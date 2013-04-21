@@ -98,9 +98,10 @@ public class DB {
 	}
 
 	/**
+	 * This method returns all of the public dreambooks in the form of a JSONArray Object
 	 * 
 	 * 
-	 * @return
+	 * @return A JSON object that contains all of the public dreambooks
 	 */
 	public static JSONArray getPublicDreamBooks() {
 		JSONArray result = null;
@@ -117,6 +118,14 @@ public class DB {
 		return result;
 	}
 
+	/**
+	 * This method gets all of the bucketlist books that belong to a specific user
+	 * @param username 
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @return a JSON object containing bucketlist books that belong to username
+	 */
 	public static JSONArray getAllBucketListBooks(String username,
 			String password) {
 		JSONArray result = null;
@@ -135,6 +144,14 @@ public class DB {
 		return result;
 	}
 
+	/**
+	 * This method returns all scrapbooks that belong to a specific user
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @return a JSON object containing all the scrapbooks belonging to username
+	 */
 	public static JSONArray getAllScrapbooks(String username, String password) {
 		JSONArray result = null;
 
@@ -152,6 +169,16 @@ public class DB {
 		return result;
 	}
 	
+	/**
+	 * This method returns all the chapters in a JSON object that are contained in dreambookName
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param dreambookName
+	 * 		A name corresponding to a dreambook
+	 * @return a JSON object containing all the chapters in dreambookName
+	 */
 	public static JSONArray getChapters(String username, String password, String dreambookName) {
 		JSONArray result = null;
 		try {
@@ -168,6 +195,16 @@ public class DB {
 		return result;
 	}
 	
+	/**
+	 * This method returns the cost corresponding to a specific dreambook
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param dreambookName
+	 * 		The dreambook's name
+	 * @return a JSON object containing the cost of a dreambook
+	 */
 	public static JSONArray getCost(String username, String password, String dreambookName) {
 		JSONArray result = null;
 		try {
@@ -184,6 +221,16 @@ public class DB {
 		return result;
 	}
 	
+	/**
+	 * This method returns the duration of a specific dreambook
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param dreambookName
+	 * 		The name of the dreambook in use
+	 * @return a JSON object containing the duration of a dreambook
+	 */
 	public static JSONArray getDuration(String username, String password, String dreambookName) {
 		JSONArray result = null;
 		try {
@@ -199,7 +246,12 @@ public class DB {
 		}
 		return result;
 	}
-	
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	public static JSONArray match(String username, String password) {
 		JSONArray result = null;
 
@@ -1245,6 +1297,21 @@ public class DB {
 		  }
 		  return sb.toString();
 		}
-
+	
+	public static  String fetchImageStream(String username, String password) {
+		JSONArray result;
+		String str = null;
+		try {
+			parser = new JSONParser(URL_main
+					+ "user/fetchImageStream.php?u="
+					+ username + "&p=" + password);
+			result = parser.getJSONArray();
+			str = parser.getString();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchBucketListBooks.");
+		}
+		return str;
+	}
 
 }
