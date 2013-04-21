@@ -4,6 +4,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.osu.database.DB;
+
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +31,38 @@ public class BucketListAdapter extends BaseAdapter {
 		this.values = bucketListItems;
 	}
 
+	public int getDuration(String user, String pass, int position) {
+		int result = 0;
+		String dreambookName;
+		JSONArray duration;
+		
+		try {
+			dreambookName = this.values.getJSONObject(position).getString("Name");
+			duration = DB.getDuration(user, pass, dreambookName);
+			result = duration.getJSONObject(0).getInt("Duration");
+		} catch (JSONException e) {
+			Log.e("JSONException", "Could not retrieve JSONObject from JSONArray.");
+		}
+		
+		return result;
+	}
+	
+	public float getCost(String user, String pass, int position) {
+		float result = 0;
+		String dreambookName;
+		JSONArray cost;
+		
+		try {
+			dreambookName = this.values.getJSONObject(position).getString("Name");
+			cost = DB.getCost(user, pass, dreambookName);
+			result = (float) cost.getJSONObject(0).getDouble("Cost");
+		} catch (JSONException e) {
+			Log.e("JSONException", "Could not retrieve JSONObject from JSONArray.");
+		}
+		
+		return result;
+	}
+	
 	@Override
 	public int getCount() {
 		return this.values.length();
@@ -80,9 +114,9 @@ public class BucketListAdapter extends BaseAdapter {
 			jsonObject = this.values.getJSONObject(position);
 			task.setText(jsonObject.getString("Name"));
 			location.setText(jsonObject.getString("Country") + " - " + jsonObject.getString("State"));
-			duration.setText(jsonObject.getString("Duration"));
+			duration.setText("Duration: " + getDuration(LoginActivity.user, LoginActivity.pass, position) + "hrs");
 			creater.setText(jsonObject.getString("CreatedBy"));
-			cost.setText("$" + jsonObject.getString("Cost"));
+			cost.setText("$" + "" + getCost(LoginActivity.user, LoginActivity.pass, position));
 
 		} catch (JSONException e) {
 			Log.e("JSON object error.",
