@@ -65,8 +65,21 @@ public class ForgetPasswordActivity extends SherlockActivity {
 			}
 			if (matcher.matches()) {
 				// Validate the username and email against the database.
+<<<<<<< HEAD
 
 			} else {
+=======
+				// The hosting server must be configured to use SMTP services for sending email.
+				
+				if(DB.forgotPassword(user, email) != 0){
+					Toast.makeText(getApplicationContext(), "Could not send email with forgotten password.", Toast.LENGTH_SHORT).show();
+				}
+				else{
+					Toast.makeText(getApplicationContext(), "Email has been sent.", Toast.LENGTH_SHORT).show();
+				}
+			}
+			else{
+>>>>>>> branch 'master' of https://github.com/shihowang/blm.git
 				// Invalid email address.
 				Toast.makeText(getApplicationContext(),
 						"Invalid email address was entered.",
