@@ -119,7 +119,7 @@ public class BucketListAdapter extends BaseAdapter {
 			jsonObject = this.values.getJSONObject(position);
 			task.setText(jsonObject.getString("Name"));
 			location.setText(jsonObject.getString("Country") + " - " + jsonObject.getString("State"));
-			duration.setText("Duration: " + getDuration(LoginActivity.user, LoginActivity.pass, position) + "hrs");
+			duration.setText(getDuration(LoginActivity.user, LoginActivity.pass, position) + "hrs");
 			creater.setText(jsonObject.getString("CreatedBy"));
 			cost.setText("$" + getCost(LoginActivity.user, LoginActivity.pass, position));
 
