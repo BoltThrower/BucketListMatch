@@ -1,5 +1,7 @@
 package edu.osu.bucketlistmatch;
 
+import java.text.DecimalFormat;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -109,14 +111,17 @@ public class BucketListAdapter extends BaseAdapter {
 		TextView creater = (TextView) rowView.findViewById(R.id.creater);
 		TextView cost = (TextView) rowView.findViewById(R.id.cost);
 
+		// Format for cost
+		DecimalFormat df = new DecimalFormat("#0.00");
+
 		// Set the row item objects.
 		try {
 			jsonObject = this.values.getJSONObject(position);
 			task.setText(jsonObject.getString("Name"));
 			location.setText(jsonObject.getString("Country") + " - " + jsonObject.getString("State"));
-			duration.setText("Duration: " + getDuration(LoginActivity.user, LoginActivity.pass, position) + "hrs");
+			duration.setText(getDuration(LoginActivity.user, LoginActivity.pass, position) + "hrs");
 			creater.setText(jsonObject.getString("CreatedBy"));
-			cost.setText("$" + "" + getCost(LoginActivity.user, LoginActivity.pass, position));
+			cost.setText("$" + "" + df.format(getCost(LoginActivity.user, LoginActivity.pass, position)));
 
 		} catch (JSONException e) {
 			Log.e("JSON object error.",
