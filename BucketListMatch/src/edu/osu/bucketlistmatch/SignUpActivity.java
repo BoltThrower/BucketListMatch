@@ -102,7 +102,7 @@ public class SignUpActivity extends Activity {
 		// Code that makes sure that both of the passwords entered is correct.
 		if(!pass1.equals(pass2))
 		{
-			Toast.makeText(getApplicationContext(), "The passwords that were entered do not match.  Please try again.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "The passwords that were entered do not match. Please try again.", Toast.LENGTH_SHORT).show();
 		}
 		
 		else if(user.equals("") || pass1.equals("") || pass2.equals("") || first.equals("") || last.equals(""))

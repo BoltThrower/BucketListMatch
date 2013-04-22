@@ -15,7 +15,8 @@
         android:id="@+id/android:empty"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:text="no items" >
+        android:text="Empty"
+        android:gravity="center_vertical|center_horizontal" >
     </TextView>
 
 </LinearLayout>

@@ -133,14 +133,6 @@ public class HomeActivity extends SherlockFragmentActivity {
 	public void onClick(View view) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		switch (view.getId()) {
-		case R.id.addBucketListItemDone:
-			// Create bucket list and send to database.
-			
-			break;
-		case R.id.addChapterItemDone:
-			// Create chapter and send to database.
-			
-			break;
 		case R.id.editProfile:
 			ViewSwitcher switcher = (ViewSwitcher) findViewById(R.id.emailViewSwitcher);
 			switcher.showNext();
