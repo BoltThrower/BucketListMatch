@@ -1,5 +1,7 @@
 package edu.osu.bucketlistmatch;
 
+import java.text.DecimalFormat;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,15 +49,18 @@ public class BucketListAdapter extends BaseAdapter {
 		return result;
 	}
 	
-	public float getCost(String user, String pass, int position) {
-		float result = 0;
+	public String getCost(String user, String pass, int position) {
+		String result = "";
 		String dreambookName;
 		JSONArray cost;
 		
 		try {
 			dreambookName = this.values.getJSONObject(position).getString("Name");
 			cost = DB.getCost(user, pass, dreambookName);
-			result = (float) cost.getJSONObject(0).getDouble("Cost");
+			
+			// Set result to two decimal places.
+			DecimalFormat df = new DecimalFormat("#.00");
+			result = df.format(cost.getJSONObject(0).getDouble("Cost"));
 		} catch (JSONException e) {
 			Log.e("JSONException", "Could not retrieve JSONObject from JSONArray.");
 		}
@@ -116,7 +121,7 @@ public class BucketListAdapter extends BaseAdapter {
 			location.setText(jsonObject.getString("Country") + " - " + jsonObject.getString("State"));
 			duration.setText("Duration: " + getDuration(LoginActivity.user, LoginActivity.pass, position) + "hrs");
 			creater.setText(jsonObject.getString("CreatedBy"));
-			cost.setText("$" + "" + getCost(LoginActivity.user, LoginActivity.pass, position));
+			cost.setText("$" + getCost(LoginActivity.user, LoginActivity.pass, position));
 
 		} catch (JSONException e) {
 			Log.e("JSON object error.",
