@@ -49,8 +49,8 @@ public class BucketListAdapter extends BaseAdapter {
 		return result;
 	}
 	
-	public String getCost(String user, String pass, int position) {
-		String result = "";
+	public double getCost(String user, String pass, int position) {
+		double result = 0;
 		String dreambookName;
 		JSONArray cost;
 		
@@ -59,11 +59,11 @@ public class BucketListAdapter extends BaseAdapter {
 			cost = DB.getCost(user, pass, dreambookName);
 			
 			// Set result to two decimal places.
-			DecimalFormat df = new DecimalFormat("#.00");
-			result = df.format(cost.getJSONObject(0).getDouble("Cost"));
+			result = cost.getJSONObject(0).getDouble("Cost");
 		} catch (JSONException e) {
 			Log.e("JSONException", "Could not retrieve JSONObject from JSONArray.");
 		}
+		
 		
 		return result;
 	}
@@ -114,14 +114,16 @@ public class BucketListAdapter extends BaseAdapter {
 		TextView creater = (TextView) rowView.findViewById(R.id.creater);
 		TextView cost = (TextView) rowView.findViewById(R.id.cost);
 
+		DecimalFormat df = new DecimalFormat("#0.00");
+		
 		// Set the row item objects.
 		try {
 			jsonObject = this.values.getJSONObject(position);
 			task.setText(jsonObject.getString("Name"));
-			location.setText(jsonObject.getString("Country") + " - " + jsonObject.getString("State"));
+			location.setText(jsonObject.getString("Country") + " - " + jsonObject.optString("State"));
 			duration.setText(getDuration(LoginActivity.user, LoginActivity.pass, position) + "hrs");
 			creater.setText(jsonObject.getString("CreatedBy"));
-			cost.setText("$" + getCost(LoginActivity.user, LoginActivity.pass, position));
+			cost.setText("$" + df.format(getCost(LoginActivity.user, LoginActivity.pass, position)));
 
 		} catch (JSONException e) {
 			Log.e("JSON object error.",
