@@ -5,17 +5,21 @@ import com.actionbarsherlock.app.SherlockActivity;
 import edu.osu.database.DB;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
-import android.widget.Toast;
 
-public class AddBucketListItem extends SherlockActivity {
+/**
+ * Allows the user to create and add a new bucket list item to their bucket
+ * list.
+ * 
+ * @author Shi Ho Wang
+ * 
+ */
+public class AddBucketListItemActivity extends SherlockActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,11 @@ public class AddBucketListItem extends SherlockActivity {
 
 	}
 
+	/**
+	 * Handles all the button clicks in this activity.
+	 * 
+	 * @param view
+	 */
 	public void onClick(View view) {
 		switch (view.getId()) {
 		// Create bucket list and send to database.
@@ -79,10 +88,10 @@ public class AddBucketListItem extends SherlockActivity {
 				privacy = false;
 			}
 
-			// Add bucket list item to bucket list.
+			// Add bucket list item to bucket list and close activity.
 			DB.addBucketListBook(LoginActivity.user, LoginActivity.pass, book,
 					privacy);
-			
+
 			finish();
 			break;
 		}

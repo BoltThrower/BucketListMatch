@@ -213,10 +213,10 @@ public class HomeActivity extends SherlockFragmentActivity {
 			public void onClick(DialogInterface dialog, int position) {
 				switch (position) {
 				case 0:
-					startActivity(new Intent(getBaseContext(), AddBucketListItem.class));
+					startActivity(new Intent(getBaseContext(), AddBucketListItemActivity.class));
 					break;
 				case 1:
-					startActivity(new Intent(getBaseContext(), AddChapterItem.class));
+					startActivity(new Intent(getBaseContext(), AddChapterItemActivity.class));
 					break;
 				}
 			}

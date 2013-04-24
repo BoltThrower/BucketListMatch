@@ -53,12 +53,12 @@
             android:theme="@style/Theme.BucketList.NoActionBar" >
         </activity>
         <activity
-            android:name="edu.osu.bucketlistmatch.AddBucketListItem"
+            android:name="edu.osu.bucketlistmatch.AddBucketListItemActivity"
             android:label="@string/title_activity_add_bucket_list_item"
             android:theme="@style/Theme.BucketList.NoActionBar" >
         </activity>
         <activity
-            android:name="edu.osu.bucketlistmatch.AddChapterItem"
+            android:name="edu.osu.bucketlistmatch.AddChapterItemActivity"
             android:label="@string/title_activity_add_chapter"
             android:theme="@style/Theme.BucketList.NoActionBar" >
         </activity>
