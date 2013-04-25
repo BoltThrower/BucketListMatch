@@ -14,7 +14,8 @@ import android.util.Log;
  * This class is the handler for database communications to the application. All
  * queries and updates to the database are organized by this class.
  * 
- * @author Everly Okorji, Mike Sustarsic
+ * @author Everly Okorji
+ * @author Mike Sustarsic
  * 
  */
 public class DB {
