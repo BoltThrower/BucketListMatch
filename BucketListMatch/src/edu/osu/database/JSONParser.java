@@ -16,15 +16,26 @@ import org.json.JSONException;
 
 import android.util.Log;
 
+/**
+ * This class helps to organize the HTTP connection and the fetching and conversion of results into JSON
+ * format.
+ * @author Everly Okorji
+ *
+ */
 public class JSONParser {
 
 	private InputStream is;
-//	JSONObject jObj = null;
+	
 	private JSONArray jArr;
 	private String URL, str;
 	private int status;
 	
-	// constructor
+	/**
+	 * Constructor. This is where other methods in the class are called, to fetch results of a query and
+	 * store in a JSON array.
+	 * @param url
+	 * @throws JSONException
+	 */
 	public JSONParser(String url) throws JSONException {
 		is = null;
 		URL = url;
@@ -34,15 +45,29 @@ public class JSONParser {
 		if (jArr != null) status = 0;
 	}
 	
+	/**
+	 * This method returns the string that was derived directly from the HTTP call.
+	 * @return string
+	 */
 	public String getString() {
 		return str;
 	}
+	
+	/**
+	 * This method returns the prepared JSONArray, or null if there is none.
+	 * @return
+	 */
 	public JSONArray getJSONArray() {
 		if (status == 0) return jArr;
 		else return null;
 	}
 
 	// Source: http://www.androidhive.info/2012/01/android-json-parsing-tutorial/
+	/**
+	 * This method makes the connection to HTTP, queries the PHP server on the back-end and fetches
+	 * the result of the query.
+	 * @return a string which represents the JSON-encoded result of the query
+	 */
 	private String getStringFromUrl() {
 
 		String json_string = null;
@@ -87,6 +112,13 @@ public class JSONParser {
 
 	}
 
+	/**
+	 * This method simply takes a JSON-encoded string and stores the contents as a JSONArray object
+	 * @param str
+	 * @return JSONArray object represented by the string which was passed in, or null is the string
+	 * is invalid
+	 * @throws JSONException for invalid string input
+	 */
 	private JSONArray parse(String str) throws JSONException {
 		return new JSONArray(str);
 	}

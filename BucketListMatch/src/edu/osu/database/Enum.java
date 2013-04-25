@@ -1,5 +1,10 @@
 package edu.osu.database;
 
+/**
+ * This class defines values that are used in the DB.java class as enumerations.
+ * @author Everly Okorji, Mike Sustarsic
+ *
+ */
 public class Enum {
 
 	public static final int C_PASS = 0, C_PROFILE_PIC = 1, C_FIRST = 2, C_LAST = 3;

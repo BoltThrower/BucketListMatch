@@ -28,6 +28,8 @@
         <item>Facebook</item>
     </string-array>
     <string-array name="country_list">
+        <item> United States </item>
+        <item> United Kingdom </item>
         <item> Aruba </item>
         <item> Afghanistan </item>
         <item> Angola </item>
@@ -107,7 +109,6 @@
         <item> Faroe Islands </item>
         <item> Micronesia, Federated States of </item>
         <item> Gabon </item>
-        <item> United Kingdom </item>
         <item> Georgia </item>
         <item> Guernsey </item>
         <item> Ghana </item>
@@ -262,7 +263,6 @@
         <item> Ukraine </item>
         <item> United States Minor Outlying Islands </item>
         <item> Uruguay </item>
-        <item> United States </item>
         <item> Uzbekistan </item>
         <item> Holy See (Vatican City State) </item>
         <item> Saint Vincent and the Grenadines </item>

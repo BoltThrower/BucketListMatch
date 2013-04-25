@@ -97,12 +97,10 @@ public class BucketListAdapter extends BaseAdapter {
 			task.setText(jsonObject.getString("Name"));
 			location.setText(jsonObject.getString("Country") + " - "
 					+ jsonObject.optString("State"));
-			duration.setText(getDuration(LoginActivity.user,
-					LoginActivity.pass, position) + "hrs");
+			duration.setText(jsonObject.getInt("Duration") + "hrs");
 			creater.setText(jsonObject.getString("CreatedBy"));
 			cost.setText("$"
-					+ df.format(getCost(LoginActivity.user, LoginActivity.pass,
-							position)));
+					+ df.format(jsonObject.getDouble("Cost")));
 
 		} catch (JSONException e) {
 			Log.e("JSON object error.",

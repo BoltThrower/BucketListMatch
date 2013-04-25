@@ -21,13 +21,13 @@
     <style name="Theme.BucketList.ActionBar" parent="Widget.Sherlock.ActionBar">
         <item name="displayOptions">showHome|useLogo</item>
         <item name="background">#0080ff</item>
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColor">#000000</item>
     </style>
     
     <!-- Style for the dropdown menu -->
     <style name="Theme.BucketList.DropDownItem.Spinner" parent="Widget.Sherlock.Light.DropDownItem.Spinner">
-        <item name="android:popupBackground">#000000</item>
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:popupBackground">#ffffff</item>
+        <item name="android:textColor">#000000</item>
     </style>
     
 </resources>

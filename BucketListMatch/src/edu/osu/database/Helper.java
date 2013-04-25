@@ -1,7 +1,18 @@
 package edu.osu.database;
 
+/**
+ * This class holds helper methods which are called in the DB.java class.
+ * @author Everly Okorji
+ *
+ */
 public class Helper {
 
+	/**
+	 * This class determines whether or not a given string is a valid username, by simply checking
+	 * if the string is alphanumeric.
+	 * @param str
+	 * @return true if the string is a valid username, false otherwise
+	 */
 	public static boolean isValidUsername(String str) {
 		
 		char c;
@@ -15,6 +26,12 @@ public class Helper {
 		return true;
 	}
 	
+	/**
+	 * This method reads a string and modifies it to support HTTP calls. Certain characters which are used
+	 * as special characters in HTTP urls have to be converted to valid formats, and this method does the conversion.
+	 * @param str
+	 * @return A modified string with all special characters replaced with their valid equivalents.
+	 */
 	public static String parseForHTTP(String str) {
 		String result = "";
 
