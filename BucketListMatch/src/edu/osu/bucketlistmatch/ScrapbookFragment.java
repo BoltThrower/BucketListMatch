@@ -15,7 +15,7 @@ import com.actionbarsherlock.app.SherlockListFragment;
 import edu.osu.database.DB;
 
 /**
- * This fragment handles the displaying the Scrapbook view.
+ * This fragment displays the user's scrapbooks.
  * 
  * @author Shi Ho Wang
  * 
@@ -57,7 +57,7 @@ public class ScrapbookFragment extends SherlockListFragment {
 	}
 
 	/**
-	 * Runs when a list item is clicked.
+	 * Runs when a scrapbook item is clicked.
 	 */
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {

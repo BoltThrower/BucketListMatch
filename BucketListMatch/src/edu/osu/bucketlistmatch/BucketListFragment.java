@@ -15,7 +15,7 @@ import com.actionbarsherlock.app.SherlockListFragment;
 import edu.osu.database.DB;
 
 /**
- * This fragment handles the displaying the Bucket List view.
+ * This fragment displays the user's list of bucket list items.
  * 
  * @author Shi Ho Wang
  * 
@@ -31,10 +31,11 @@ public class BucketListFragment extends SherlockListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// Gets all bucket lists for the user and display.
+		// Gets all bucket list items for the user.
 		JSONArray bucketListItems = DB.getAllBucketListBooks(
 				LoginActivity.user, LoginActivity.pass);
 
+		// Display the bucket list items.
 		if (bucketListItems != null) {
 			if (bucketListItems.length() > 0) {
 				BucketListAdapter adapter = new BucketListAdapter(
@@ -57,7 +58,7 @@ public class BucketListFragment extends SherlockListFragment {
 	}
 
 	/**
-	 * Runs when a list item is clicked.
+	 * Runs when a bucket list item is selected.
 	 */
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {

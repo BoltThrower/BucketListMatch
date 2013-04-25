@@ -15,7 +15,8 @@ import com.actionbarsherlock.app.SherlockListFragment;
 import edu.osu.database.DB;
 
 /**
- * This fragment handles the displaying the Match view.
+ * This fragment displays results from matching bucket list with public bucket
+ * lists.
  * 
  * @author Shi Ho Wang
  * 
@@ -31,10 +32,11 @@ public class MatchFragment extends SherlockListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// Gets all match results for the user and display.
+		// Gets all match results for the user.
 		JSONArray bucketListItems = DB.match(LoginActivity.user,
 				LoginActivity.pass);
 
+		// Display the match results.
 		if (bucketListItems != null) {
 			if (bucketListItems.length() > 0) {
 				BucketListAdapter adapter = new BucketListAdapter(

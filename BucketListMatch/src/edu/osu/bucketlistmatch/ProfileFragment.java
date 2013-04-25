@@ -16,13 +16,14 @@ import com.actionbarsherlock.app.SherlockFragment;
 import edu.osu.database.DB;
 
 /**
- * This fragment handles the displaying the Profile view.
+ * This fragment displays the user's profile information.
  * 
  * @author Shi Ho Wang
  * 
  */
 public class ProfileFragment extends SherlockFragment {
 
+	// User's username and password
 	private String user = LoginActivity.user;
 	private String pass = LoginActivity.pass;
 

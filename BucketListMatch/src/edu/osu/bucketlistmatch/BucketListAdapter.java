@@ -18,9 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * This adapter helps map bucket list items to a list.
+ * This adapter helps map bucket list items to a listview.
  * 
  * @author Shi Ho Wang
+ * @author Everly Okorji
  * 
  */
 public class BucketListAdapter extends BaseAdapter {
@@ -33,62 +34,36 @@ public class BucketListAdapter extends BaseAdapter {
 		this.values = bucketListItems;
 	}
 
-	public int getDuration(String user, String pass, int position) {
-		int result = 0;
-		String dreambookName;
-		JSONArray duration;
-		
-		try {
-			dreambookName = this.values.getJSONObject(position).getString("Name");
-			duration = DB.getDuration(user, pass, dreambookName);
-			result = duration.getJSONObject(0).getInt("Duration");
-		} catch (JSONException e) {
-			Log.e("JSONException", "Could not retrieve JSONObject from JSONArray.");
-		}
-		
-		return result;
-	}
-	
-	public double getCost(String user, String pass, int position) {
-		double result = 0;
-		String dreambookName;
-		JSONArray cost;
-		
-		try {
-			dreambookName = this.values.getJSONObject(position).getString("Name");
-			cost = DB.getCost(user, pass, dreambookName);
-			
-			// Set result to two decimal places.
-			result = cost.getJSONObject(0).getDouble("Cost");
-		} catch (JSONException e) {
-			Log.e("JSONException", "Could not retrieve JSONObject from JSONArray.");
-		}
-		
-		
-		return result;
-	}
-	
+	/**
+	 * Gets number of bucket list items.
+	 */
 	@Override
 	public int getCount() {
 		return this.values.length();
 	}
 
+	/**
+	 * Gets the bucket list item at position.
+	 */
 	@Override
 	public Object getItem(int position) {
 		String result = "";
 		try {
 			result = this.values.getJSONObject(position).getString("Name");
 		} catch (JSONException e) {
-			Log.e("JSONException", "Could not retrieve JSONObject from JSONArray.");
+			Log.e("JSONException",
+					"Could not retrieve JSONObject from JSONArray.");
 		}
 		return result;
 	}
 
+	/**
+	 * Gets the bucket list item's id at position.
+	 */
 	@Override
 	public long getItemId(int position) {
 		return position;
 	}
-	
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -115,15 +90,19 @@ public class BucketListAdapter extends BaseAdapter {
 		TextView cost = (TextView) rowView.findViewById(R.id.cost);
 
 		DecimalFormat df = new DecimalFormat("#0.00");
-		
+
 		// Set the row item objects.
 		try {
 			jsonObject = this.values.getJSONObject(position);
 			task.setText(jsonObject.getString("Name"));
-			location.setText(jsonObject.getString("Country") + " - " + jsonObject.optString("State"));
-			duration.setText(getDuration(LoginActivity.user, LoginActivity.pass, position) + "hrs");
+			location.setText(jsonObject.getString("Country") + " - "
+					+ jsonObject.optString("State"));
+			duration.setText(getDuration(LoginActivity.user,
+					LoginActivity.pass, position) + "hrs");
 			creater.setText(jsonObject.getString("CreatedBy"));
-			cost.setText("$" + df.format(getCost(LoginActivity.user, LoginActivity.pass, position)));
+			cost.setText("$"
+					+ df.format(getCost(LoginActivity.user, LoginActivity.pass,
+							position)));
 
 		} catch (JSONException e) {
 			Log.e("JSON object error.",
@@ -141,4 +120,65 @@ public class BucketListAdapter extends BaseAdapter {
 		return rowView;
 	}
 
+	/**
+	 * Gets the total duration for a bucket list item.
+	 * 
+	 * @param user
+	 *            Username of BLM account.
+	 * @param pass
+	 *            Password of BLM account.
+	 * @param position
+	 *            Position of the bucket list item in the JSONArray of bucket
+	 *            list items.
+	 * @return
+	 */
+	private int getDuration(String user, String pass, int position) {
+		int result = 0;
+		String dreambookName;
+		JSONArray duration;
+
+		try {
+			dreambookName = this.values.getJSONObject(position).getString(
+					"Name");
+			duration = DB.getDuration(user, pass, dreambookName);
+			result = duration.getJSONObject(0).getInt("Duration");
+		} catch (JSONException e) {
+			Log.e("JSONException",
+					"Could not retrieve JSONObject from JSONArray.");
+		}
+
+		return result;
+	}
+
+	/**
+	 * Gets the total cost of the bucket list item.
+	 * 
+	 * @param user
+	 *            Username of BLM account.
+	 * @param pass
+	 *            Password of BLM account.
+	 * @param position
+	 *            Position of the bucket list item in the JSONArray of bucket
+	 *            list items.
+	 * @return
+	 */
+	private double getCost(String user, String pass, int position) {
+		double result = 0;
+		String dreambookName;
+		JSONArray cost;
+
+		try {
+			dreambookName = this.values.getJSONObject(position).getString(
+					"Name");
+			cost = DB.getCost(user, pass, dreambookName);
+
+			// Set result to two decimal places.
+			result = cost.getJSONObject(0).getDouble("Cost");
+		} catch (JSONException e) {
+			Log.e("JSONException",
+					"Could not retrieve JSONObject from JSONArray.");
+		}
+
+		return result;
+	}
 }

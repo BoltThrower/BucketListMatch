@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import com.actionbarsherlock.app.SherlockFragment;
 
 /**
- * This fragment contains privacy information.
+ * This fragment displays privacy information.
  * 
  * @author Shi Ho Wang
  *

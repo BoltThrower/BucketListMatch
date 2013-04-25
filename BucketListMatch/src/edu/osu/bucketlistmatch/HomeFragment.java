@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import com.actionbarsherlock.app.SherlockFragment;
 
 /**
- * This fragment handles the displaying the Home view.
+ * This fragment displays random images from public bucket list items.
  * 
  * @author Shi Ho Wang
  *

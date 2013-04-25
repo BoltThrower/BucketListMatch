@@ -5,27 +5,27 @@ import com.actionbarsherlock.view.Menu;
 
 import edu.osu.database.DB;
 
-import android.R.string;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.content.Context;
 import android.content.Intent;
 
+/**
+ * This activity allows the user to request for an e-mail for a temporary
+ * password to log back in.
+ * 
+ * @author Chris Hartman
+ * 
+ */
 public class LoginActivity extends SherlockActivity {
-	/**
-	 * This activity allows the user to request for an e-mail for a temporary
-	 * password to log back in.
-	 * 
-	 * @author Chris Hartman
-	 * 
-	 */
 
 	EditText username, password;
 	Button signin;
+	// Will need a better way to store username, password, and selected bucket
+	// list item.
 	static String user, pass, selectedItem;
 
 	@Override
@@ -86,7 +86,7 @@ public class LoginActivity extends SherlockActivity {
 						.show();
 		}
 	};
-	
+
 	static void setSelectedItem(String item) {
 		selectedItem = item;
 	}

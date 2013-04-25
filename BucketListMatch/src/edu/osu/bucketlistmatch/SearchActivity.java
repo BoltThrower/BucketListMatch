@@ -3,9 +3,13 @@ package edu.osu.bucketlistmatch;
 import com.actionbarsherlock.app.SherlockActivity;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 
+/**
+ * This activity allows the user to search bucket list items with keywords.
+ * 
+ * @author Shi Ho Wang
+ * 
+ */
 public class SearchActivity extends SherlockActivity {
 
 	@Override

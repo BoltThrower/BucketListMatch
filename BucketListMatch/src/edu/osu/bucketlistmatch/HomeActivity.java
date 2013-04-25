@@ -5,8 +5,6 @@ import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.widget.ShareActionProvider;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,6 +21,7 @@ import android.widget.ViewSwitcher;
  * Scrapbook, Match, and Profile.
  * 
  * @author Shi Ho Wang
+ * @author Chris Hartman
  * 
  */
 public class HomeActivity extends SherlockFragmentActivity {
@@ -47,9 +46,6 @@ public class HomeActivity extends SherlockFragmentActivity {
 
 		// Navigation listener.
 		OnNavigationListener navLis = new OnNavigationListener() {
-			// Get the same strings provided for the drop-down's ArrayAdapter
-			String[] strings = getResources().getStringArray(
-					R.array.action_list);
 
 			@Override
 			public boolean onNavigationItemSelected(int position, long itemId) {
@@ -107,6 +103,9 @@ public class HomeActivity extends SherlockFragmentActivity {
 		return true;
 	}
 
+	/**
+	 * Runs when a menu item is selected.
+	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle cases depending on the menu item's id.
 		switch (item.getItemId()) {
@@ -156,29 +155,10 @@ public class HomeActivity extends SherlockFragmentActivity {
 		}
 	}
 
-	public void search() {
-		/*
-		 * AlertDialog.Builder alert = new AlertDialog.Builder(this);
-		 * 
-		 * alert.setTitle("Title"); alert.setMessage("Message");
-		 * 
-		 * // Set an EditText view to get user input final EditText input = new
-		 * EditText(this); alert.setView(input);
-		 * 
-		 * alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-		 * public void onClick(DialogInterface dialog, int whichButton) { String
-		 * value = input.getText(); // Submit the search term to the database. }
-		 * });
-		 * 
-		 * alert.setNegativeButton("Cancel", new
-		 * DialogInterface.OnClickListener() { public void
-		 * onClick(DialogInterface dialog, int whichButton) { // Canceled. } });
-		 * 
-		 * alert.show();
-		 */
-	}
-
-	public void shareEmail() {
+	/**
+	 * Allows the user to share this app with email.
+	 */
+	private void shareEmail() {
 		Intent emailIntent = new Intent(Intent.ACTION_SEND);
 		emailIntent.setType("message/rfc822");
 		emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "" }); // Blank
@@ -203,6 +183,9 @@ public class HomeActivity extends SherlockFragmentActivity {
 		}
 	}
 
+	/**
+	 * Prompts the user to either add a bucket list item or add chapter.
+	 */
 	private void promptItemSelection() {
 		final CharSequence[] items = { "Add Bucket List Item", "Add Chapter" };
 
@@ -213,10 +196,12 @@ public class HomeActivity extends SherlockFragmentActivity {
 			public void onClick(DialogInterface dialog, int position) {
 				switch (position) {
 				case 0:
-					startActivity(new Intent(getBaseContext(), AddBucketListItemActivity.class));
+					startActivity(new Intent(getBaseContext(),
+							AddBucketListItemActivity.class));
 					break;
 				case 1:
-					startActivity(new Intent(getBaseContext(), AddChapterItemActivity.class));
+					startActivity(new Intent(getBaseContext(),
+							AddChapterItemActivity.class));
 					break;
 				}
 			}

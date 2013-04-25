@@ -8,12 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListFragment;
-import com.actionbarsherlock.view.Menu;
-
 import edu.osu.database.DB;
 
+/**
+ * This fragment displays a list of chapters for a selected bucket list item.
+ * 
+ * @author Shi Ho Wang
+ * 
+ */
 public class ChaptersFragment extends SherlockListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -25,10 +28,11 @@ public class ChaptersFragment extends SherlockListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// Gets all match results for the user and display.
+		// Gets all chapters for the selected bucket list item.
 		JSONArray chapterItems = DB.getChapters(LoginActivity.user,
 				LoginActivity.pass, LoginActivity.selectedItem);
 
+		// Display the chapters.
 		if (chapterItems != null) {
 			if (chapterItems.length() > 0) {
 				ChapterAdapter adapter = new ChapterAdapter(getActivity(),

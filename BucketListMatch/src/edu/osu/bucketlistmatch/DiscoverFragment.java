@@ -10,13 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 import edu.osu.database.DB;
 
 /**
- * This fragment handles the displaying the Discover view.
+ * This fragment displays all public bucket list items.
  * 
  * @author Shi Ho Wang
  * 
@@ -33,9 +32,10 @@ public class DiscoverFragment extends SherlockListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// Gets all bucket lists and display.
+		// Gets all public bucket list items.
 		JSONArray bucketListItems = DB.getPublicDreamBooks();
 
+		// Display all public bucket list items.
 		if (bucketListItems != null) {
 			if (bucketListItems.length() > 0) {
 				BucketListAdapter adapter = new BucketListAdapter(

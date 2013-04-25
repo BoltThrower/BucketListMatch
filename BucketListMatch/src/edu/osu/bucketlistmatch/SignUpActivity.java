@@ -17,9 +17,10 @@ import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 /**
- * This activity handles new user account creation.
+ * This activity allows users to create a BLM account.
  * 
- * @author Shi Ho Wang, Chris Hartman
+ * @author Shi Ho Wang
+ * @author Chris Hartman
  *
  */
 public class SignUpActivity extends Activity {
@@ -33,6 +34,7 @@ public class SignUpActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
 		
+		// Create spinner objcets.
 		Spinner spinner = (Spinner) findViewById(R.id.countrySignUp);
 		Spinner dobMonthsSpinner = (Spinner) findViewById(R.id.dobMonth);
 		Spinner dobDaysSpinner = (Spinner) findViewById(R.id.dobDay);
@@ -49,9 +51,9 @@ public class SignUpActivity extends Activity {
 		
 		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
-		
 		dobMonthsSpinner.setAdapter(dobMonthsAdapter);
 		dobDaysSpinner.setAdapter(dobDaysAdapter);
 		dobYearsSpinner.setAdapter(dobYearsAdapter);

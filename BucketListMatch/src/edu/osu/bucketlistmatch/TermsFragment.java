@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import com.actionbarsherlock.app.SherlockFragment;
 
 /**
- * This fragment contains the terms of service information.
+ * This fragment displays the terms of service.
  * 
  * @author Shi Ho Wang
  *
