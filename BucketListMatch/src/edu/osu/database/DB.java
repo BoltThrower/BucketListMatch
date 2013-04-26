@@ -99,7 +99,8 @@ public class DB {
 	}
 
 	/**
-	 * This method returns all of the public dreambooks in the form of a JSONArray Object
+	 * This method returns all of the public dreambooks in the form of a
+	 * JSONArray Object
 	 * 
 	 * 
 	 * @return A JSON object that contains all of the public dreambooks
@@ -120,11 +121,13 @@ public class DB {
 	}
 
 	/**
-	 * This method gets all of the bucketlist books that belong to a specific user
-	 * @param username 
-	 * 		The user's username
+	 * This method gets all of the bucketlist books that belong to a specific
+	 * user
+	 * 
+	 * @param username
+	 *            The user's username
 	 * @param password
-	 * 		The user's password
+	 *            The user's password
 	 * @return a JSON object containing bucketlist books that belong to username
 	 */
 	public static JSONArray getAllBucketListBooks(String username,
@@ -147,10 +150,11 @@ public class DB {
 
 	/**
 	 * This method returns all scrapbooks that belong to a specific user
+	 * 
 	 * @param username
-	 * 		The user's username
+	 *            The user's username
 	 * @param password
-	 * 		The user's password
+	 *            The user's password
 	 * @return a JSON object containing all the scrapbooks belonging to username
 	 */
 	public static JSONArray getAllScrapbooks(String username, String password) {
@@ -169,89 +173,98 @@ public class DB {
 
 		return result;
 	}
-	
+
 	/**
-	 * This method returns all the chapters in a JSON object that are contained in dreambookName
-	 * @param username
-	 * 		The user's username
-	 * @param password
-	 * 		The user's password
-	 * @param dreambookName
-	 * 		A name corresponding to a dreambook
-	 * @return a JSON object containing all the chapters in dreambookName
-	 */
-	public static JSONArray getChapters(String username, String password, String dreambookName) {
-		JSONArray result = null;
-		try {
-			parser = new JSONParser(URL_main
-					+ "dreambook/getChapters.php?u="
-					+ Helper.parseForHTTP(username) + "&p="
-					+ Helper.parseForHTTP(password) + "&n="
-					+ Helper.parseForHTTP(dreambookName));
-			result = parser.getJSONArray();
-		} catch (JSONException e) {
-			Log.e("JSONParser Error.",
-					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchScrapbooks.");
-		}
-		return result;
-	}
-	
-	/**
-	 * This method returns the cost corresponding to a specific dreambook
-	 * @param username
-	 * 		The user's username
-	 * @param password
-	 * 		The user's password
-	 * @param dreambookName
-	 * 		The dreambook's name
-	 * @return a JSON object containing the cost of a dreambook
-	 */
-	public static JSONArray getCost(String username, String password, String dreambookName) {
-		JSONArray result = null;
-		try {
-			parser = new JSONParser(URL_main
-					+ "dreambook/getCost.php?u="
-					+ Helper.parseForHTTP(username) + "&p="
-					+ Helper.parseForHTTP(password) + "&n="
-					+ Helper.parseForHTTP(dreambookName));
-			result = parser.getJSONArray();
-		} catch (JSONException e) {
-			Log.e("JSONParser Error.",
-					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchScrapbooks.");
-		}
-		return result;
-	}
-	
-	/**
-	 * This method returns the duration of a specific dreambook
-	 * @param username
-	 * 		The user's username
-	 * @param password
-	 * 		The user's password
-	 * @param dreambookName
-	 * 		The name of the dreambook in use
-	 * @return a JSON object containing the duration of a dreambook
-	 */
-	public static JSONArray getDuration(String username, String password, String dreambookName) {
-		JSONArray result = null;
-		try {
-			parser = new JSONParser(URL_main
-					+ "dreambook/getDuration.php?u="
-					+ Helper.parseForHTTP(username) + "&p="
-					+ Helper.parseForHTTP(password) + "&n="
-					+ Helper.parseForHTTP(dreambookName));
-			result = parser.getJSONArray();
-		} catch (JSONException e) {
-			Log.e("JSONParser Error.",
-					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchScrapbooks.");
-		}
-		return result;
-	}
-	/**
+	 * This method returns all the chapters in a JSON object that are contained
+	 * in dreambookName
 	 * 
 	 * @param username
+	 *            The user's username
 	 * @param password
-	 * @return
+	 *            The user's password
+	 * @param dreambookName
+	 *            A name corresponding to a dreambook
+	 * @return a JSON object containing all the chapters in dreambookName
+	 */
+	public static JSONArray getChapters(String username, String password,
+			String dreambookName) {
+		JSONArray result = null;
+		try {
+			parser = new JSONParser(URL_main + "dreambook/getChapters.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&n="
+					+ Helper.parseForHTTP(dreambookName));
+			result = parser.getJSONArray();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchScrapbooks.");
+		}
+		return result;
+	}
+
+	/**
+	 * This method returns the cost corresponding to a specific dreambook
+	 * 
+	 * @param username
+	 *            The user's username
+	 * @param password
+	 *            The user's password
+	 * @param dreambookName
+	 *            The dreambook's name
+	 * @return a JSON object containing the cost of a dreambook
+	 */
+	public static JSONArray getCost(String username, String password,
+			String dreambookName) {
+		JSONArray result = null;
+		try {
+			parser = new JSONParser(URL_main + "dreambook/getCost.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&n="
+					+ Helper.parseForHTTP(dreambookName));
+			result = parser.getJSONArray();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchScrapbooks.");
+		}
+		return result;
+	}
+
+	/**
+	 * This method returns the duration of a specific dreambook
+	 * 
+	 * @param username
+	 *            The user's username
+	 * @param password
+	 *            The user's password
+	 * @param dreambookName
+	 *            The name of the dreambook in use
+	 * @return a JSON object containing the duration of a dreambook
+	 */
+	public static JSONArray getDuration(String username, String password,
+			String dreambookName) {
+		JSONArray result = null;
+		try {
+			parser = new JSONParser(URL_main + "dreambook/getDuration.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&n="
+					+ Helper.parseForHTTP(dreambookName));
+			result = parser.getJSONArray();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchScrapbooks.");
+		}
+		return result;
+	}
+
+	/**
+	 * This method takes in a user and matchs their dreambook chapters with
+	 * other peoples chapters
+	 * 
+	 * @param username
+	 *            The user's username
+	 * @param password
+	 *            The user's password
+	 * @return a JSON object containing the matched chapters
 	 */
 	public static JSONArray match(String username, String password) {
 		JSONArray result = null;
@@ -269,9 +282,44 @@ public class DB {
 		return result;
 	}
 	
+	/**
+	 * This method searchs for other chapters matching the search criteria
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param search
+	 * 		The search term
+	 * @return a JSON object containing the search results
+	 */
+	public static JSONArray search(String username, String password, String search) {
+		JSONArray result = null;
+
+		try {
+			parser = new JSONParser(URL_main + "search_algorithms/serach.php?u="
+					+ Helper.parseForHTTP(username) + "&p="
+					+ Helper.parseForHTTP(password) + "&s="
+					+ Helper.parseForHTTP(search));
+			result = parser.getJSONArray();
+		} catch (JSONException e) {
+			Log.e("JSONParser Error.",
+					"Result of JSON Array may be null, or contain a null value being referenced. Error occurred in fetchBucketListBooks.");
+		}
+
+		return result;
+	}
+
+	/**
+	 * This method takes a user and their email and returns their forgotten password
+	 * @param username
+	 * 		The user's username
+	 * @param email
+	 * 		The user's email
+	 * @return a JSON object containing the password
+	 */
 	public static int forgotPassword(String username, String email) {
 		JSONArray result = null;
-		
+
 		try {
 			parser = new JSONParser(URL_main + "user/forgotPassword.php?u="
 					+ Helper.parseForHTTP(username) + "&e="
@@ -301,8 +349,8 @@ public class DB {
 	 *         depending on the resulting error.
 	 */
 	public static int addUser(String user[]) {
-		
-		if(!Helper.isValidUsername(user[0])) {
+
+		if (!Helper.isValidUsername(user[0])) {
 			return 3;
 		}
 		try {
@@ -411,6 +459,15 @@ public class DB {
 		return 0;
 	}
 
+	/**
+	 * This method deletes a user from the database
+	 * @param username
+	 * 		The user's username
+	 * @param password 
+	 * 		The user's password
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int deleteUser(String username, String password) {
 		try {
 			parser = new JSONParser(URL_main + "user/deleteUser.php?u="
@@ -429,15 +486,19 @@ public class DB {
 	 * the database.
 	 * 
 	 * @param username
+	 * 		The user's username
 	 * @param password
+	 * 		The user's password
 	 * @param book
+	 * 		The user's dreambook
 	 * @param privacy
+	 * 		The privacy setting either true or false
 	 * @return int 0 if successful, otherwise a status number is returned
 	 *         depending on the error.
 	 */
 	public static int addBucketListBook(String username, String password,
 			String[] book, boolean privacy) {
-		if(!Helper.isValidUsername(username)) {
+		if (!Helper.isValidUsername(username)) {
 			return 3;
 		}
 		String privacy_char;
@@ -464,6 +525,19 @@ public class DB {
 
 	}
 
+	/**
+	 * This method edits a bucketlists privacy
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The user's dreambook
+	 * @param new_privacy
+	 * 		a variable representing the new privacy setting
+	 * @return int 0 if successful, otherwise a status number is returned
+		 *         depending on the resulting error.
+	 */
 	public static int editBucketListBookPrivacy(String username,
 			String password, String bookName, boolean new_privacy) {
 		try {
@@ -487,6 +561,21 @@ public class DB {
 		return 0;
 	}
 
+	/**
+	 * This method edits a value of the bucketlist's info
+	 * @param type
+	 * 		The type of data to be edited
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The user's bucketlist book
+	 * @param info
+	 * 		The new info to be stored
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int editBucketListBookInfo(int type, String username,
 			String password, String bookName, String info) {
 
@@ -530,6 +619,17 @@ public class DB {
 		return 0;
 	}
 
+	/**
+	 * This method moves a chapter to a scrapbook
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The user's bucketlist book
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int moveToScrapbook(String username, String password,
 			String bookName) {
 		try {
@@ -546,6 +646,17 @@ public class DB {
 		return 0;
 	}
 
+	/**
+	 * This method deletes a dreambook for a user
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The user's bucketlist book
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *          depending on the resulting error.
+	 */
 	public static int deleteDreamBook(String username, String password,
 			String bookName) {
 		try {
@@ -562,9 +673,22 @@ public class DB {
 		return 0;
 	}
 
+	/**
+	 * This method adds a chapter to a bucketlist book
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The user's bucketlist book
+	 * @param chapterInfo
+	 * 		The chapter being added
+	 * @return int 0 if successful, otherwise a status number is returned
+	*         depending on the resulting error.
+	 */
 	public static int addChapter(String username, String password,
 			String bookName, String[] chapterInfo) {
-		if(!Helper.isValidUsername(username)) {
+		if (!Helper.isValidUsername(username)) {
 			return 3;
 		}
 		try {
@@ -588,10 +712,24 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method adds a chapter to a bucketlist book
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The user's bucketlist book
+	 * @param chapterName
+	 * 		The chapters name
+	 * @param chapterCreator
+	 * 		The chapter's creator
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int addChapterToBook(String username, String password,
 			String bookName, String chapterName, String chapterCreator) {
-		if(!Helper.isValidUsername(username)) {
+		if (!Helper.isValidUsername(username)) {
 			return 3;
 		}
 		try {
@@ -611,7 +749,21 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method edits a chapters information
+	 * @param type
+	 * 		The type of information to be changed
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param info
+	 * 		The new info to be added
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int editChapterInfo(int type, String username,
 			String password, String chapterName, String info) {
 		try {
@@ -619,40 +771,40 @@ public class DB {
 			password = Helper.parseForHTTP(password);
 			chapterName = Helper.parseForHTTP(chapterName);
 			info = Helper.parseForHTTP(info);
-			switch(type) {
+			switch (type) {
 			case Enum.A_START_DATE:
-				parser = new JSONParser(URL_main + "chapter/editStartDate.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName +
-						"&sd=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/editStartDate.php?u=" + username + "&p="
+						+ password + "&ch=" + chapterName + "&sd=" + info);
 				break;
 			case Enum.A_DURATION:
-				parser = new JSONParser(URL_main + "chapter/editDuration.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName +
-						"&cd=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/editDuration.php?u=" + username + "&p="
+						+ password + "&ch=" + chapterName + "&cd=" + info);
 				break;
 			case Enum.A_COST:
-				parser = new JSONParser(URL_main + "chapter/editCost.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName +
-						"&m=" + info);
+				parser = new JSONParser(URL_main + "chapter/editCost.php?u="
+						+ username + "&p=" + password + "&ch=" + chapterName
+						+ "&m=" + info);
 				break;
 			case Enum.A_URL:
-				parser = new JSONParser(URL_main + "chapter/editURL.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName +
-						"&url=" + info);
+				parser = new JSONParser(URL_main + "chapter/editURL.php?u="
+						+ username + "&p=" + password + "&ch=" + chapterName
+						+ "&url=" + info);
 				break;
 			case Enum.A_ROM:
-				parser = new JSONParser(URL_main + "chapter/editROM.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName +
-						"&rom=" + info);	
+				parser = new JSONParser(URL_main + "chapter/editROM.php?u="
+						+ username + "&p=" + password + "&ch=" + chapterName
+						+ "&rom=" + info);
 				break;
 			case Enum.A_DESCRIPTION:
-				parser = new JSONParser(URL_main + "chapter/editDescription.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName +
-						"&des=" + info);	
+				parser = new JSONParser(URL_main
+						+ "chapter/editDescription.php?u=" + username + "&p="
+						+ password + "&ch=" + chapterName + "&des=" + info);
 				break;
 			default:
 				return 3;
-			
+
 			}
 			if (parser.getJSONArray() == null)
 				return 2;
@@ -664,10 +816,24 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method adds media to a chapter
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The bucketlist book's name
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param mediaInfo
+	 * 		The media information as an array of String
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int addMediaToChapter(String username, String password,
 			String bookName, String chapterName, String[] mediaInfo) {
-		if(!Helper.isValidUsername(username)) {
+		if (!Helper.isValidUsername(username)) {
 			return 3;
 		}
 		try {
@@ -689,10 +855,24 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method adds a totem to a chapter
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The bucketlist book's name
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param totemInfo
+	 * 		The totem information as a array of strings
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int addTotemToChapter(String username, String password,
 			String bookName, String chapterName, String[] totemInfo) {
-		if(!Helper.isValidUsername(username)) {
+		if (!Helper.isValidUsername(username)) {
 			return 3;
 		}
 		try {
@@ -713,14 +893,28 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method adds a challenge to a chapter
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The bucketlist book's name
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param challengeInfo
+	 * 		The challenge information as an array of strings
+	 * @return
+	 */
 	public static int addChallengeToChapter(String username, String password,
 			String bookName, String chapterName, String[] challengeInfo) {
-		if(!Helper.isValidUsername(username)) {
+		if (!Helper.isValidUsername(username)) {
 			return 3;
 		}
 		try {
-			parser = new JSONParser(URL_main + "chapter/challenge/addChallenge.php?u="
+			parser = new JSONParser(URL_main
+					+ "chapter/challenge/addChallenge.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
 					+ Helper.parseForHTTP(password) + "&ch="
 					+ Helper.parseForHTTP(chapterName) + "&t="
@@ -736,40 +930,60 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method edits a piece of the media's information
+	 * @param type
+	 * 		The type of information to be changed
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param mediaName
+	 * 		The media's name
+	 * @param info
+	 * 		The new information to be added
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int editMediaInfo(int type, String username, String password,
 			String chapterName, String mediaName, String info) {
 		username = Helper.parseForHTTP(username);
 		password = Helper.parseForHTTP(password);
 		chapterName = Helper.parseForHTTP(chapterName);
 		mediaName = Helper.parseForHTTP(mediaName);
-		
+
 		try {
-			switch(type) {
+			switch (type) {
 			case Enum.D_NAME:
-				parser = new JSONParser(URL_main + "chapter/media/editName.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName + "&mn=" +
-						mediaName + "&nn=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/media/editName.php?u=" + username + "&p="
+						+ password + "&ch=" + chapterName + "&mn=" + mediaName
+						+ "&nn=" + info);
 				break;
 			case Enum.D_FILE:
-				parser = new JSONParser(URL_main + "chapter/media/editFile.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName + "&mn=" +
-						mediaName + "&mf=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/media/editFile.php?u=" + username + "&p="
+						+ password + "&ch=" + chapterName + "&mn=" + mediaName
+						+ "&mf=" + info);
 				break;
 			case Enum.D_TYPE:
-				parser = new JSONParser(URL_main + "chapter/media/editType.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName + "&mn=" +
-						mediaName + "&mt=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/media/editType.php?u=" + username + "&p="
+						+ password + "&ch=" + chapterName + "&mn=" + mediaName
+						+ "&mt=" + info);
 				break;
 			case Enum.D_DESCRIPTION:
-				parser = new JSONParser(URL_main + "chapter/media/editDescription.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName + "&mn=" +
-						mediaName + "&des=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/media/editDescription.php?u=" + username
+						+ "&p=" + password + "&ch=" + chapterName + "&mn="
+						+ mediaName + "&des=" + info);
 				break;
 			default:
 				return 3;
 			}
-			
+
 			if (parser.getJSONArray() == null)
 				return 2;
 		} catch (JSONException e) {
@@ -780,30 +994,48 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method edits the totem's information
+	 * @param type
+	 * 		The type of information to be changed
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param totemName
+	 * 		The totem name
+	 * @param info
+	 * 		The new information to be added
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int editTotemInfo(int type, String username, String password,
 			String chapterName, String totemName, String info) {
 		username = Helper.parseForHTTP(username);
 		password = Helper.parseForHTTP(password);
 		chapterName = Helper.parseForHTTP(chapterName);
 		totemName = Helper.parseForHTTP(totemName);
-		
+
 		try {
-			switch(type) {
+			switch (type) {
 			case Enum.E_PHOTO:
-				parser = new JSONParser(URL_main + "chapter/totem/editPhoto.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName + "&tn=" +
-						totemName + "&ti=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/totem/editPhoto.php?u=" + username + "&p="
+						+ password + "&ch=" + chapterName + "&tn=" + totemName
+						+ "&ti=" + info);
 				break;
 			case Enum.E_DESCRIPTION:
-				parser = new JSONParser(URL_main + "chapter/media/editDescription.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName + "&tn=" +
-						totemName + "&des=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/media/editDescription.php?u=" + username
+						+ "&p=" + password + "&ch=" + chapterName + "&tn="
+						+ totemName + "&des=" + info);
 				break;
 			default:
 				return 3;
 			}
-			
+
 			if (parser.getJSONArray() == null)
 				return 2;
 		} catch (JSONException e) {
@@ -814,30 +1046,48 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method edits a challenges information
+	 * @param type
+	 * 		The type of information to be changed
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param title
+	 * 		The title of the challenge
+	 * @param info
+	 * 		The new information to be added
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int editChallengeInfo(int type, String username,
 			String password, String chapterName, String title, String info) {
 		username = Helper.parseForHTTP(username);
 		password = Helper.parseForHTTP(password);
 		chapterName = Helper.parseForHTTP(chapterName);
 		title = Helper.parseForHTTP(title);
-		
+
 		try {
-			switch(type) {
+			switch (type) {
 			case Enum.F_TITLE:
-				parser = new JSONParser(URL_main + "chapter/challenge/editTitle.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName + "&t=" +
-						title + "&nt=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/challenge/editTitle.php?u=" + username
+						+ "&p=" + password + "&ch=" + chapterName + "&t="
+						+ title + "&nt=" + info);
 				break;
 			case Enum.F_DESCRIPTION:
-				parser = new JSONParser(URL_main + "chapter/challenge/editDescription.php?u=" +
-						username + "&p=" + password + "&ch=" + chapterName + "&t=" +
-						title + "&des=" + info);
+				parser = new JSONParser(URL_main
+						+ "chapter/challenge/editDescription.php?u=" + username
+						+ "&p=" + password + "&ch=" + chapterName + "&t="
+						+ title + "&des=" + info);
 				break;
 			default:
 				return 3;
 			}
-			
+
 			if (parser.getJSONArray() == null)
 				return 2;
 		} catch (JSONException e) {
@@ -848,11 +1098,24 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method removes media from a chapter
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param mediaName
+	 * 		The media name
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int removeMediaFromChapter(String username, String password,
 			String chapterName, String mediaName) {
 		try {
-			parser = new JSONParser(URL_main + "chapter/media/deleteMedia.php?u="
+			parser = new JSONParser(URL_main
+					+ "chapter/media/deleteMedia.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
 					+ Helper.parseForHTTP(password) + "&ch="
 					+ Helper.parseForHTTP(chapterName) + "&mn="
@@ -867,11 +1130,24 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method removes a totem from a chapter
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param totemName
+	 * 		The totem name
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int removeTotemFromChapter(String username, String password,
 			String chapterName, String totemName) {
 		try {
-			parser = new JSONParser(URL_main + "chapter/totem/deleteTotem.php?u="
+			parser = new JSONParser(URL_main
+					+ "chapter/totem/deleteTotem.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
 					+ Helper.parseForHTTP(password) + "&ch="
 					+ Helper.parseForHTTP(chapterName) + "&tn="
@@ -886,10 +1162,23 @@ public class DB {
 		return 0;
 	}
 
+	/**
+	 * This method removes a challenge from a chapter
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param challengeName
+	 * 		The challenge name
+	 * @return
+	 */
 	public static int removeChallengeFromChapter(String username,
 			String password, String chapterName, String challengeName) {
 		try {
-			parser = new JSONParser(URL_main + "chapter/challenge/deleteChallenge.php?u="
+			parser = new JSONParser(URL_main
+					+ "chapter/challenge/deleteChallenge.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
 					+ Helper.parseForHTTP(password) + "&ch="
 					+ Helper.parseForHTTP(chapterName) + "&t="
@@ -904,7 +1193,21 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method removes a chapter from a dreambook
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param bookName
+	 * 		The dreambook name
+	 * @param chapterName
+	 * 		The chapter name
+	 * @param chapterCreator
+	 * 		The chapter creator
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int removeChapterFromBook(String username, String password,
 			String bookName, String chapterName, String chapterCreator) {
 		try {
@@ -924,7 +1227,17 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method removes a chapter from a dreambook
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param chapterName
+	 * 		The chapter name
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int deleteChapter(String username, String password,
 			String chapterName) {
 		try {
@@ -942,10 +1255,20 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method adds a deal to the database
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param dealInfo
+	 * 		The information for the new deal to be added as an array of strings
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int addDeal(String username, String password,
 			String[] dealInfo) {
-		if(!Helper.isValidUsername(username)) {
+		if (!Helper.isValidUsername(username)) {
 			return 3;
 		}
 		try {
@@ -962,7 +1285,7 @@ public class DB {
 					+ Helper.parseForHTTP(dealInfo[7]) + "&st="
 					+ Helper.parseForHTTP(dealInfo[8] + "&c=")
 					+ Helper.parseForHTTP(dealInfo[9] + "&s=")
-					+ Helper.parseForHTTP(dealInfo[10]) + "&co=" 
+					+ Helper.parseForHTTP(dealInfo[10]) + "&co="
 					+ Helper.parseForHTTP(dealInfo[11]) + "&z="
 					+ Helper.parseForHTTP(dealInfo[12]));
 			if (parser.getJSONArray() == null)
@@ -975,79 +1298,93 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method edits a piece of information from a deal
+	 * @param type
+	 * 		The type of information to be changed
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param dealName
+	 * 		The deal's name
+	 * @param info
+	 * 		The new information to be added
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int editDealInfo(int type, String username, String password,
 			String dealName, String info) {
 		username = Helper.parseForHTTP(username);
 		password = Helper.parseForHTTP(password);
 		dealName = Helper.parseForHTTP(dealName);
-		
+
 		try {
-			switch(type) {
+			switch (type) {
 			case Enum.G_IMAGE:
-				parser = new JSONParser(URL_main + "deal/editImage.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&i=" + info);
+				parser = new JSONParser(URL_main + "deal/editImage.php?mu="
+						+ username + "&mp=" + password + "&n=" + dealName
+						+ "&i=" + info);
 				break;
 			case Enum.G_DESCRIPTION:
-				parser = new JSONParser(URL_main + "deal/editDescirption.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&des=" + info);
+				parser = new JSONParser(URL_main
+						+ "deal/editDescirption.php?mu=" + username + "&mp="
+						+ password + "&n=" + dealName + "&des=" + info);
 				break;
 			case Enum.G_DISCOUNT_AMOUNT:
-				parser = new JSONParser(URL_main + "deal/editDiscountAmount.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&da=" + info);
+				parser = new JSONParser(URL_main
+						+ "deal/editDiscountAmount.php?mu=" + username + "&mp="
+						+ password + "&n=" + dealName + "&da=" + info);
 				break;
 			case Enum.G_FINAL_PRICE:
-				parser = new JSONParser(URL_main + "deal/editFinalPrice.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&fp=" + info);
+				parser = new JSONParser(URL_main
+						+ "deal/editFinalPrice.php?mu=" + username + "&mp="
+						+ password + "&n=" + dealName + "&fp=" + info);
 				break;
 			case Enum.G_EXPIRATION_DATE:
-				parser = new JSONParser(URL_main + "deal/editExpirationDate.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&ed=" + info);
+				parser = new JSONParser(URL_main
+						+ "deal/editExpirationDate.php?mu=" + username + "&mp="
+						+ password + "&n=" + dealName + "&ed=" + info);
 				break;
 			case Enum.G_MAX_QUANTITY:
-				parser = new JSONParser(URL_main + "deal/editMaxQuantity.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&max=" + info);
+				parser = new JSONParser(URL_main
+						+ "deal/editMaxQuantity.php?mu=" + username + "&mp="
+						+ password + "&n=" + dealName + "&max=" + info);
 				break;
 			case Enum.G_MIN_QUANTITY:
-				parser = new JSONParser(URL_main + "deal/editMinQuantity.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&min=" + info);
+				parser = new JSONParser(URL_main
+						+ "deal/editMinQuantity.php?mu=" + username + "&mp="
+						+ password + "&n=" + dealName + "&min=" + info);
 				break;
 			case Enum.G_STREET:
-				parser = new JSONParser(URL_main + "deal/editStreet.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&st=" + info);
+				parser = new JSONParser(URL_main + "deal/editStreet.php?mu="
+						+ username + "&mp=" + password + "&n=" + dealName
+						+ "&st=" + info);
 				break;
 			case Enum.G_CITY:
-				parser = new JSONParser(URL_main + "deal/editCity.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&c=" + info);
+				parser = new JSONParser(URL_main + "deal/editCity.php?mu="
+						+ username + "&mp=" + password + "&n=" + dealName
+						+ "&c=" + info);
 				break;
 			case Enum.G_STATE:
-				parser = new JSONParser(URL_main + "deal/editState.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&s=" + info);
+				parser = new JSONParser(URL_main + "deal/editState.php?mu="
+						+ username + "&mp=" + password + "&n=" + dealName
+						+ "&s=" + info);
 				break;
 			case Enum.G_COUNTRY:
-				parser = new JSONParser(URL_main + "deal/editCountry.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&co=" + info);
+				parser = new JSONParser(URL_main + "deal/editCountry.php?mu="
+						+ username + "&mp=" + password + "&n=" + dealName
+						+ "&co=" + info);
 				break;
 			case Enum.G_ZIP_CODE:
-				parser = new JSONParser(URL_main + "deal/editZipCode.php?mu=" +
-						username + "&mp=" + password + "&n=" + dealName +
-						"&z=" + info);
+				parser = new JSONParser(URL_main + "deal/editZipCode.php?mu="
+						+ username + "&mp=" + password + "&n=" + dealName
+						+ "&z=" + info);
 				break;
 			default:
 				return 3;
 			}
-			
+
 			if (parser.getJSONArray() == null)
 				return 2;
 		} catch (JSONException e) {
@@ -1058,7 +1395,17 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method deletes a deal from the database
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param dealName
+	 * 		The deal's name
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int deleteDeal(String username, String password,
 			String dealName) {
 		try {
@@ -1076,10 +1423,16 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method adds a merchant to the database
+	 * @param merchantInfo
+	 * 		The merchants information as an array of strings
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int addMerchant(String[] merchantInfo) {
 		try {
-			if(!Helper.isValidUsername(merchantInfo[0])) {
+			if (!Helper.isValidUsername(merchantInfo[0])) {
 				return 3;
 			}
 			parser = new JSONParser(URL_main + "merchant/addMerchant.php?mu="
@@ -1115,14 +1468,29 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method adds a review to a mercahnt
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param merchantName
+	 * 		The merchant's name
+	 * @param description
+	 * 		A description of the merchant
+	 * @param rating
+	 * 		The rating of a merchant
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int addMerchantReview(String username, String password,
 			String merchantName, String description, int rating) {
-		if(!Helper.isValidUsername(username)) {
+		if (!Helper.isValidUsername(username)) {
 			return 3;
 		}
 		try {
-			parser = new JSONParser(URL_main + "merchant/review/addReview.php?u="
+			parser = new JSONParser(URL_main
+					+ "merchant/review/addReview.php?u="
 					+ Helper.parseForHTTP(username) + "&p="
 					+ Helper.parseForHTTP(password) + "&mer="
 					+ Helper.parseForHTTP(merchantName) + "&des="
@@ -1138,98 +1506,129 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method edits the mercahnts information
+	 * @param type
+	 * 		The type of information to be changed
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @param info
+	 * 		The new information to be added
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int editMerchantInfo(int type, String username,
 			String password, String info) {
 		username = Helper.parseForHTTP(username);
 		password = Helper.parseForHTTP(password);
-		
+
 		try {
-			switch(type) {
+			switch (type) {
 			case Enum.H_NAME:
-				parser = new JSONParser(URL_main + "merchant/changeName.php?mu=" +
-						username + "&mp=" + password + "&n=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeName.php?mu=" + username + "&mp="
+						+ password + "&n=" + info);
 				break;
 			case Enum.H_PROFILE_PICTURE:
-				parser = new JSONParser(URL_main + "merchant/changeProfilePicture.php?mu=" +
-						username + "&mp=" + password + "&i=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeProfilePicture.php?mu=" + username
+						+ "&mp=" + password + "&i=" + info);
 				break;
 			case Enum.H_DESCRIPTION:
-				parser = new JSONParser(URL_main + "merchant/changeDesciption.php?mu=" +
-						username + "&mp=" + password + "&des=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeDesciption.php?mu=" + username
+						+ "&mp=" + password + "&des=" + info);
 				break;
 			case Enum.H_STREET:
-				parser = new JSONParser(URL_main + "merchant/changeStreet.php?mu=" +
-						username + "&mp=" + password + "&st=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeStreet.php?mu=" + username + "&mp="
+						+ password + "&st=" + info);
 				break;
 			case Enum.H_CITY:
-				parser = new JSONParser(URL_main + "merchant/changeCity.php?mu=" +
-						username + "&mp=" + password + "&c=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeCity.php?mu=" + username + "&mp="
+						+ password + "&c=" + info);
 				break;
 			case Enum.H_STATE:
-				parser = new JSONParser(URL_main + "merchant/changeState.php?mu=" +
-						username + "&mp=" + password + "&s=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeState.php?mu=" + username + "&mp="
+						+ password + "&s=" + info);
 				break;
 			case Enum.H_COUNTRY:
-				parser = new JSONParser(URL_main + "merchant/changeCountry.php?mu=" +
-						username + "&mp=" + password + "&co=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeCountry.php?mu=" + username + "&mp="
+						+ password + "&co=" + info);
 				break;
 			case Enum.H_ZIP_CODE:
-				parser = new JSONParser(URL_main + "merchant/changeZipCode.php?mu=" +
-						username + "&mp=" + password + "&z=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeZipCode.php?mu=" + username + "&mp="
+						+ password + "&z=" + info);
 				break;
 			case Enum.H_EMAIL:
-				parser = new JSONParser(URL_main + "merchant/changeEmail.php?mu=" +
-						username + "&mp=" + password + "&e=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeEmail.php?mu=" + username + "&mp="
+						+ password + "&e=" + info);
 				break;
 			case Enum.H_PHONE:
-				parser = new JSONParser(URL_main + "merchant/changePhone.php?mu=" +
-						username + "&mp=" + password + "&ph=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changePhone.php?mu=" + username + "&mp="
+						+ password + "&ph=" + info);
 				break;
 			case Enum.H_MERCHANT_TYPE:
-				parser = new JSONParser(URL_main + "merchant/changeMerchantType.php?mu=" +
-						username + "&mp=" + password + "&t=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeMerchantType.php?mu=" + username
+						+ "&mp=" + password + "&t=" + info);
 				break;
 			case Enum.H_LONGER_DESCRIPTION:
-				parser = new JSONParser(URL_main + "merchant/changeLongerDescription.php?mu=" +
-						username + "&mp=" + password + "&ld=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeLongerDescription.php?mu=" + username
+						+ "&mp=" + password + "&ld=" + info);
 				break;
 			case Enum.H_HOURS:
-				parser = new JSONParser(URL_main + "merchant/changeHours.php?mu=" +
-						username + "&mp=" + password + "&h=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeHours.php?mu=" + username + "&mp="
+						+ password + "&h=" + info);
 				break;
 			case Enum.H_RESERVATIONS:
-				parser = new JSONParser(URL_main + "merchant/changeReservations.php?mu=" +
-						username + "&mp=" + password + "&res=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeReservations.php?mu=" + username
+						+ "&mp=" + password + "&res=" + info);
 				break;
 			case Enum.H_DELIVERY:
-				parser = new JSONParser(URL_main + "merchant/changeDelivery.php?mu=" +
-						username + "&mp=" + password + "&del=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeDelivery.php?mu=" + username + "&mp="
+						+ password + "&del=" + info);
 				break;
 			case Enum.H_TAKEOUT:
-				parser = new JSONParser(URL_main + "merchant/changeTakeout.php?mu=" +
-						username + "&mp=" + password + "&tak=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeTakeout.php?mu=" + username + "&mp="
+						+ password + "&tak=" + info);
 				break;
 			case Enum.H_OUTDOOR_SEATING:
-				parser = new JSONParser(URL_main + "merchant/changeOutdoorSeating.php?mu=" +
-						username + "&mp=" + password + "&os=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeOutdoorSeating.php?mu=" + username
+						+ "&mp=" + password + "&os=" + info);
 				break;
 			case Enum.H_ATTIRE:
-				parser = new JSONParser(URL_main + "merchant/changeAttire.php?mu=" +
-						username + "&mp=" + password + "&att=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeAttire.php?mu=" + username + "&mp="
+						+ password + "&att=" + info);
 				break;
 			case Enum.H_ALCOHOL_SERVED:
-				parser = new JSONParser(URL_main + "merchant/changeAlcoholServed.php?mu=" +
-						username + "&mp=" + password + "&as=" + info);
+				parser = new JSONParser(URL_main
+						+ "merchant/changeAlcoholServed.php?mu=" + username
+						+ "&mp=" + password + "&as=" + info);
 				break;
 			case Enum.H_URL:
-				parser = new JSONParser(URL_main + "merchant/changeURL.php?mu=" +
-						username + "&mp=" + password + "&url=" + info);
+				parser = new JSONParser(URL_main + "merchant/changeURL.php?mu="
+						+ username + "&mp=" + password + "&url=" + info);
 				break;
 			default:
 				return 3;
 			}
-			
+
 			if (parser.getJSONArray() == null)
 				return 2;
 		} catch (JSONException e) {
@@ -1240,10 +1639,19 @@ public class DB {
 		return 0;
 	}
 
-	
+	/**
+	 * This method deletes a merchant from the database
+	 * @param username
+	 * 		The user's username
+	 * @param password
+	 * 		The user's password
+	 * @return int 0 if successful, otherwise a status number is returned
+	 *         depending on the resulting error.
+	 */
 	public static int deleteMerchant(String username, String password) {
 		try {
-			parser = new JSONParser(URL_main + "merchant/deleteMerchant.php?mu="
+			parser = new JSONParser(URL_main
+					+ "merchant/deleteMerchant.php?mu="
 					+ Helper.parseForHTTP(username) + "&mp="
 					+ Helper.parseForHTTP(password));
 			if (parser.getJSONArray() == null)
@@ -1260,12 +1668,13 @@ public class DB {
 
 	// TODO
 	public static Bitmap convertToImage(String hex) {
-	  
+
 		hex = hex.trim();
 		hex = hex.replaceFirst("0x", "");
-		
-	    byte[] imageAsBytes = new BigInteger(hex, 16).toByteArray();
-		Bitmap bp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+
+		byte[] imageAsBytes = new BigInteger(hex, 16).toByteArray();
+		Bitmap bp = BitmapFactory.decodeByteArray(imageAsBytes, 0,
+				imageAsBytes.length);
 		return bp;
 	}
 
@@ -1273,38 +1682,38 @@ public class DB {
 	static String convertToBinary(Bitmap image) {
 		return null;
 	}
-	
-	static String convertHexToBinaryString(String hex){
 
-		  StringBuilder sb = new StringBuilder();
-		  String output;
-		
-		  hex = hex.trim();
-		  hex.replaceFirst("0x", "");
+	static String convertHexToBinaryString(String hex) {
 
-		  for( int i=0; i<hex.length()-1; i+=2 ){
+		StringBuilder sb = new StringBuilder();
+		String output;
 
-		      //grab the hex in pairs
-		      output = hex.substring(i, (i + 2));
-		     
-		      //convert hex to decimal
-		      // decimal = Integer.parseInt(output, 16);
-		      
-		      String decimal = Integer.toBinaryString(Integer.parseInt(output, 16)); 
-		      
-		      //convert the decimal to character
-		      sb.append(decimal);
-		      
-		  }
-		  return sb.toString();
+		hex = hex.trim();
+		hex.replaceFirst("0x", "");
+
+		for (int i = 0; i < hex.length() - 1; i += 2) {
+
+			// grab the hex in pairs
+			output = hex.substring(i, (i + 2));
+
+			// convert hex to decimal
+			// decimal = Integer.parseInt(output, 16);
+
+			String decimal = Integer.toBinaryString(Integer
+					.parseInt(output, 16));
+
+			// convert the decimal to character
+			sb.append(decimal);
+
 		}
-	
-	public static  String fetchImageStream(String username, String password) {
+		return sb.toString();
+	}
+
+	public static String fetchImageStream(String username, String password) {
 		JSONArray result;
 		String str = null;
 		try {
-			parser = new JSONParser(URL_main
-					+ "user/fetchImageStream.php?u="
+			parser = new JSONParser(URL_main + "user/fetchImageStream.php?u="
 					+ username + "&p=" + password);
 			result = parser.getJSONArray();
 			str = parser.getString();
